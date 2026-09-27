@@ -1,0 +1,1179 @@
+<html lang="nl-NL" style="margin:0;padding:0">
+
+ <!--Kamergotchi is oorspronkelijk bedacht door Arjen Lubach van het VPRO-programma Zondag met Lubach.-->
+ <!--https://www.vpro.nl/zondag-met-lubach.html-->
+ <!--Webpagina en programma door Thomas Greve, met delen van het internet en het boek "Het complete handboek HTML voor Internet" van Mark Brown, John Jung en Tom Savola uit 1996. ISBN: 90-395-0499-7.-->
+
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+ <meta http-equiv="Content-Script-Type" content="text/javascript">
+ <meta http-equiv="Content-Style-Type" content="text/css">
+ <link rel="shortcut icon" type="image/x-icon" sizes="16x16 24x24 32x32 48x48 64x64" href="../../favicon.ico">
+ <link rel="icon" type="image/x-icon" sizes="16x16 24x24 32x32 48x48 64x64" href="../../favicon.ico">
+ <title>Kamergotchi Online Legacyversie</title>
+<script type="text/javascript" language="JavaScript">
+ <!--
+var speldatatotaal
+var speldatageneriek
+var speldataversiespecifiek
+var speldatamodule
+
+var saveversie
+var honger
+var hongerkeren
+var hongertijd
+var hongertijdslot
+var aandacht
+var aandachtkeren
+var aandachttijd
+var aandachttijdslot
+var kennis
+var kenniskeren
+var kennistijd
+var kennistijdslot
+var keuzekeren
+var ziekte
+var spelspecifiekesaveversie
+var tijd
+var begintijd
+
+var instellingen
+var instellingensaveversie
+var weergavemodus
+var lijsttrekker
+var spelmodule
+
+function naarbeneden(personage, variabele, locatie) {
+ instellingen = window.top.getCookie("kgl_instellingen")
+ if (instellingen != "leeg") {
+  var versiedomlezen = instellingen.substring(0,6)
+  instellingen = window.top.string_splitsen(">", instellingen)
+   if (versiedomlezen == "KGL213") {
+    spelmodule = instellingen[2]
+   }
+   else {
+    spelmodule = "Kern"
+   }
+  }
+  else {
+   spelmodule = "Kern"
+  }
+  window.top.laadfunc(personage, locatie)
+  var tijd2 = window.top.unixtijd()
+  var tijdtest = tijd + 300 - tijd2
+  if (tijdtest < 1) {
+   window.top.berichtfunc("5minuten", lijsttrekker, locatie)
+   tijd = tijd2
+  hongertijd = hongertijd - 5
+  if (hongertijd < 1) {
+   hongerkeren = 1
+   keuzekeren = keuzekeren + 2
+   hongertijdslot = 0
+   hongertijd = 5
+  }
+  var n = window.top.random()
+  if (ziekte > 0) {
+   if (n < 72) {
+    honger = honger - 1
+   }
+   else if (n > 78) {
+    honger = honger - 2
+   }
+   else {
+    honger = honger - 3
+   }
+  }
+  else {
+   if (n < 48) {
+    honger = honger - 1
+   }
+   else if (n > 52) {
+    honger = honger - 2
+   }
+   else {
+    honger = honger - 3
+   }
+  }
+  if (honger < 1) {
+   honger = 0
+  }
+
+  aandachttijd = aandachttijd - 5
+  if (aandachttijd < 1) {
+   aandachtkeren = 1
+   keuzekeren = keuzekeren + 2
+   aandachttijdslot = 0
+   aandachttijd = 5
+  }
+
+  var n = window.top.random()
+  if (ziekte > 0) {
+   if (n > 61) {
+    aandacht = aandacht - 1
+   }
+   else if (n < 60) {
+    aandacht = aandacht - 2
+   }
+   else {
+    aandacht = aandacht - 3
+   }
+   if (aandacht < 1) {
+    aandacht = 0
+   }
+  }
+  else {
+   if (n > 87) {
+    aandacht = aandacht - 1
+   }
+   else if (n < 85) {
+    aandacht = aandacht - 2
+   }
+   else {
+    aandacht = aandacht - 3
+   }
+   if (aandacht < 1) {
+    aandacht = 0
+   }
+  }
+
+  if (ziekte > 0) {
+   var n = window.top.random()
+   if (n > 60) {
+    window.top.berichtfunc("niezen", lijsttrekker, locatie)
+   }
+   else if (n < 30) {
+    window.top.berichtfunc("hoofdpijn", lijsttrekker, locatie)
+   }
+   ziekte = ziekte + 1
+   if (ziekte == 4) {
+    window.top.berichtfunc("gezond", lijsttrekker, locatie)
+    ziekte = 0
+   }
+  }
+  else {
+   var n = window.top.random()
+   if (n <= 5) {
+    ziekte = 1
+    window.top.berichtfunc("ziek", lijsttrekker, locatie)
+   }
+  }
+
+  kennistijd = kennistijd - 5
+  if (kennistijd < 1) {
+   kenniskeren = 1
+   keuzekeren = keuzekeren + 2
+   kennistijdslot = 0
+   kennistijd = 10
+  }
+
+  var n = window.top.random()
+  if (ziekte <= 0) {
+   if (n < 96) {
+    kennis = kennis - 1
+   }
+   else {
+    kennis = kennis - 2
+   }
+  }
+
+  if (kennis < 1) {
+   kennis = 0
+  }
+
+  if (keuzekeren > 7) {
+    keuzekeren = 7
+  }
+
+  if (honger == 0) {
+   window.top.resetfunc(personage, locatie)
+   window.top.berichtfunc("hongerdood", lijsttrekker, locatie)
+  }
+  else if (aandacht == 0) {
+   window.top.resetfunc(personage, locatie)
+   window.top.berichtfunc("aandachtdood", lijsttrekker, locatie)
+  }
+  else if (kennis == 0) {
+   window.top.resetfunc(personage, locatie)
+   window.top.berichtfunc("kennisdood", lijsttrekker, locatie)
+  }
+ }
+ if (variabele == "honger") {
+  if (keuzekeren <= 0 && hongerkeren == 0 ) {
+   window.top.berichtfunc("hongervol", lijsttrekker, locatie)
+  }
+  else {
+   var n = window.top.random()
+   if (n > 59) {
+    honger = honger + 1
+   }
+   else {
+    honger = honger + 2
+   }
+
+   if (honger > 40) {
+    honger = 40
+   }
+   if (hongerkeren == 0) {
+    keuzekeren = keuzekeren - 1
+   }
+   else {
+    hongerkeren = hongerkeren - 1
+   }
+  }
+ }
+ else if (variabele == "aandacht") {
+  if (keuzekeren <= 0 && aandachtkeren == 0 ) {
+   window.top.berichtfunc("aandachtvol", lijsttrekker, locatie)
+  }
+  else {
+   aandacht = aandacht + 2
+   if (aandacht > 40) {
+    aandacht = 40
+   }
+   if (aandachtkeren == 0) {
+    keuzekeren = keuzekeren - 1
+   }
+   else {
+    aandachtkeren = aandachtkeren - 1
+   }
+  }
+ }
+ else if (variabele == "kennis") {
+  if ((keuzekeren <= 0 && kenniskeren == 0) || kennistijdslot == 1) {
+   window.top.berichtfunc("kennisvol", lijsttrekker, locatie)
+  }
+  else {
+   var n = window.top.random()
+   if (n > 74) {
+    kennis = kennis + 1
+   }
+   else {
+    kennis = kennis + 2
+   }
+
+   if (kennis > 40) {
+    kennis = 40
+   }
+   if (kenniskeren == 0) {
+    keuzekeren = keuzekeren - 1
+   }
+   else {
+    kenniskeren = kenniskeren - 1
+   }
+   if (keuzekeren < 1) {
+    kennistijdslot = 1
+   }
+  }
+ }
+ else if (variabele == "versie") {
+  window.top.berichtfunc("versie", lijsttrekker, locatie)
+ }
+
+ if (begintijd < tijd2) {
+ var geleefd = tijd2 - begintijd
+ geleefd =  Math.floor(geleefd/86400)
+ }
+ else {
+  var geleefd = 0
+ }
+ var geluk = honger + aandacht + kennis
+ geluk = Math.floor((geluk / 120) * 100)
+ if (ziekte > 0) {
+  geluk = Math.floor(geluk / 2)
+ }
+ if (locatie == "frame") {
+  window.top.frames["spel"].document.spelform.honger.value = "Honger:" + honger
+  window.top.frames["spel"].document.spelform.aandacht.value = "Aandacht:" + aandacht
+  window.top.frames["spel"].document.spelform.kennis.value = "Kennis:" + kennis
+  window.top.frames["spel"].document.spelform.geluk.value = "Geluk:" + geluk + "%"
+  window.top.frames["spel"].document.spelform.geleefd.value = "Dagen in leven:" + geleefd
+ }
+ else if (locatie == "venster") {
+  document.spelform.honger.value = "Honger:" + honger
+  document.spelform.aandacht.value = "Aandacht:" + aandacht
+  document.spelform.kennis.value = "Kennis:" + kennis
+  document.spelform.geluk.value = "Geluk:" + geluk + "%"
+  document.spelform.geleefd.value = "Dagen in leven:" + geleefd
+ }
+ speldatageneriek = saveversie + ">" + honger + ">" + hongerkeren + ">" + hongertijd + ">" + hongertijdslot  + ">" + aandacht + ">" + aandachtkeren + ">" + aandachttijd + ">" + aandachttijdslot
+ speldatageneriek = speldatageneriek + ">" + kennis + ">" + kenniskeren + ">" + kennistijd + ">" + kennistijdslot + ">" + keuzekeren + ">" + ziekte + ">" + lijsttrekker
+ speldataversiespecifiek = spelspecifiekesaveversie + ">" + begintijd + ">" + tijd
+ speldatatotaal = speldatageneriek + "|" + speldataversiespecifiek + "|" + speldatamodule
+ 
+ if (locatie == "frame") {
+ window.top.setCookie ("kgl_speldata_" + spelmodule, speldatatotaal)
+ }
+ else if (locatie == "venster") {
+  window.top.setCookie ("kgl_speldata_Kern", speldatatotaal)
+ }
+}
+
+function laadfunc(personage, locatie) {
+ if (locatie == "frame") {
+  speldatatotaal = window.top.getCookie("kgl_speldata_" + spelmodule)
+ }
+ else if (locatie == "venster") {
+  speldatatotaal = window.top.getCookie("kgl_speldata_Kern")
+ }
+ if (speldatatotaal != "leeg") {
+   var versiedomlezen = speldatatotaal.substring(0,6)
+    speldatatotaal = window.top.string_splitsen("|", speldatatotaal)
+    speldatageneriek = window.top.string_splitsen(">", speldatatotaal[0])
+    speldataversiespecifiek = window.top.string_splitsen(">", speldatatotaal[1])
+    speldatamodulespecifiek = window.top.string_splitsen(">", speldatatotaal[2])
+   if (versiedomlezen == "KGS100") {
+    saveversie = speldatageneriek[0]
+    honger = parseInt(speldatageneriek[1], 10)
+    hongerkeren = parseInt(speldatageneriek[2], 10)
+    hongertijd = parseInt(speldatageneriek[3], 10)
+    hongertijdslot = parseInt(speldatageneriek[4], 10)
+    aandacht = parseInt(speldatageneriek[5], 10)
+    aandachtkeren = parseInt(speldatageneriek[6], 10)
+    aandachttijd = parseInt(speldatageneriek[7], 10)
+    aandachttijdslot = parseInt(speldatageneriek[8], 10)
+    kennis = parseInt(speldatageneriek[9], 10)
+    kenniskeren = parseInt(speldatageneriek[10], 10)
+    kennistijd = parseInt(speldatageneriek[11], 10)
+    kennistijdslot = parseInt(speldatageneriek[12], 10)
+    keuzekeren = parseInt(speldatageneriek[13], 10)
+    ziekte = parseInt(speldatageneriek[14], 10)
+    lijsttrekker = speldatageneriek[15]
+    spelspecifiekesaveversie = speldataversiespecifiek[0]
+    if (spelspecifiekesaveversie == "KGL213") {
+     begintijd = parseInt(speldataversiespecifiek[1], 10)
+     tijd = parseInt(speldataversiespecifiek[2], 10)
+    }
+    else {
+     tijd = window.top.unixtijd()
+     begintijd = tijd
+    }
+    speldatamodulespecifiek = "leeg"
+    if (locatie == "frame") {
+     if (window.top.frames["spel"].document.spelform.chat.value == "") {
+      window.top.berichtfunc("terug", lijsttrekker, locatie)
+     }
+    }
+    else if (locatie == "venster") {
+     if (document.spelform.chat.value == "") {
+      window.top.berichtfunc("terug", lijsttrekker, locatie)
+     }
+    }
+   }
+   else if (versiedomlezen == "KGL212") {
+    saveversie = "KGS100"
+    spelspecifiekesaveversie = "KGL213"
+    honger = parseInt(speldatageneriek[1], 10)
+    honger = honger - 100
+    hongerkeren = parseInt(speldatageneriek[2], 10)
+    hongerkeren = hongerkeren - 100
+    aandacht = parseInt(speldatageneriek[3], 10)
+    aandacht = aandacht - 100
+    aandachtkeren = parseInt(speldatageneriek[4], 10)
+    aandachtkeren = aandachtkeren - 100
+    kennis = parseInt(speldatageneriek[5], 10)
+    kennis = kennis - 100
+    kenniskeren = parseInt(speldatageneriek[6], 10)
+    kenniskeren = kenniskeren - 100
+    geenkennisomhoog = parseInt(speldatageneriek[7], 10)
+    geenkennisomhoog = geenkennisomhoog - 100
+    kennistijdslot = parseInt(speldatageneriek[8], 10)
+    kennistijdslot = kennistijdslot - 100
+    kennistijdslot = kennistijdslot - 1
+    keuzekeren = parseInt(speldatageneriek[9], 10)
+    keuzekeren = keuzekeren - 100
+    ziekte = parseInt(speldatageneriek[10], 10)
+    ziekte = ziekte - 100
+    lijsttrekker = personage
+    hongertijd = 5
+    aandachttijd = 5
+    kennistijd = 10
+    hongertijdslot = 0
+    aandachttijdslot = 0
+    tijd = window.top.unixtijd()
+    begintijd = tijd
+    speldatamodulespecifiek = "leeg"
+    if (locatie == "frame") {
+     if (window.top.frames["spel"].document.spelform.chat.value == "") {
+      window.top.berichtfunc("terug", lijsttrekker, locatie)
+     }
+    }
+    else if (locatie == "venster") {
+     if (document.spelform.chat.value == "") {
+      window.top.berichtfunc("terug", lijsttrekker, locatie)
+     }
+    }
+   }
+   else if (versiedomlezen == "KGL209") {
+    saveversie = "KGS100"
+    spelspecifiekesaveversie = "KGL213"
+    honger = parseInt(speldatageneriek[1], 10)
+    honger = honger - 100
+    hongerkeren = parseInt(speldatageneriek[2], 10)
+    hongerkeren = hongerkeren - 100
+    aandacht = parseInt(speldatageneriek[3], 10)
+    aandacht = aandacht - 100
+    aandachtkeren = parseInt(speldatageneriek[4], 10)
+    aandachtkeren = aandachtkeren - 100
+    kennis = parseInt(speldatageneriek[5], 10)
+    kennis = kennis - 100
+    kenniskeren = parseInt(speldatageneriek[6], 10)
+    kenniskeren = kenniskeren - 100
+    geenkennisomhoog = parseInt(speldatageneriek[7], 10)
+    geenkennisomhoog = geenkennisomhoog - 100
+    kennistijdslot = parseInt(speldatageneriek[8], 10)
+    kennistijdslot = kennistijdslot - 100
+    kennistijdslot = kennistijdslot - 1
+    keuzekeren = parseInt(speldatageneriek[9], 10)
+    keuzekeren = keuzekeren - 100
+    ziekte = 0
+    lijsttrekker = personage
+    hongertijd = 5
+    aandachttijd = 5
+    kennistijd = 10
+    hongertijdslot = 0
+    aandachttijdslot = 0
+    tijd = window.top.unixtijd()
+    begintijd = tijd
+    speldatamodulespecifiek = "leeg"
+    if (locatie == "frame") {
+     if (window.top.frames["spel"].document.spelform.chat.value == "") {
+      window.top.berichtfunc("terug", lijsttrekker, locatie)
+     }
+    }
+    else if (locatie == "venster") {
+     if (document.spelform.chat.value == "") {
+      window.top.berichtfunc("terug", lijsttrekker, locatie)
+     }
+    }
+   }
+   else {
+    saveversie = "KGS100"
+    spelspecifiekesaveversie = "KGL213"
+    honger = 20
+    aandacht = 20
+    kennis = 20
+    hongerkeren = 1
+    aandachtkeren = 1
+    kenniskeren = 1
+    hongertijd = 5
+    aandachttijd = 5
+    kennistijd = 10
+    hongertijdslot = 0
+    aandachttijdslot = 0
+    kennistijdslot = 0
+    keuzekeren = 6
+    ziekte = 0
+    lijsttrekker = personage
+    hongertijd = 5
+    aandachttijd = 5
+    kennistijd = 10
+    hongertijdslot = 0
+    aandachttijdslot = 0
+    tijd = window.top.unixtijd()
+    begintijd = tijd
+    speldatamodulespecifiek = "leeg"
+    window.top.berichtfunc("begroeting", lijsttrekker, locatie)
+   }
+  }
+  else {
+   saveversie = "KGS100"
+   spelspecifiekesaveversie = "KGL213"
+   honger = 20
+   aandacht = 20
+   kennis = 20
+   hongerkeren = 1
+   aandachtkeren = 1
+   kenniskeren = 1
+   hongertijd = 5
+   aandachttijd = 5
+   kennistijd = 10
+   hongertijdslot = 0
+   aandachttijdslot = 0
+   kennistijdslot = 0
+   keuzekeren = 6
+   ziekte = 0
+   lijsttrekker = personage
+   hongertijd = 5
+   aandachttijd = 5
+   kennistijd = 10
+   hongertijdslot = 0
+   aandachttijdslot = 0
+   tijd = window.top.unixtijd()
+   begintijd = tijd
+   speldatamodulespecifiek = "leeg"
+   window.top.berichtfunc("begroeting", lijsttrekker, locatie)
+  }
+  if (lijsttrekker == "leeg") {
+   saveversie = "KGS100"
+   spelspecifiekesaveversie = "KGL213"
+   honger = 20
+   aandacht = 20
+   kennis = 20
+   hongerkeren = 1
+   aandachtkeren = 1
+   kenniskeren = 1
+   hongertijd = 5
+   aandachttijd = 5
+   kennistijd = 10
+   hongertijdslot = 0
+   aandachttijdslot = 0
+   kennistijdslot = 0
+   keuzekeren = 6
+   ziekte = 0
+   lijsttrekker = personage
+   hongertijd = 5
+   aandachttijd = 5
+   kennistijd = 10
+   hongertijdslot = 0
+   aandachttijdslot = 0
+   tijd = window.top.unixtijd()
+   begintijd = tijd
+   speldatamodulespecifiek = "leeg"
+   window.top.berichtfunc("begroeting", lijsttrekker, locatie)
+  }
+}
+
+function resetfunc(personage, locatie) {
+ window.top.laadfunc(personage, locatie)
+ if (confirm("Waarschuwing: Door een nieuw spel te beginnen, wordt je oude spel verwijderd.\nDruk op Ok om door te gaan.")) {
+  if (locatie == "frame") {
+   window.top.deleteCookie("kgl_speldata_" + spelmodule)
+   window.top.frames["spel"].document.spelform.honger.value = ""
+   window.top.frames["spel"].document.spelform.aandacht.value = ""
+   window.top.frames["spel"].document.spelform.kennis.value = ""
+   window.top.frames["spel"].document.spelform.geluk.value = ""
+   window.top.frames["spel"].document.spelform.geleefd.value = ""
+   window.top.frames["spel"].document.spelform.chat.value = ""
+  }
+  else if (locatie == "venster") {
+   window.top.deleteCookie("kgl_speldata_Kern")
+   document.spelform.honger.value = ""
+   document.spelform.aandacht.value = ""
+   document.spelform.kennis.value = ""
+   document.spelform.geluk.value = ""
+   document.spelform.geleefd.value = ""
+   document.spelform.chat.value = ""
+  }
+  lijsttrekker = "leeg"
+  speldatageneriek = saveversie + ">" + honger + ">" + hongerkeren + ">" + hongertijd + ">" + hongertijdslot  + ">" + aandacht + ">" + aandachtkeren + ">" + aandachttijd + ">" + aandachttijdslot
+  speldatageneriek = speldatageneriek + ">" + kennis + ">" + kenniskeren + ">" + kennistijd + ">" + kennistijdslot + ">" + keuzekeren + ">" + ziekte + ">" + lijsttrekker
+  speldataversiespecifiek = spelspecifiekesaveversie + ">" + begintijd + ">" + tijd
+  speldatatotaal = speldatageneriek + "|" + speldataversiespecifiek + "|" + speldatamodule
+  if (locatie == "frame") {
+   window.top.setCookie ("kgl_speldata_" + spelmodule, speldatatotaal)
+  }
+  else if (locatie == "venster") {
+   window.top.setCookie ("kgl_speldata_Kern", speldatatotaal)
+  }
+  window.top.instellingenfunc('personage','random', locatie, 'spel')
+ }
+}
+
+function deletefunc(locatie) {
+ if (confirm("Waarschuwing: Alle gegevens worden verwijderd.\nDruk op Ok om door te gaan.")) {
+  if (locatie == "frame") {
+   window.top.instellingenfunc('navigeren',1, 'frame', 'hoofdmenu')
+  }
+  else if (locatie == "venster") {
+   document.spelform.honger.value = ""
+   document.spelform.aandacht.value = ""
+   document.spelform.kennis.value = ""
+   document.spelform.geluk.value = ""
+   document.spelform.geleefd.value = ""
+   document.spelform.chat.value = ""
+  }
+  lijsttrekker = "leeg"
+  window.top.deleteCookie("kgl_instellingen")
+  window.top.deleteCookie("kgl_speldata_Kern")
+  window.top.deleteCookie("kgl_speldata_NL_2017")
+ }
+ return false
+}
+
+function deleteCookie(cookiename) {
+ document.cookie = cookiename + "=leeg;expires=Thu, 1 Jan 1970 00:00:00 GMT;path=/"
+}
+
+function setCookie(cookiename, cvalue) {
+ document.cookie = cookiename + "=" + cvalue + ";expires=Mon, 18 Jan 2038 00:00:00 GMT;path=/"
+}
+
+function getCookie(cookiename) {
+ var search = cookiename + "="
+ if (document.cookie.length > 0) {
+  var offset = document.cookie.indexOf(search) 
+  if (offset != -1) {
+   offset += search.length 
+   var end = document.cookie.indexOf(";", offset)
+   if (end == -1) end = document.cookie.length 
+   return unescape(document.cookie.substring(offset, end))
+  }
+ }
+ return ""
+}
+
+function random() {
+ var ts = new Date()
+ ts = ts.getTime()
+ if (ts < 10000) {
+  ts = "0000" + ts
+ }
+ else {
+  ts = "" + ts
+ }
+ var rd = ts.substring(ts.length - 3,ts.length - 1)
+ if (rd == "00") {
+  rd = ts.substring(ts.length - 5,ts.length - 3)
+ }
+ rd = parseInt(rd,10)
+ return rd
+}
+
+function unixtijd() {
+ var tijd = new Date()
+ tijd = tijd.getTime()
+ if (tijd < 10000) {
+  tijd = "0000" + tijd
+ }
+ else {
+  tijd = "" + tijd
+ }
+ tijd = tijd.substring(tijd.length - 13,tijd.length - 3)
+ tijd = parseInt(tijd,10)
+ if (tijd > 2147480047) {
+  tijd = 2147480047
+ }
+ return tijd
+}
+
+function string_splitsen(scheidingsteken, doelstring) {
+ var resultaat = ""
+ var arrayitem = 0
+ var lijst = new Array()
+ doelstring = "" + doelstring
+ for (var i=0; i < doelstring.length + 1; i++) {
+  var teken=doelstring.substring(i, i+1)
+  if (teken == scheidingsteken || i == doelstring.length) {
+   lijst[arrayitem] = resultaat
+   arrayitem = arrayitem + 1
+   resultaat = ""
+  }
+  else {
+   resultaat = resultaat + teken
+  }
+ }
+ return lijst
+}
+
+function instellingenfunc(instelling, waarde, locatie, doelscherm) {
+ instellingen = window.top.getCookie("kgl_instellingen")
+ if (instellingen != "leeg") {
+  var versiedomlezen = instellingen.substring(0,6)
+  instellingen = window.top.string_splitsen(">", instellingen)
+   if (versiedomlezen == "KGL213") {
+    instellingensaveversie = instellingen[0]
+    weergavemodus = instellingen[1]
+    spelmodule = instellingen[2]
+   }
+   else if (versiedomlezen == "KGL212") {
+    instellingensaveversie = "KGL213"
+    weergavemodus = parseInt(instellingen[1])
+    spelmodule = "NL_2017"
+    if (weergavemodus == "b") {
+      weergavemodus = "mono"
+    }
+    else {
+      weergavemodus = "256kleur"
+    }
+   }
+   else {
+    instellingensaveversie = "KGL213"
+    weergavemodus = "256kleur"
+    spelmodule = "NL_2017"
+   }
+  }
+  else {
+   instellingensaveversie = "KGL213"
+   weergavemodus = "256kleur"
+   spelmodule = "NL_2017"
+  }
+
+ if (instelling == "kleuren") {
+  weergavemodus = waarde
+ }
+ speldatatotaal = window.top.getCookie("kgl_speldata_" + spelmodule)
+ if (speldatatotaal != "leeg") {
+   saveversie=speldatatotaal.substring(0,6)
+    speldatatotaal = window.top.string_splitsen("|", speldatatotaal)
+    speldatageneriek = window.top.string_splitsen(">", speldatatotaal[0])
+   if (saveversie == "KGS100") {
+    var lijsttrekker = speldatageneriek[15]
+   }
+   else {
+    var lijsttrekker = "leeg"
+   }
+  }
+  else {
+   var lijsttrekker = "leeg"
+  }
+ if (spelmodule == "NL_2017"){
+  var kandidaten = new Array()
+  kandidaten[0] = "Alexander"
+  kandidaten[1] = "Ancilla"
+  kandidaten[2] = "Emile"
+  kandidaten[3] = "Geert"
+  kandidaten[4] = "Gertjan"
+  kandidaten[5] = "Henk"
+  kandidaten[6] = "Jand"
+  kandidaten[7] = "Janr"
+  kandidaten[8] = "Jesse"
+  kandidaten[9] = "Kees"
+  kandidaten[10] = "Lodewijk"
+  kandidaten[11] = "Marianne"
+  kandidaten[12] = "Mark"
+  kandidaten[13] = "Sybrand"
+  kandidaten[14] = "Sylvana"
+  kandidaten[15] = "Thierry"
+  kandidaten[16] = "Tunahan"
+ }
+ else if (spelmodule == "Kern"){
+  var kandidaten = new Array()
+  kandidaten[0] = "Arjen"
+ }
+ else {
+  spelmodule = "NL_2017"
+  var kandidaten = new Array()
+  kandidaten[0] = "Alexander"
+  kandidaten[1] = "Ancilla"
+  kandidaten[2] = "Emile"
+  kandidaten[3] = "Geert"
+  kandidaten[4] = "Gertjan"
+  kandidaten[5] = "Henk"
+  kandidaten[6] = "Jand"
+  kandidaten[7] = "Janr"
+  kandidaten[8] = "Jesse"
+  kandidaten[9] = "Kees"
+  kandidaten[10] = "Lodewijk"
+  kandidaten[11] = "Marianne"
+  kandidaten[12] = "Mark"
+  kandidaten[13] = "Sybrand"
+  kandidaten[14] = "Sylvana"
+  kandidaten[15] = "Thierry"
+  kandidaten[16] = "Tunahan"
+ }
+ if (!lijsttrekker || lijsttrekker == "leeg") {
+  if (locatie == "frame") {
+   var n = window.top.random()
+   n = (n / 99) * 16
+   n = Math.floor(n + 0.5)
+   lijsttrekker = kandidaten[n]
+  }
+  else if (locatie == "venster") {
+   lijsttrekker = "Arjen"
+  }
+ }
+ if (locatie == "frame") {
+  var instellingarray = instellingensaveversie + ">" + weergavemodus + ">" + spelmodule
+  window.top.setCookie("kgl_instellingen", instellingarray)
+  if (doelscherm == "spel"){
+   var gevonden = 0
+   for (var i=0; i < 17; i++) {
+    if (kandidaten[i] == lijsttrekker) {
+     gevonden = 1
+    }
+   }
+   if (gevonden == 1) {
+    window.top.frames["spel"].location.href="../../../" + spelmodule + "/Personages/" + lijsttrekker + "/" + lijsttrekker + "-" + weergavemodus + ".html"
+   }
+   else {
+    window.top.frames["spel"].location.href="../../../Kern/Personages/Arjen/Arjen-" + weergavemodus + ".html"
+   }
+  }
+  else if (doelscherm == "hoofdmenu") {
+   window.top.frames["spel"].location.href="../../../" + spelmodule + "/Frames/Hoofdmenu/Hoofdmenu-" + weergavemodus + ".html"
+  }
+  else if (doelscherm == "overzicht") {
+   window.top.frames["spel"].location.href="../../../" + spelmodule + "/Frames/Overzicht/Overzicht-" + weergavemodus + ".html"
+  }
+ }
+ return false
+}
+
+function berichtfunc(bericht, lijsttrekker, locatie){
+ if (lijsttrekker == "Alexander") {
+  var kandidaat = "Alexander"
+  var geslacht = "hij"
+  var hemhaar = "hem"
+  var partij = "D66"
+ }
+ else if (lijsttrekker == "Ancilla") {
+  var kandidaat = "Ancilla"
+  var geslacht = "zij"
+  var hemhaar = "haar"
+  var partij = "de Piratenpartij"
+ }
+ else if (lijsttrekker == "Arjen") {
+  var kandidaat = "Arjen"
+  var geslacht = "hij"
+  var hemhaar = "hem"
+  var partij = "Zondag met Lubach"
+ }
+ else if (lijsttrekker == "Emile") {
+  var kandidaat = "Emile"
+  var geslacht = "hij"
+  var hemhaar = "hem"
+  var partij = "de SP"
+ }
+ else if (lijsttrekker == "Geert") {
+  var kandidaat = "Geert"
+  var geslacht = "hij"
+  var hemhaar = "hem"
+  var partij = "de PVV"
+ }
+ else if (lijsttrekker == "Gertjan") {
+  var kandidaat = "Gert-Jan"
+  var geslacht = "hij"
+  var hemhaar = "hem"
+  var partij = "de ChristenUnie"
+ }
+ else if (lijsttrekker == "Henk") {
+  var kandidaat = "Henk"
+  var geslacht = "hij"
+  var hemhaar = "hem"
+  var partij = "50PLUS"
+ }
+ else if (lijsttrekker == "Jand") {
+  var kandidaat = "Jan"
+  var geslacht = "hij"
+  var hemhaar = "hem"
+  var partij = "GeenPeil"
+ }
+ else if (lijsttrekker == "Janpeter") {
+  var kandidaat = "Jan-Peter"
+  var geslacht = "hij"
+  var hemhaar = "hem"
+  var partij = "het CDA"
+ }
+ else if (lijsttrekker == "Janr") {
+  var kandidaat = "Jan"
+  var geslacht = "hij"
+  var hemhaar = "hem"
+  var partij = "VNL"
+ }
+ else if (lijsttrekker == "Jesse") {
+  var kandidaat = "Jesse"
+  var geslacht = "hij"
+  var hemhaar = "hem"
+  var partij = "GroenLinks"
+ }
+ else if (lijsttrekker == "Kees") {
+  var kandidaat = "Kees"
+  var geslacht = "hij"
+  var hemhaar = "hem"
+  var partij = "de SGP"
+ }
+ else if (lijsttrekker == "Lodewijk") {
+  var kandidaat = "Lodewijk"
+  var geslacht = "hij"
+  var hemhaar = "hem"
+  var partij = "de Partij van de Arbeid"
+ }
+ else if (lijsttrekker == "Marianne") {
+  var kandidaat = "Marianne"
+  var geslacht = "zij"
+  var hemhaar = "haar"
+  var partij = "de Partij voor de Dieren"
+ }
+ else if (lijsttrekker == "Mark") {
+  var kandidaat = "Mark"
+  var geslacht = "hij"
+  var hemhaar = "hem"
+  var partij = "de VVD"
+ }
+ else if (lijsttrekker == "Sybrand") {
+  var kandidaat = "Sybrand"
+  var geslacht = "hij"
+  var hemhaar = "hem"
+  var partij = "het CDA"
+ }
+ else if (lijsttrekker == "Sylvana") {
+  var kandidaat = "Sylvana"
+  var geslacht = "zij"
+  var hemhaar = "haar"
+  var partij = "Artikel 1"
+ }
+ else if (lijsttrekker == "Thierry") {
+  var kandidaat = "Thierry"
+  var geslacht = "hij"
+  var hemhaar = "hem"
+  var partij = "Forum voor Democratie"
+ }
+ else if (lijsttrekker == "Tunahan") {
+  var kandidaat = "Tunahan"
+  var geslacht = "hij"
+  var hemhaar = "hem"
+  var partij = "DENK"
+ }
+ else {
+  var kandidaat = "Arjen"
+  var geslacht = "hij"
+  var hemhaar = "hem"
+  var partij = "Zondag met Lubach"
+ }
+ if (locatie == "frame") {
+  if (bericht == "begroeting") {
+   window.top.frames["spel"].document.spelform.chat.value = kandidaat + ": Hoi, ik ben " + kandidaat + " van " + partij + ". Ik hoop dat je goed voor mij zal zorgen."
+  }
+  else if (bericht == "terug") {
+   window.top.frames["spel"].document.spelform.chat.value = kandidaat + ": Hoi!"
+  }
+  else if (bericht == "niezen") {
+   window.top.frames["spel"].document.spelform.chat.value = kandidaat + ": Hatsjoe!"
+  }
+  else if (bericht == "hoofdpijn") {
+   window.top.frames["spel"].document.spelform.chat.value = kandidaat + ": Ik heb hoofdpijn!"
+  }
+  else if(bericht == "gezond") {
+   window.top.frames["spel"].document.spelform.chat.value = kandidaat + " is weer gezond."
+  }
+  else if (bericht == "ziek") {
+   window.top.frames["spel"].document.spelform.chat.value = kandidaat + " is ziek geworden. Geef " + hemhaar + " extra aandacht."
+  }
+  else if (bericht == "hongerdood") {
+   alert("Je hebt " + kandidaat + " niet genoeg eten gegeven en " + geslacht + " is overleden.")
+  }
+  else if (bericht == "aandachtdood") {
+   alert("Je hebt " + kandidaat + " niet genoeg aandacht gegeven en " + geslacht + " is weggelopen.")
+  }
+  else if (bericht == "kennisdood") {
+   alert("" + kandidaat + " heeft besloten dat " + geslacht + " ergens anders meer kans op voldoende opleiding heeft en is weggelopen.")
+  }
+  else if (bericht == "hongervol") {
+   var tijd2 = window.top.unixtijd()
+   var tijdover = tijd + 300 - tijd2
+   tijdover = tijdover / 60
+   tijdover = Math.ceil(tijdover) + ((Math.ceil(hongertijd / 5) - 1) * 5)
+   if (tijdover == 1) {
+    window.top.frames["spel"].document.spelform.chat.value = kandidaat + ": Ik zit nu vol. Kan je over 1 minuut terugkomen?"
+   }
+   else {
+    window.top.frames["spel"].document.spelform.chat.value = kandidaat + ": Ik zit nu vol. Kan je over " + tijdover + " minuten terugkomen?"
+   }
+  }
+  else if (bericht == "aandachtvol") {
+   var tijd2 = window.top.unixtijd()
+   var tijdover = tijd + 300 - tijd2
+   tijdover = tijdover / 60
+   tijdover = Math.ceil(tijdover) + ((Math.ceil(aandachttijd / 5) - 1) * 5)
+   if (tijdover == 1) {
+    window.top.frames["spel"].document.spelform.chat.value = kandidaat + ": Ik heb nu wel genoeg aandacht gehad. Kan je mij even 1 minuut met rust laten?"
+   }
+   else{
+    window.top.frames["spel"].document.spelform.chat.value = kandidaat + ": Ik heb nu wel genoeg aandacht gehad. Kan je mij even " + tijdover + " minuten met rust laten?"
+   }
+  }
+  else if (bericht == "kennisvol") {
+    var tijd2 = window.top.unixtijd()
+    var tijdover = tijd + 300 - tijd2
+    tijdover = tijdover / 60
+    tijdover = Math.ceil(tijdover) + ((Math.ceil(kennistijd / 5) - 1) * 5)
+    if (tijdover == 1) {
+     window.top.frames["spel"].document.spelform.chat.value = kandidaat + ": Ik heb hoofdpijn van al die lesstof. Kan ik even 1 minuut wat anders doen?"
+    }
+    else {
+     window.top.frames["spel"].document.spelform.chat.value = kandidaat + ": Ik heb hoofdpijn van al die lesstof. Kan ik even " + tijdover + " minuten wat anders doen?"
+   }
+  }
+  else if (bericht == "5minuten") {
+   window.top.frames["spel"].document.spelform.chat.value = kandidaat + ": Er zijn weer 5 minuten voorbij."
+  }
+  else if (bericht == "versie") {
+   window.top.frames["spel"].document.spelform.chat.value = kandidaat + ": Dit is Kamergotchi Online Legacyversie 2.13."
+  }
+  else {
+   window.top.frames["spel"].document.spelform.chat.value = bericht
+  }
+ }
+ else if (locatie == "venster") {
+  if (bericht == "begroeting") {
+   document.spelform.chat.value = kandidaat + ": Hoi, ik ben " + kandidaat + " van " + partij + ". Ik hoop dat je goed voor mij zal zorgen."
+  }
+  else if (bericht == "terug") {
+   document.spelform.chat.value = kandidaat + ": Hoi!"
+  }
+  else if (bericht == "niezen") {
+   document.spelform.chat.value = kandidaat + ": Hatsjoe!"
+  }
+  else if (bericht == "hoofdpijn") {
+   document.spelform.chat.value = kandidaat + ": Ik heb hoofdpijn!"
+  }
+  else if(bericht == "gezond") {
+   document.spelform.chat.value = kandidaat + " is weer gezond."
+  }
+  else if (bericht == "ziek") {
+   document.spelform.chat.value = kandidaat + " is ziek geworden. Geef " + hemhaar + " extra aandacht."
+  }
+  else if (bericht == "hongerdood") {
+   alert("Je hebt " + kandidaat + " niet genoeg eten gegeven en " + geslacht + " is overleden.")
+  }
+  else if (bericht == "aandachtdood") {
+   alert("Je hebt " + kandidaat + " niet genoeg aandacht gegeven en " + geslacht + " is weggelopen.")
+  }
+  else if (bericht == "kennisdood") {
+   alert("" + kandidaat + " heeft besloten dat " + geslacht + " ergens anders meer kans op voldoende opleiding heeft en is weggelopen.")
+  }
+  else if (bericht == "hongervol") {
+   var tijd2 = window.top.unixtijd()
+   var tijdover = tijd + 300 - tijd2
+   tijdover = tijdover / 60
+   tijdover = Math.ceil(tijdover) * Math.ceil(hongertijd / 5)
+   if (tijdover == 1) {
+    document.spelform.chat.value = kandidaat + ": Ik zit nu vol. Kan je over 1 minuut terugkomen?"
+   }
+   else {
+    document.spelform.chat.value = kandidaat + ": Ik zit nu vol. Kan je over " + tijdover + " minuten terugkomen?"
+   }
+  }
+  else if (bericht == "aandachtvol") {
+   var tijd2 = window.top.unixtijd()
+   var tijdover = tijd + 300 - tijd2
+   tijdover = tijdover / 60
+   tijdover = Math.ceil(tijdover) * Math.ceil(aandachttijd / 5)
+   if (tijdover == 1) {
+    document.spelform.chat.value = kandidaat + ": Ik heb nu wel genoeg aandacht gehad. Kan je mij even 1 minuut met rust laten?"
+   }
+   else{
+    document.spelform.chat.value = kandidaat + ": Ik heb nu wel genoeg aandacht gehad. Kan je mij even " + tijdover + " minuten met rust laten?"
+   }
+  }
+  else if (bericht == "kennisvol") {
+    var tijd2 = window.top.unixtijd()
+    var tijdover = tijd + 300 - tijd2
+    tijdover = tijdover / 60
+    tijdover = Math.ceil(tijdover) * Math.ceil(kennistijd / 5)
+    if (tijdover == 1) {
+     document.spelform.chat.value = kandidaat + ": Ik heb hoofdpijn van al die lesstof. Kan ik even 1 minuut wat anders doen?"
+    }
+    else {
+     document.spelform.chat.value = kandidaat + ": Ik heb hoofdpijn van al die lesstof. Kan ik even " + tijdover + " minuten wat anders doen?"
+   }
+  }
+  else if (bericht == "5minuten") {
+   document.spelform.chat.value = kandidaat + ": Er zijn weer 5 minuten voorbij."
+  }
+  else if (bericht == "versie") {
+   document.spelform.chat.value = kandidaat + ": Dit is Kamergotchi Online Legacyversie 2.13."
+  }
+  else {
+   document.spelform.chat.value = bericht
+  }
+ }
+}
+ //-->
+</script>
+</head>
+<frameset rows="80,*" cols="*">
+ <frame name="titelbalk" SRC="Modules/Kern/Frames/Titelframe/Titelframe.html" framespacing=0 marginwidth=0 marginheight=0 bottommargin=0 topmargin=0>
+ <frame name="spel" SRC="Modules/Kern/Frames/Spelframe/Spelframe.html" framespacing=0 marginwidth=0 marginheight=0 bottommargin=0 topmargin=0>
+</frameset>
+<noframes>
+ <body bgcolor="#FFFFFF" text="#000000" link="#000000" alink="#000000" vlink="#000000" style="margin:0;padding:0">
+  <form name="spelform" onsubmit="return deletefunc('venster');">
+   <center>
+    <table border=1>
+     <tr>
+      <td colspan=1>
+       <center>
+        <table border=0>
+         <tr>
+          <td valign="bottom" align="center" colspan=1>
+           <h1>Kamergotchi Online</h1>
+          </td>
+         </tr>
+         <tr>
+          <td valign="bottom" colspan=1>
+           <center>
+            <a href="../Kamergotchi_Online/Kamergotchi_Online.html">Spel&nbsp;(standaardversie)</a> &nbsp; 
+            <a href="../Kamergotchi_Online_Legacy/Kamergotchi_Online_Legacy.html">Spel&nbsp;(legacyversie)</a> &nbsp; 
+            <a href="../Downloads/Downloads.html">Downloads</a> &nbsp; 
+            <a href="../Screenshots/Screenshots.html">Screenshots</a> <br>
+            <a href="../Geschiedenis/Geschiedenis.html">Geschiedenis</a> &nbsp; 
+            <a href="../Browsertest/Browsertest.html">Browsertest</a>
+            <br>
+           </center>
+         </td>
+        </tr>
+       </table>
+      </center>
+     </td>
+    </tr>
+    <tr>
+     <td colspan=1 bgcolor="#FFFFFF" height="100%" valign="top">
+      <center>
+       <br>
+       <table border=0>
+        <tr>
+         <td align="center" valign="middle" colspan=1 rowspan=2>
+          <center>
+           <img src="Modules/Kern/Personages/Arjen/Arjen-mono.gif" width=146 height=242>
+          </center>
+         </td>
+         <td align="center" valign="middle" colspan=1>
+          <center>
+           <input type="button" value="Geef Arjen eten" name="hongerknop" onclick="window.top.naarbeneden('Arjen','honger', 'venster')"><br>
+           <input type="button" value="Geef Arjen aandacht" name="aandachtknop" onclick="window.top.naarbeneden('Arjen','aandacht', 'venster')"><br>
+           <input type="button" value="Leer Arjen iets" name="kennisknop" onclick="window.top.naarbeneden('Arjen','kennis', 'venster')"><br>
+          </center>
+         </td>
+        </tr>
+        <tr>
+         <td align="center" valign="middle" colspan=1>
+          <input type="text" value="" name="honger" size=28><br>
+          <input type="text" value="" name="aandacht" size=28><br>
+          <input type="text" value="" name="kennis" size=28><br>
+          <input type="text" value="" name="geluk" size=28><br>
+          <input type="text" value="" name="geleefd" size=28><br>
+         </td>
+        </tr>
+        <tr>
+         <td align="center" valign="middle" colspan=2>
+          <textarea name="chat" cols=60 rows=2 wrap="virtual" readonly style="resize: none"></textarea><br>
+         </td>
+        </tr>
+        <tr>
+         <td colspan=2>
+          <center>
+           Deze website werkt met:
+           <br>
+           <img src="Modules/Kern/Frames/Hoofdmenu/Netscape-mono.gif" width=88 height=31 margin=2> <img src="Modules/Kern/Frames/Hoofdmenu/Internet_Explorer-mono.gif" width=88 height=31 margin=2> <img src="Modules/Kern/Frames/Hoofdmenu/Opera-mono.gif" width=88 height=31 margin=2>
+           <br>
+           of nieuwer.
+           <br>
+           <br>
+           Deze versie van het spel werkt tot 18 Januari  2038, middernacht UTC,
+           <br>
+           vanwege het jaar 2038-probleem.
+          </center>
+         </td>
+        </tr>
+        <tr>
+         <td colspan=2>
+           <center>
+            <input type="button" value="Versie" name="versie" onclick="window.top.naarbeneden('Arjen', 'versie', 'venster')">
+            <input type="button" value="Nieuw spel" name="resetknop" onclick="window.top.resetfunc('Arjen', 'venster')">
+            <input type="submit" value="Spelgegevens&nbsp;verwijderen" name="verwijderen"><br><br>
+           </center>
+          </td>
+         </tr>
+        </table>
+       </center>
+      </td>
+     </tr>
+    </table>
+    <a href="mailto:kamergotchi@greve.biz" target="_blank" rel="noopener noreferrer" style="color:inherit;background-color:inherit">Contact: kamergotchi@greve.biz</a><br>
+    Kamergotchi is oorspronkelijk bedacht door Arjen Lubach van het VPRO-programma Zondag met Lubach.
+   </center>
+  </form>
+ </body>
+</noframes>
+</html>

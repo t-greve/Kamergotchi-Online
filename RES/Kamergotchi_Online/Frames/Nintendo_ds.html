@@ -1,0 +1,1632 @@
+<!doctype html>
+<html lang="nl-NL" id="html" style="width:100%;margin:0;padding:0;border:0 none">
+
+
+ <!--Kamergotchi is oorspronkelijk bedacht door Arjen Lubach van het VPRO-programma Zondag met Lubach.-->
+ <!--https://www.vpro.nl/zondag-met-lubach.html-->
+ <!--Webpagina en programma door Thomas Greve, met delen van het internet-->
+
+
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+ <meta http-equiv="MSThemeCompatible" content="Yes">
+ <meta http-equiv="Content-Script-Type" content="text/javascript">
+ <meta http-equiv="Content-Style-Type" content="text/css">
+ <meta name="title" content="Kamergotchi Online">
+ <meta name="description" content="Kamergotchi op het internet">
+ <meta name="Subject" content="Kamergotchi">
+ <meta name="keywords" content="Kamergotchi Online, Kamergotchi, Zondag met Lubach, game">
+ <meta name="copyright" content="Kamergotchi is oorspronkelijk bedacht door Arjen Lubach van het VPRO-programma Zondag met Lubach: https://www.vpro.nl/zondag-met-lubach.html">
+ <meta name="page-type" content="Game">
+ <meta name="robots" content="index, nofollow">
+ <meta name="Generator" content="Notepad">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="HandheldFriendly" content="true">
+
+ <title>Kamergotchi Online</title>
+
+ <!--Standaard favicon -->
+ <link rel="shortcut icon" type="image/x-icon" sizes="16x16 24x24 32x32 48x48 64x64" href="../../../favicon.ico">
+ <link rel="icon" type="image/x-icon" sizes="16x16 24x24 32x32 48x48 64x64" href="../../../favicon.ico">
+
+ <!--Icoontjes voor het startscherm van iPhone OS/iOS/iPadOS-->
+ <meta name="apple-mobile-web-app-capable" content="yes">
+ <link rel="apple-touch-icon" sizes="180x180" href="../../../apple-touch-icon-180x180.png">
+ <link rel="apple-touch-icon" sizes="167x167" href="../../../apple-touch-icon-167x167.png">  
+ <link rel="apple-touch-icon" sizes="152x152" href="../../../apple-touch-icon-152x152.png">
+ <link rel="apple-touch-icon" sizes="120x120" href="../../../apple-touch-icon-120x120.png">
+ <link rel="apple-touch-icon" sizes="114x114" href="../../../apple-touch-icon-114x114.png">
+ <link rel="apple-touch-icon" sizes="76x76" href="../../../apple-touch-icon-76x76.png">
+ <link rel="apple-touch-icon" sizes="72x72" href="../../../apple-touch-icon-72x72.png">
+ <link rel="apple-touch-icon" sizes="60x60" href="../../../apple-touch-icon-60x60.png">
+ <link rel="apple-touch-icon" sizes="57x57" href="../../../apple-touch-icon-57x57.png">
+
+ <!--Icoon voor een vastgezet tablad op Safari voor Mac-->
+ <link rel="mask-icon" href="../../../safari-pinned-tab.svg" color="#DA3332">
+
+ <!--PNG-favicons-->
+ <link rel="icon" type="image/png" sizes="192x192" href="../../../android-chrome-192x192.png">
+ <link rel="icon" type="image/png" sizes="32x32" href="../../../favicon-32x32.png">
+ <link rel="icon" type="image/png" sizes="16x16" href="../../../favicon-16x16.png">
+ <meta name="mobile-web-app-capable" content="yes">
+ <link rel="manifest" href="../../../site.webmanifest">
+ <meta name="theme-color" content="#5AB5D8" media="(prefers-color-scheme: light)">
+ <meta name="theme-color" content="#2D5A6B" media="(prefers-color-scheme: dark)">
+
+ <!--Icoontjes voor tegeltjes in Windows en Windows Phone-->
+ <meta name="msapplication-TileColor" content="#5AB5D8">
+ <meta name="msapplication-TileImage" content="../../../mstile-144x144.png">
+ <meta name="msapplication-config" content="../../../browserconfig.xml">
+
+ <!--Internet Explorer 5 en 6 vergeten de favicon nadat de cache is geleegd totdat de pagina opnieuw aan de favorieten wordt toegevoegd of wordt geladen-->
+ <!--[if lte IE 6]>
+  <script type="text/javascript" language="JavaScript1.1">
+   (new Image).src="../../../favicon.ico"
+  </script>
+ <![endif]-->
+
+ <script type="text/javascript" language="JavaScript">
+ <!--
+  //Zorgt ervoor dat er geen foutmedingen worden weergegeven. Sommige oude browsers worden anders overspoeld met foutmeldingen.
+  window.onerror = silenterror
+  function silenterror() {
+   return true
+ }
+ //-->
+ </script>
+</head>                                                
+
+<body id="body" onload="shell_opstartfunc()" bgcolor="#FFFFFF" text="#000000" link="#000000" alink="#000000" vlink="#000000" topmargin=0 bottommargin=0 leftmargin=0 rightmargin=0 marginheight=0 marginwidth=0 style="width:100%;margin:0;padding:0;border:0 none;background-color:#FFFFFF;margin-left:auto;margin-right:auto;font-size:14px;font-family:sans-serif">
+<div id="balk" style="display:none">
+ <div id="balk1" bgcolor="#FFFFFF" style="width:100%;text-align:center;margin:0;padding:0px;border:0 none;background-color:#FFFFFF">
+  <center>
+   <h2 style="margin-top:0px;margin-bottom:0px;word-wrap:break-word;white-space:normal">Kamergotchi Online</h2>
+   <div id="links" style="margin:0;padding:4px;border:0 none">
+    <center>
+     <a onclick="window.parent.location.href='../../Kamergotchi_Online/Kamergotchi_Online.html'" href="javascript:void(0)" id="link1" style="word-wrap:break-word;color:#000000;background-color:#FFFFFF">Spel (standaardversie)</a> &nbsp; 
+     <a onclick="window.parent.location.href='../../Kamergotchi_Online_Legacy/Kamergotchi_Online_Legacy.html'" href="javascript:void(0)" id="link2" style="word-wrap:break-word;color:#000000;background-color:#FFFFFF">Spel (legacyversie)</a> &nbsp; 
+     <a onclick="window.parent.location.href='../../Downloads/Downloads.html'" id="link3" href="javascript:void(0)" style="word-wrap:break-word;color:#000000;background-color:#FFFFFF">Downloads</a> &nbsp; 
+     <a onclick="window.parent.location.href='../../Screenshots/Screenshots.html'" id="link4" href="javascript:void(0)" style="word-wrap:break-word;color:#000000;background-color:#FFFFFF">Screenshots</a> &nbsp; 
+     <a onclick="window.parent.location.href='../../Geschiedenis/Geschiedenis.html'" id="link5" href="javascript:void(0)" style="word-wrap:break-word;color:#000000;background-color:#FFFFFF">Geschiedenis</a> &nbsp; 
+     <a onclick="window.parent.location.href='../../Browsertest/Browsertest.html'" id="link6" href="javascript:void(0)" style="word-wrap:break-word;color:#000000;background-color:#FFFFFF">Browsertest</a>
+    </center>
+   </div>
+  </center>
+ </div>
+ <div id="balk2" bgcolor="#000000" style="width:100%;height:1px;margin:0;padding:0;border:0;background-color:#000000;font-size:0;line-height:1px;overflow:hidden"></div>
+</div>
+<br>
+<br>
+
+<center>
+
+<div id="achtergrond" style="width:100%;display:none">
+ <table width="100%" style="width:100%;border-collapse:collapse;border:0 none;text-align:center;table-layout:fixed;font-family:sans-serif">
+ <tr>
+ <td id="lijsttrekkertabel" width="100%" colspan="2" valign="top" style="width:100%;vertical-align:top">
+  <center>
+  <div id="menu-lijsttrekker" style="margin:0;padding:0;border:0 none;display:block">
+   <center>
+    <div id="logodiv" style="width:25%">
+    </div>
+    <div id="zmldiv" style="width:25%">
+    </div>
+    <div id="vprodiv" style="width:25%">
+    </div>
+   </center>
+  </div>
+
+  <div id="game-lijsttrekker" style="margin:0;padding:0;border:0 none;display:none">
+   <center>
+    <span id="lijsttrekker1span" style="width:25%"></span>
+    <span id="lijsttrekker2span" style="width:25%"></span>
+    <span id="lijsttrekker3span" style="width:25%"></span>
+    <span id="lijsttrekker4span" style="width:25%"></span>
+    <br>
+    <span id="honger" style="word-wrap:break-word;display:inline">Honger:</span>&nbsp;<span id="hongerspan" style="display:inline"></span>&nbsp;
+    <span id="aandacht" style="word-wrap:break-word;display:inline">Aandacht:</span>&nbsp;<span id="aandachtspan" style="display:inline"></span>&nbsp;
+    <span id="kennis" style="word-wrap:break-word;display:inline">Kennis:</span>&nbsp;<span id="kennisspan" style="display:inline"></span><br>
+    <span id="geluk" style="word-wrap:break-word;display:inline">Geluk:</span>&nbsp;<span id="gelukspan" style="display:inline"></span>%&nbsp;
+    <span id="geleefd" style="word-wrap:break-word;display:inline">Dagen in leven:</span>&nbsp;<span id="geleefdspan" style="display:inline"></span>
+   </center>
+  </div>
+
+  <div id="instellingen-lijsttrekker" style="margin:0;padding:0;border:0 none;display:none">
+   <center>
+    <span id="lijsttrekkerinstellingenspan" style="width:25%;display:block"></span>
+   </center>
+  </div>
+  <br>
+  </center>
+ </td>
+ </tr>
+ <tr>
+ <td valign="top" style="width:50%;vertical-align:top;text-align:center">
+   <center>
+  <table id="chattabel" width="90%" style="width:90%;height:150px;margin:0;padding:0;border-collapse:collapse;border:1px solid  #000000;background-color:#FFFFFF;text-align:center;font-size:0;margin-left:auto;margin-right:auto;table-layout:fixed;font-family:sans-serif">
+   <tr>
+    <td>
+     <center>
+      <div id="chat" style="width:100%;height:150px;margin:0;padding:0;border:0;text-align:left;overflow:auto;min-height:100%;background-color:#FFFFFF;font-size:14px;margin-left:auto;margin-right:auto;word-wrap:break-word"></div>
+     </center>
+    </td>
+   </tr>
+  </table>
+  <br>
+ </center>
+ </td>
+ <td id="knoppentabel" width="500%" valign="top" style="width:50%;vertical-align:top;text-align:center">
+  <center>
+  <div id="menu-knoppen" style="margin:0;padding:0">
+ 
+   <div id="naar_spel-div" style="width:90%;margin:0;padding:0;border:0 none;font-size:0;font-family:sans-serif">
+    <button id="naar_spel" onclick="naarspelfunc()" style="width:100%;padding:2px;margin:1px;word-wrap:break-word;font-family:sans-serif"><table style="width:100%;margin:0;padding:0;border:0 none;border-collapse:collapse;table-layout:fixed;font-family:sans-serif;vertical-align:middle">
+     <tr>
+       <td style="width:3px"><img id="knop1" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+       <td id="naar_spel-tekst" style="text-align:center;word-wrap:break-word;font-size:14px">Naar spel</td>
+       <td style="width:3px"><img id="knop2" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+      </tr>
+    </table></button>
+    <div id="naar_spel-form-div">
+     <form id="naar_spel-form" style="margin:0;padding:0;display:inline">
+      <input type="button" id="naar_spel-knop2" style="width:100%;height:50px;margin:1px;font-family:sans-serif;font-size:14px" value="Naar spel" onclick="naarspelfunc()">
+      <input type="naar_spel-submit" style="display:none">
+     </form>
+    </div>
+   </div>
+
+   <div id="nieuw_spel-div" style="width:90%;margin:0;padding:0;border:0 none;font-size:0;font-family:sans-serif">
+    <button id="nieuw_spel" onclick="naarnieuwspelfunc()" style="width:100%;padding:2px;margin:1px;word-wrap:break-word;font-family:sans-serif"><table style="width:100%;margin:0;padding:0;border:0 none;border-collapse:collapse;table-layout:fixed;font-family:sans-serif;vertical-align:middle">
+     <tr>
+       <td style="width:3px"><img id="knop3" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+       <td id="nieuw_spel-tekst" style="text-align:center;word-wrap:break-word;font-size:14px">Nieuw spel</td>
+       <td style="width:3px"><img id="knop4" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+      </tr>
+     </table></button>
+     <div id="nieuw_spel-form-div">
+      <form id="nieuw_spel-form" style="margin:0;padding:0;display:inline">
+       <input type="button" id="nieuw_spel-knop2" style="width:100%;height:50px;margin:1px;font-family:sans-serif;font-size:14px" value="Nieuw spel" onclick="naarnieuwspelfunc()">
+       <input type="nieuw_spel-submit" style="display:none">
+      </form>
+     </div>
+   </div>
+
+   <div id="instellingen-div" style="width:90%;margin:0;padding:0;border:0 none;font-size:0;font-family:sans-serif">
+    <button id="instellingen" onclick="instellingenfunc()" style="width:100%;padding:2px;margin:1px;word-wrap:break-word;font-family:sans-serif"><table style="width:100%;margin:0;padding:0;border:0 none;border-collapse:collapse;table-layout:fixed;font-family:sans-serif;vertical-align:middle">
+      <tr>
+       <td style="width:3px"><img id="knop5" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+       <td id="instellingen-tekst" style="text-align:center;word-wrap:break-word;font-size:14px">Instellingen</td>
+       <td style="width:3px"><img id="knop6" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+      </tr>
+    </table></button>
+    <div id="instellingen-form-div">
+     <form id="instellingen-form" style="margin:0;padding:0;display:inline">
+      <input type="button" id="instellingen-knop2" style="width:100%;height:50px;margin:1px;font-family:sans-serif;font-size:14px" value="Instellingen" onclick="instellingenfunc()">
+      <input type="instellingen-submit" style="display:none">
+     </form>
+    </div>
+   </div>
+
+   <div id="overzicht-div" style="width:90%;margin:0;padding:0;border:0 none;font-size:0;font-family:sans-serif">
+    <button id="overzicht" onclick="bekijkenfunc()" style="width:100%;padding:2px;margin:1px;word-wrap:break-word;font-family:sans-serif"><table style="width:100%;margin:0;padding:0;border:0 none;border-collapse:collapse;table-layout:fixed;font-family:sans-serif;vertical-align:middle">
+      <tr>
+       <td style="width:3px"><img id="knop7" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+       <td id="overzicht-tekst" style="text-align:center;word-wrap:break-word;font-size:14px">Bekijk het overzicht van alle Kamergotchi's</td>
+       <td style="width:3px"><img id="knop8" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+      </tr>
+    </table></button>
+    <div id="overzicht-form-div">
+     <form id="overzicht-form" style="margin:0;padding:0;display:inline">
+      <input type="button" id="overzicht-knop2" style="width:100%;height:50px;margin:1px;font-family:sans-serif;font-size:14px" value="Bekijk het overzicht van alle Kamergotchi's" onclick="bekijkenfunc()">
+      <input type="overzicht-submit" style="display:none">
+     </form>
+    </div>
+   </div>
+
+   <div id="gegevens_verwijderen-div" style="width:90%;margin:0;padding:0;border:0 none;font-size:0;font-family:sans-serif">
+    <button id="gegevens_verwijderen" onclick="naarverwijderenfunc()" style="width:100%;padding:2px;margin:1px;word-wrap:break-word;font-family:sans-serif"><table style="width:100%;margin:0;padding:0;border:0 none;border-collapse:collapse;table-layout:fixed;font-family:sans-serif;vertical-align:middle">
+      <tr>
+       <td style="width:3px"><img id="knop9" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+       <td id="gegevens_verwijderen-tekst" style="text-align:center;word-wrap:break-word;font-size:14px">Spelgegevens verwijderen</td>
+       <td style="width:3px"><img id="knop10" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+      </tr>
+    </table></button>
+    <div id="gegevens_verwijderen-form-div">
+     <form id="gegevens_verwijderen-form" style="margin:0;padding:0;display:inline">
+      <input type="button" id="gegevens_verwijderen-knop2" style="width:100%;height:50px;margin:1px;font-family:sans-serif;font-size:14px" value="Spelgegevens verwijderen" onclick="naarverwijderenfunc()">
+      <input type="gegevens_verwijderen-submit" style="display:none">
+     </form>
+    </div>
+   </div>
+
+  </div>
+  <div id="game-knoppen" style="margin:0;padding:0;border:0 none;display:none">
+   <div id="hongerknop-div" style="width:90%;margin:0;padding:0;border:0 none;font-size:0;font-family:sans-serif">
+    <button id="hongerknop" onclick="hongerfunc()" style="width:100%;padding:2px;margin:1px;word-wrap:break-word;font-family:sans-serif"><table style="width:100%;margin:0;padding:0;border:0 none;border-collapse:collapse;table-layout:fixed;font-family:sans-serif;vertical-align:middle">
+      <tr>
+       <td style="width:3px"><img id="knop11" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+       <td id="hongerknop-tekst" style="text-align:center;word-wrap:break-word;font-size:14px"></td>
+       <td style="width:3px"><img id="knop12" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+      </tr>
+    </table></button>
+    <div id="hongerknop-form-div">
+     <form id="hongerknop-form" style="margin:0;padding:0;display:inline">
+      <input type="button" id="hongerknop-knop2" style="width:100%;height:50px;margin:1px;font-family:sans-serif;font-size:14px" value="De Kamergotchi eten geven" onclick="hongerfunc()">
+      <input type="hongerknop-submit" style="display:none">
+     </form>
+    </div>
+   </div>
+
+   <div id="aandachtknop-div" style="width:90%;margin:0;padding:0;border:0 none;font-size:0;font-family:sans-serif">
+    <button id="aandachtknop" onclick="aandachtfunc()" style="width:100%;padding:2px;margin:1px;word-wrap:break-word;font-family:sans-serif"><table style="width:100%;margin:0;padding:0;border:0 none;border-collapse:collapse;table-layout:fixed;font-family:sans-serif;vertical-align:middle">
+      <tr>
+       <td style="width:3px"><img id="knop13" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+       <td id="aandachtknop-tekst" style="text-align:center;word-wrap:break-word;font-size:14px"></td>
+       <td style="width:3px"><img id="knop14" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+      </tr>
+    </table></button>
+    <div id="aandachtknop-form-div">
+     <form id="aandachtknop-form" style="margin:0;padding:0;display:inline">
+      <input type="button" id="aandachtknop-knop2" style="width:100%;height:50px;margin:1px;font-family:sans-serif;font-size:14px" value="De Kamergotchi aandacht geven" onclick="aandachtfunc()">
+      <input type="aandachtknop-submit" style="display:none">
+     </form>
+    </div>
+   </div>
+
+   <div id="kennisknop-div" style="width:90%;margin:0;padding:0;border:0 none;font-size:0;font-family:sans-serif">
+    <button id="kennisknop" onclick="kennisfunc()" style="width:100%;padding:2px;margin:1px;word-wrap:break-word;font-family:sans-serif"><table style="width:100%;margin:0;padding:0;border:0 none;border-collapse:collapse;table-layout:fixed;font-family:sans-serif;vertical-align:middle">
+      <tr>
+       <td style="width:3px"><img id="knop15" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+       <td id="kennisknop-tekst" style="text-align:center;word-wrap:break-word;font-size:14px"></td>
+       <td style="width:3px"><img id="knop16" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+      </tr>
+    </table></button>
+    <div id="kennisknop-form-div">
+     <form id="kennisknop-form" style="margin:0;padding:0;display:inline">
+      <input type="button" id="kennisknop-knop2" style="width:100%;height:50px;margin:1px;font-family:sans-serif;font-size:14px" value="De Kamergotchi iets leren" onclick="kennisfunc()">
+      <input type="kennisknop-submit" style="display:none">
+     </form>
+    </div>
+   </div>
+
+   <div id="partijsite-div" style="width:90%;margin:0;padding:0;border:0 none;font-size:0;font-family:sans-serif">
+    <button id="partijsite" onclick="tekstfunc('website', 'spel')" style="width:100%;padding:2px;margin:1px;word-wrap:break-word;font-family:sans-serif"><table style="width:100%;margin:0;padding:0;border:0 none;border-collapse:collapse;table-layout:fixed;font-family:sans-serif;vertical-align:middle">
+      <tr>
+       <td style="width:3px"><img id="knop17" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+       <td id="partijsite-tekst" style="text-align:center;word-wrap:break-word;font-size:14px">Ga naar de website van de partij</td>
+       <td style="width:3px"><img id="knop18" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+      </tr>
+    </table></button>
+    <div id="partijsite-form-div">
+     <form id="partijsite-form" style="margin:0;padding:0;display:inline">
+      <input type="button" id="partijsite-knop2" style="width:100%;height:50px;margin:1px;font-family:sans-serif;font-size:14px" value="Ga naar de website van de partij" onclick="tekstfunc('website', 'spel')">
+      <input type="partijsite-submit" style="display:none">
+     </form>
+    </div>
+   </div>
+
+   <div id="nieuw_spel_2-div" style="width:90%;margin:0;padding:0;border:0 none;font-size:0;font-family:sans-serif">
+    <button id="nieuw_spel_2" onclick="naarnieuwspelfunc()" style="width:100%;padding:2px;margin:1px;word-wrap:break-word;font-family:sans-serif"><table style="width:100%;margin:0;padding:0;border:0 none;border-collapse:collapse;table-layout:fixed;font-family:sans-serif;vertical-align:middle">
+      <tr>
+       <td style="width:3px"><img id="knop19" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+       <td id="nieuw_spel_2-tekst" style="text-align:center;word-wrap:break-word;font-size:14px">Nieuw spel</td>
+       <td style="width:3px"><img id="knop20" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+      </tr>
+    </table></button>
+    <div id="nieuw_spel_2-form-div">
+     <form id="nieuw_spel_2-form" style="margin:0;padding:0;display:inline">
+      <input type="button" id="nieuw_spel_2-knop2" style="width:100%;height:50px;margin:1px;font-family:sans-serif;font-size:14px" value="Nieuw spel" onclick="naarnieuwspelfunc()">
+      <input type="nieuw_spel_2-submit" style="display:none">
+     </form>
+    </div>
+   </div>
+
+   <div id="chat_legen-div" style="width:90%;margin:0;padding:0;border:0 none;font-size:0;font-family:sans-serif">
+    <button id="chat_legen" onclick="document.getElementById('chat').innerHTML= ''" style="width:100%;padding:2px;margin:1px;word-wrap:break-word;font-family:sans-serif"><table style="width:100%;margin:0;padding:0;border:0 none;border-collapse:collapse;table-layout:fixed;font-family:sans-serif;vertical-align:middle">
+      <tr>
+       <td style="width:3px"><img id="knop21" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+       <td id="chat_legen-tekst" style="text-align:center;word-wrap:break-word;font-size:14px">Chat legen</td>
+       <td style="width:3px"><img id="knop22" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+      </tr>
+    </table></button>
+    <div id="chat_legen-form-div">
+     <form id="chat_legen-form" style="margin:0;padding:0;display:inline">
+      <input type="button" id="chat_legen-knop2" style="width:100%;height:50px;margin:1px;font-family:sans-serif;font-size:14px" value="Chat legen" onclick="document.getElementById('chat').innerHTML= ''">
+      <input type="chat_legen-submit" style="display:none">
+     </form>
+    </div>
+   </div>
+
+   <div id="wanneer_verkiezingen-div" style="width:90%;margin:0;padding:0;border:0 none;font-size:0;font-family:sans-serif">
+    <button id="wanneer_verkiezingen" onclick="verkiezingenfunc()" style="width:100%;padding:2px;margin:1px;word-wrap:break-word;font-family:sans-serif"><table style="width:100%;margin:0;padding:0;border:0 none;border-collapse:collapse;table-layout:fixed;font-family:sans-serif;vertical-align:middle">
+      <tr>
+       <td style="width:3px"><img id="knop23" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+       <td id="wanneer_verkiezingen-tekst" style="text-align:center;word-wrap:break-word;font-size:14px">Wanneer zijn de verkiezingen?</td>
+       <td style="width:3px"><img id="knop24" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+      </tr>
+    </table></button>
+    <div id="wanneer_verkiezingen-form-div">
+     <form id="wanneer_verkiezingen-form" style="margin:0;padding:0;display:inline">
+      <input type="button" id="wanneer_verkiezingen-knop2" style="width:100%;height:50px;margin:1px;font-family:sans-serif;font-size:14px" value="Wanneer zijn de verkiezingen?" onclick="verkiezingenfunc()">
+      <input type="wanneer_verkiezingen-submit" style="display:none">
+     </form>
+    </div>
+   </div>
+
+   <div id="naar_menu-div" style="width:90%;margin:0;padding:0;border:0 none;font-size:0;font-family:sans-serif">
+    <button id="naar_menu" onclick="naarmenufunc()" style="width:100%;padding:2px;margin:1px;word-wrap:break-word;font-family:sans-serif"><table style="width:100%;margin:0;padding:0;border:0 none;border-collapse:collapse;table-layout:fixed;font-family:sans-serif;vertical-align:middle">
+      <tr>
+       <td style="width:3px"><img id="knop25" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+       <td id="naar_menu-tekst" style="text-align:center;word-wrap:break-word;font-size:14px">Terug naar het menu</td>
+       <td style="width:3px"><img id="knop26" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+      </tr>
+    </table></button>
+    <div id="naar_menu-form-div">
+     <form id="naar_menu-form" style="margin:0;padding:0;display:inline">
+      <input type="button" id="naar_menu-knop2" style="width:100%;height:50px;margin:1px;font-family:sans-serif;font-size:14px" value="Terug naar het menu" onclick="naarmenufunc()">
+      <input type="naar_menu-submit" style="display:none">
+     </form>
+    </div>
+   </div>
+
+  </div>
+  <div id="instellingen-knoppen" style="margin:0;padding:0;border:0 none;display:none">
+   <div id="geluid_aan-div" style="width:90%;margin:0;padding:0;border:0 none;font-size:0;font-family:sans-serif">
+    <button id="geluid_aan" onclick="geluidfunc('aan')" style="width:100%;padding:2px;margin:1px;word-wrap:break-word;font-family:sans-serif"><table style="width:100%;margin:0;padding:0;border:0 none;border-collapse:collapse;table-layout:fixed;font-family:sans-serif;vertical-align:middle">
+      <tr>
+       <td style="width:3px"><img id="knop27" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+       <td id="geluid_aan-tekst" style="text-align:center;word-wrap:break-word;font-size:14px">Geluid aan</td>
+       <td style="width:3px"><img id="knop28" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+      </tr>
+    </table></button>
+    <div id="geluid_aan-form-div">
+     <form id="geluid_aan-form" style="margin:0;padding:0;display:inline">
+      <input type="button" id="geluid_aan-knop2" style="width:100%;height:50px;margin:1px;font-family:sans-serif;font-size:14px" value="Geluid aan" onclick="geluidfunc('aan')">
+      <input type="geluid_aan-submit" style="display:none">
+     </form>
+    </div>
+   </div>
+
+   <div id="geen_muziek-div" style="width:90%;margin:0;padding:0;border:0 none;font-size:0;font-family:sans-serif">
+    <button id="geen_muziek" onclick="geluidfunc('geenachtergrond')" style="width:100%;padding:2px;margin:1px;word-wrap:break-word;font-family:sans-serif"><table style="width:100%;margin:0;padding:0;border:0 none;border-collapse:collapse;table-layout:fixed;font-family:sans-serif;vertical-align:middle">
+      <tr>
+       <td style="width:3px">
+       <td style="width:3px"><img id="knop29" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+       <td id="geen_muziek-tekst" style="text-align:center;word-wrap:break-word;font-size:14px">Geen achtergrondmuziek</td>
+       <td style="width:3px"><img id="knop30" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+      </tr>
+    </table></button>
+    <div id="geen_muziek-form-div">
+     <form id="geen_muziek-form" style="margin:0;padding:0;display:inline">
+      <input type="button" id="geen_muziek-knop2" style="width:100%;height:50px;margin:1px;font-family:sans-serif;font-size:14px" value="Geen achtergrondmuziek" onclick="geluidfunc('geenachtergrond')">
+      <input type="geen_muziek-submit" style="display:none">
+     </form>
+    </div>
+   </div>
+
+   <div id="geluid_uit-div" style="width:90%;margin:0;padding:0;border:0 none;font-size:0;font-family:sans-serif">
+    <button id="geluid_uit" onclick="geluidfunc('uit')" style="width:100%;padding:2px;margin:1px;word-wrap:break-word;font-family:sans-serif"><table style="width:100%;margin:0;padding:0;border:0 none;border-collapse:collapse;table-layout:fixed;font-family:sans-serif;vertical-align:middle">
+      <tr>
+       <td style="width:3px"><img id="knop31" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+       <td id="geluid_uit-tekst" style="text-align:center;word-wrap:break-word;font-size:14px">Geluid uit</td>
+       <td style="width:3px"><img id="knop32" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+      </tr>
+    </table></button>
+    <div id="geluid_uit-form-div">
+     <form id="geluid_uit-form" style="margin:0;padding:0;display:inline">
+      <input type="button" id="geluid_uit-knop2" style="width:100%;height:50px;margin:1px;font-family:sans-serif;font-size:14px" value="Geluid aan" onclick="geluidfunc('uit')">
+      <input type="geluid_uit-submit" style="display:none">
+     </form>
+    </div>
+   </div>
+
+   <div id="donker_aan-div" style="width:90%;margin:0;padding:0;border:0 none;font-size:0;font-family:sans-serif">
+    <button id="donker_aan" onclick="donkerfunc('aan')" style="width:100%;padding:2px;margin:1px;word-wrap:break-word;font-family:sans-serif"><table style="width:100%;margin:0;padding:0;border:0 none;border-collapse:collapse;table-layout:fixed;font-family:sans-serif;vertical-align:middle">
+      <tr>
+       <td style="width:3px"><img id="knop33" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+       <td id="donker_aan-tekst" style="text-align:center;word-wrap:break-word;font-size:14px">Donkere modus aan</td>
+       <td style="width:3px"><img id="knop34" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+      </tr>
+    </table></button>
+    <div id="donker_aan-form-div">
+     <form id="donker_aan-form" style="margin:0;padding:0;display:inline">
+      <input type="button" id="donker_aan-knop2" style="width:100%;height:50px;margin:1px;font-family:sans-serif;font-size:14px" value="Donkere modus aan" onclick="donkerfunc('aan')">
+      <input type="donker_aan-submit" style="display:none">
+     </form>
+    </div>
+   </div>
+
+   <div id="donker_uit-div" style="width:90%;margin:0;padding:0;border:0 none;font-size:0;font-family:sans-serif">
+    <button id="donker_uit" onclick="donkerfunc('uit')" style="width:100%;padding:2px;margin:1px;word-wrap:break-word;font-family:sans-serif"><table style="width:100%;margin:0;padding:0;border:0 none;border-collapse:collapse;table-layout:fixed;font-family:sans-serif;vertical-align:middle">
+      <tr>
+       <td style="width:3px"><img id="knop35" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+       <td id="donker_uit-tekst" style="text-align:center;word-wrap:break-word;font-size:14px">Donkere modus uit</td>
+       <td style="width:3px"><img id="knop36" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+      </tr>
+    </table></button>
+    <div id="donker_uit-form">
+     <form id="donker_uit-form-div" style="margin:0;padding:0;display:inline">
+      <input type="button" id="donker_uit-knop2" style="width:100%;height:50px;margin:1px;font-family:sans-serif;font-size:14px" value="Donkere modus uit" onclick="donkerfunc('uit')">
+      <input type="donker_uit-submit" style="display:none">
+     </form>
+    </div>
+   </div>
+
+   <div id="tekstkleur_aan-div" style="width:90%;margin:0;padding:0;border:0 none;font-size:0;font-family:sans-serif">
+    <button id="tekstkleur_aan" onclick="tekstkleurfunc('aan')" style="width:100%;padding:2px;margin:1px;word-wrap:break-word;font-family:sans-serif"><table style="width:100%;margin:0;padding:0;border:0 none;border-collapse:collapse;table-layout:fixed;font-family:sans-serif;vertical-align:middle">
+      <tr>
+       <td style="width:3px"><img id="knop37" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+       <td id="tekstkleur_aan-tekst" style="text-align:center;word-wrap:break-word;font-size:14px">Gekleurde tekst in de chat aan</td>
+       <td style="width:3px"><img id="knop38" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+      </tr>
+    </table></button>
+    <div id="tekstkleur_aan-form-div">
+     <form id="tekstkleur_aan-form" style="margin:0;padding:0;display:inline">
+      <input type="button" id="tekstkleur_aan-knop2" style="width:100%;height:50px;margin:1px;font-family:sans-serif;font-size:14px" value="Gekleurde tekst in de chat aan" onclick="tekstkleurfunc('aan')">
+      <input type="tekstkleur_aan-submit" style="display:none">
+     </form>
+    </div>
+   </div>
+
+   <div id="tekstkleur_uit-div" style="width:90%;margin:0;padding:0;border:0 none;font-size:0;font-family:sans-serif">
+    <button id="tekstkleur_uit" onclick="tekstkleurfunc('uit')" style="width:100%;padding:2px;margin:1px;word-wrap:break-word;font-family:sans-serif"><table style="width:100%;margin:0;padding:0;border:0 none;border-collapse:collapse;table-layout:fixed;font-family:sans-serif;vertical-align:middle">
+      <tr>
+       <td style="width:3px"><img id="knop39" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+       <td id="tekstkleur_uit-tekst" style="text-align:center;word-wrap:break-word;font-size:14px">Gekleurde tekst in de chat uit</td>
+       <td style="width:3px"><img id="knop40" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+      </tr>
+    </table></button>
+    <div id="tekstkleur_uit-form-div">
+     <form id="tekstkleur_uit-form" style="margin:0;padding:0;display:inline">
+      <input type="button" id="tekstkleur_uit-knop2" style="width:100%;height:50px;margin:1px;font-family:sans-serif;font-size:14px" value="Gekleurde tekst in de chat uit" onclick="tekstkleurfunc('uit')">
+      <input type="tekstkleur_uit-submit" style="display:none">
+     </form>
+    </div>
+   </div>
+
+   <div id="versie-div" style="width:90%;margin:0;padding:0;border:0 none;font-size:0;font-family:sans-serif">
+    <button id="versie" onclick="tekstfunc('versie', 'instellingen')" style="width:100%;padding:2px;margin:1px;word-wrap:break-word;font-family:sans-serif"><table style="width:100%;margin:0;padding:0;border:0 none;border-collapse:collapse;table-layout:fixed;font-family:sans-serif;vertical-align:middle">
+      <tr>
+       <td style="width:3px"><img id="knop41" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+       <td id="versie-tekst" style="text-align:center;word-wrap:break-word;font-size:14px">Kamergotchi-versie</td>
+       <td style="width:3px"><img id="knop42" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+      </tr>
+    </table></button>
+    <div id="versie-form-div">
+     <form id="versie-form" style="margin:0;padding:0;display:inline">
+      <input type="button" id="versie-knop2" style="width:100%;height:50px;margin:1px;font-family:sans-serif;font-size:14px" value="Kamergotchi-versie" onclick="tekstfunc('versie', 'instellingen')">
+      <input type="versie-submit" style="display:none">
+     </form>
+    </div>
+   </div>
+
+   <div id="module_kiezen-div" style="width:90%;margin:0;padding:0;border:0 none;font-size:0;font-family:sans-serif">
+    <button id="module_kiezen" onclick="naarmodulesfunc()" style="width:100%;padding:2px;margin:1px;word-wrap:break-word;font-family:sans-serif"><table style="width:100%;margin:0;padding:0;border:0 none;border-collapse:collapse;table-layout:fixed;font-family:sans-serif;vertical-align:middle">
+      <tr>
+       <td style="width:3px"><img id="knop43" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+       <td id="module_kiezen-tekst" style="text-align:center;word-wrap:break-word;font-size:14px">Module kiezen</td>
+       <td style="width:3px"><img id="knop44" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+      </tr>
+    </table></button>
+    <div id="module_kiezen-form-div">
+     <form id="module_kiezen-form" style="margin:0;padding:0;display:inline">
+      <input type="button" id="module_kiezen-knop2" style="width:100%;height:50px;margin:1px;font-family:sans-serif;font-size:14px" value="Module kiezen" onclick="naarmodulesfunc()">
+      <input type="module_kiezen-submit" style="display:none">
+     </form>
+    </div>
+   </div>
+
+   <div id="thema_kiezen-div" style="width:90%;margin:0;padding:0;border:0 none;font-size:0;font-family:sans-serif">
+    <button id="thema_kiezen" onclick="naarshellsfunc()" style="width:100%;padding:2px;margin:1px;word-wrap:break-word;font-family:sans-serif"><table style="width:100%;margin:0;padding:0;border:0 none;border-collapse:collapse;table-layout:fixed;font-family:sans-serif;vertical-align:middle">
+      <tr>
+       <td style="width:3px"><img id="knop45" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+       <td id="thema_kiezen-tekst" style="text-align:center;word-wrap:break-word;font-size:14px">Thema kiezen</td>
+       <td style="width:3px"><img id="knop46" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+      </tr>
+    </table></button>
+    <div id="thema_kiezen-form-div">
+     <form id="thema_kiezen-form" style="margin:0;padding:0;display:inline">
+      <input type="button" id="thema_kiezen-knop2" style="width:100%;height:50px;margin:1px;font-family:sans-serif;font-size:14px" value="Thema kiezen" onclick="naarshellsfunc()">
+      <input type="thema_kiezen-submit" style="display:none">
+     </form>
+    </div>
+   </div>
+
+   <div id="contact-div" style="width:90%;margin:0;padding:0;border:0 none;font-size:0;font-family:sans-serif">
+    <button id="contact" onclick="tekstfunc('contact', 'instellingen')" style="width:100%;padding:2px;margin:1px;word-wrap:break-word;font-family:sans-serif"><table style="width:100%;margin:0;padding:0;border:0 none;border-collapse:collapse;table-layout:fixed;font-family:sans-serif;vertical-align:middle">
+      <tr>
+       <td style="width:3px"><img id="knop47" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+       <td id="contact-tekst" style="text-align:center;word-wrap:break-word;font-size:14px">Contact</td>
+       <td style="width:3px"><img id="knop48" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+      </tr>
+    </table></button>
+    <div id="contact-form-div">
+     <form id="contact-form" style="margin:0;padding:0;display:inline">
+      <input type="button" id="contact-knop2" style="width:100%;height:50px;margin:1px;font-family:sans-serif;font-size:14px" value="Contact" onclick="tekstfunc('contact', 'instellingen')">
+      <input type="contact-submit" style="display:none">
+     </form>
+    </div>
+   </div>
+
+   <div id="naar_menu_2-div" style="width:90%;margin:0;padding:0;border:0 none;font-size:0;font-family:sans-serif">
+    <button id="naar_menu_2" onclick="naarmenufunc()" style="width:100%;padding:2px;margin:1px;word-wrap:break-word;font-family:sans-serif"><table style="width:100%;margin:0;padding:0;border:0 none;border-collapse:collapse;table-layout:fixed;font-family:sans-serif;vertical-align:middle">
+      <tr>
+       <td style="width:3px"><img id="knop49" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+       <td id="naar_menu_2-tekst" style="text-align:center;word-wrap:break-word;font-size:14px">Terug naar het menu</td>
+       <td style="width:3px"><img id="knop50" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+      </tr>
+    </table></button>
+    <div id="naar_menu_2-form-div">
+     <form id="naar_menu_2-form" style="margin:0;padding:0;display:inline">
+      <input type="button" id="naar_menu_2-knop2" style="width:100%;height:50px;margin:1px;font-family:sans-serif;font-size:14px" value="Terug naar het menu" onclick="naarmenufunc()">
+      <input type="naar_menu_2-submit" style="display:none">
+     </form>
+    </div>
+   </div>
+
+  </div>
+  <div id="modules-knoppen" style="margin:0;padding:0;border:0 none;display:none"></div>
+  <div id="shells-knoppen" style="margin:0;padding:0;border:0 none;display:none"></div>
+  </center>
+ </td>
+ </tr>
+ </table>
+ </div>
+
+ <div id="herstarten-div" style="width:100%;display:none">
+  <table width="100%" style="width:100%;border-collapse:collapse;border:0 none;text-align:center;table-layout:fixed;font-family:sans-serif">
+   <tr>
+    <td>
+     <div style="width:90%;margin:0;padding:0;border:0 none;font-size:0;margin-left:auto;margin-right:auto">
+      <button id="herstarten" onclick="window.parent.location.href='../Kamergotchi_Online.html' + location.search" style="width:100%;padding:2px;margin:1px;word-wrap:break-word;font-family:sans-serif"><table style="width:100%;margin:0;padding:0;border:0 none;border-collapse:collapse;table-layout:fixed;font-family:sans-serif;vertical-align:middle">
+       <tr>
+        <td style="width:3px"><img id="knop51" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+        <td id="herstarten-tekst" style="text-align:center;word-wrap:break-word;font-size:14px">Het spel herstarten</td>
+        <td style="width:3px"><img id="knop52" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+       </tr>
+      </table></button>
+      <div id="herstarten-form-div">
+       <form id="herstarten-form" style="margin:0;padding:0;display:inline">
+        <input type="button" id="herstarten-knop2" style="width:100%;height:50px;margin:1px;font-family:sans-serif;font-size:14px" value="Het spel herstarten" onclick="window.parent.location.href='../Kamergotchi_Online.html' + location.search">
+        <input type="herstarten-submit" style="display:none">
+       </form>
+      </div>
+     </div>
+    </td>
+   </tr>
+  </table>
+ </div>
+
+ <div id="overzichtsdiv" style="width:100%;display:none">
+  <table width="100%" style="width:100%;border-collapse:collapse;border:0 none;text-align:center;table-layout:fixed;font-family:sans-serif">
+   <tr>
+    <td>
+     <div id="overzichtsdiv-inhoud" style="width:100%;display:block"><center><div id='Logo2div'></div><br><br>
+     </div>
+     <br>
+     <br>
+     <div id="naar_menu_4-div" style="width:90%;margin:0;padding:0;border:0 none;font-size:0;margin-left:auto;margin-right:auto">
+      <button id="naar_menu_4" onclick="naarmenufunc()" style="width:100%;padding:2px;margin:1px;word-wrap:break-word;font-family:sans-serif"><table style="width:100%;margin:0;padding:0;border:0 none;border-collapse:collapse;table-layout:fixed;font-family:sans-serif;vertical-align:middle">
+        <tr>
+         <td style="width:3px"><img id="knop53" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+         <td id="naar_menu_4-tekst" style="text-align:center;word-wrap:break-word;font-size:14px">Terug naar het menu</td>
+         <td style="width:3px"><img id="knop54" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+        </tr>
+       </table></button>
+       <div id="naar_menu_4-form-div">
+        <form id="naar_menu_4-form" style="margin:3px; padding:0px; display:inline">
+         <input type="button" id="naar_menu_4-knop2" style="width:100%;height:50px;margin:1px;font-family:sans-serif;font-size:14px" value="Terug naar het menu" onclick="naarmenufunc()">
+         <input type="naar_menu_4-submit" style="display:none">
+        </form>
+       </div>
+      </div>
+     <br>
+     <br>
+    </td>
+   </tr>
+  </table>
+ </div>
+
+ <div id="bevestigingspel-div" bgcolor="#FFFFFF" style="width:90%;background-color:#FFFFFF;border:1px solid  #000000;margin-left:auto;margin-right:auto;display:none">
+  <table width="100%" style="width:100%;border-collapse:collapse;border:0 none;text-align:center;table-layout:fixed;font-family:sans-serif">
+   <tr>
+    <td colspan=2 style="text-align:center">
+     <center>
+      <br><div id="bevestigingspel" style="word-wrap:break-word">Door een nieuw spel te beginnen, wordt je oude spel verwijderd.<br>Druk op Ok om een nieuw spel te beginnen.</div><br>
+     </center>
+    </td>
+   </tr>
+   <tr>
+    <td width="50%" style="width:50%;text-align:center">
+     <center>
+      <div id="jaspel-div" style="width:90%;margin:0;padding:0;border:0 none;font-size:0;margin-left:auto;margin-right:auto">
+       <button id="jaspel" onclick="resetfunc()" style="width:100%;padding:2px;margin:1px;word-wrap:break-word;font-family:sans-serif"><table style="width:100%;margin:0;padding:0;border:0 none;border-collapse:collapse;table-layout:fixed;font-family:sans-serif;vertical-align:middle">
+        <tr>
+         <td style="width:3px"><img id="knop55" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+         <td id="jaspel-tekst" style="text-align:center;word-wrap:break-word;font-size:14px">Ok</td>
+         <td style="width:3px"><img id="knop56" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+        </tr>
+       </table></button>
+       <div id="jaspel-form-div">
+        <form id="jaspel-form" style="margin:0;padding:0;display:inline">
+         <input type="button" id="jaspel-knop2" style="width:100%;height:50px;margin:1px;font-family:sans-serif;font-size:14px" value="Ok" onclick="resetfunc()">
+         <input type="jaspel-submit" style="display:none">
+        </form>
+       </div>
+      </div>
+     </center>
+    </td>
+    <td width="50%" style="width:50%;text-align:center">
+     <center>
+      <div id="neespel-div" style="width:90%;margin:0;padding:0;border:0 none;font-size:0;margin-left:auto;margin-right:auto">
+       <button id="neespel" onclick="teruguitbevestigingfunc()" style="width:100%;padding:2px;margin:1px;word-wrap:break-word;font-family:sans-serif"><table style="width:100%;margin:0;padding:0;border:0 none;border-collapse:collapse;table-layout:fixed;font-family:sans-serif;vertical-align:middle">
+        <tr>
+         <td style="width:3px"><img id="knop57" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+         <td id="neespel-tekst" style="text-align:center;word-wrap:break-word;font-size:14px">Annuleren</td>
+         <td style="width:3px"><img id="knop58" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+        </tr>
+       </table></button>
+       <div id="neespel-form-div">
+        <form id="neespel-form" style="margin:0;padding:0;display:inline">
+         <input type="button" id="neespel-knop2" style="width:100%;height:50px;margin:1px;font-family:sans-serif;font-size:14px" value="Annuleren" onclick="teruguitbevestigingfunc()">
+         <input type="neespel-submit" style="display:none">
+        </form>
+       </div>
+      </div>
+     </center>
+    </td>
+   </tr>
+  </table>
+  <br>
+ </div>
+
+ <div id="bevestigingverwijderen-div" bgcolor="#FFFFFF" style="width:90%;background-color:#FFFFFF;border:1px solid  #000000;margin-left:auto;margin-right:auto;display:none">
+  <table width="100%" style="width:100%;border-collapse:collapse;border:0 none;text-align:center;table-layout:fixed;font-family:sans-serif">
+   <tr>
+    <td colspan=2 style="text-align:center">
+     <center>
+      <br><div id="bevestigingverwijder" style="word-wrap:break-word">Waarschuwing: Alle gegevens van alle modules worden verwijderd.<br>Druk op Ok om door te gaan.</div><br>
+     </center>
+    </td>
+   </tr>
+   <tr>
+    <td width="50%" style="width:50%;text-align:center">
+     <center>
+      <div id="javerwijderen-div" style="width:90%;margin:0;padding:0;border:0 none;font-size:0;margin-left:auto;margin-right:auto">
+       <button id="javerwijderen" onclick="deletefunc()" style="width:100%;padding:2px;margin:1px;word-wrap:break-word;font-family:sans-serif"><table style="width:100%;margin:0;padding:0;border:0 none;border-collapse:collapse;table-layout:fixed;font-family:sans-serif;vertical-align:middle">
+        <tr>
+         <td style="width:3px"><img id="knop59" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+         <td id="javerwijderen-tekst" style="text-align:center;word-wrap:break-word;font-size:14px">Ok</td>
+         <td style="width:3px"><img id="knop60" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+        </tr>
+       </table></button>
+       <div id="javerwijderen-form-div">
+        <form id="javerwijderen-form" style="margin:0;padding:0;display:inline">
+         <input type="button" id="javerwijderen-knop2" style="width:100%;height:50px;margin:1px;font-family:sans-serif;font-size:14px" value="Ok" onclick="deletefunc()">
+         <input type="javerwijderen-submit" style="display:none">
+        </form>
+       </div>
+      </div>
+     </center>
+    </td>
+    <td width="50%" style="width:50%;text-align:center">
+     <center>
+      <div id="neeverwijderen-div" style="width:90%;margin:0;padding:0;border:0 none;font-size:0;margin-left:auto;margin-right:auto">
+       <button id="neeverwijderen" onclick="teruguitbevestigingfunc()" style="width:100%;padding:2px;margin:1px;word-wrap:break-word;font-family:sans-serif"><table style="width:100%;margin:0;padding:0;border:0 none;border-collapse:collapse;table-layout:fixed;font-family:sans-serif;vertical-align:middle">
+        <tr>
+         <td style="width:3px"><img id="knop61" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+         <td id="neeverwijderen-tekst" style="text-align:center;word-wrap:break-word;font-size:14px">Annuleren</td>
+         <td style="width:3px"><img id="knop62" src="../Kern/Knoppen/Knophoogte.gif" alt=""></td>
+        </tr>
+       </table></button>
+       <div id="neeverwijderen-form-div">
+        <form id="neeverwijderen-form" style="margin:0;padding:0;display:inline">
+         <input type="button" id="neeverwijderen-knop2" style="width:100%;height:50px;margin:1px;font-family:sans-serif;font-size:14px" value="Annuleren" onclick="teruguitbevestigingfunc()">
+         <input type="neeverwijderen-submit" style="display:none">
+        </form>
+       </div>
+      </div>
+     </center>
+    </td>
+   </tr>
+  </table>
+  <br>
+ </div>
+ <div id="instellingencookie-div" style="word-wrap:break-word;color:inherit;background-color:inherit;display:none"></div>
+ <div id="speldatacookie-div" style="word-wrap:break-word;color:inherit;background-color:inherit;display:none"></div>
+ <div id="modulediv" style="width:1px;height:1px;margin:0;padding:0;border:0;font-size:0;line-height:1px;overflow:hidden">
+  <br>
+  <iframe id="Module" name="Module" frameborder="0" seamless="seamless" style="frameborder:0;marginheight:0;marginwidth:0;width:1px;height:1px;display:block;overflow-y:auto;overflow-x:hidden;margin:0px;padding:0px;border:0 none;scrolling:auto"></iframe>
+ </div>
+ <div id="audio" style="width:1px;height:1px;margin:0;padding:0;border:0;font-size:0;line-height:1px;overflow:hidden">
+  <br>
+  <audio id='bgmusic' onended='document.getElementById("bgmusic").play()' preload='auto' loop='loop' style='display:none'>
+   <source src='../Kern/Muziek/Bgmusic/Bgmusic.mp3' type='audio/mpeg'>
+   <source src='../Kern/Muziek/Bgmusic/Bgmusic.ogg' type='audio/ogg'>
+   <source src='../Kern/Muziek/Bgmusic/Bgmusic.wav' type='audio/wav'>
+  </audio>
+  <audio id='eten1' preload='auto' style='display:none'>
+   <source src='../Kern/Muziek/Eten/Eten1.mp3' type='audio/mpeg'>
+   <source src='../Kern/Muziek/Eten/Eten1.ogg' type='audio/ogg'>
+   <source src='../Kern/Muziek/Eten/Eten1.wav' type='audio/wav'>
+  </audio>
+  <audio id='eten2' preload='auto' style='display:none'>
+   <source src='../Kern/Muziek/Eten/Eten2.mp3' type='audio/mpeg'>
+   <source src='../Kern/Muziek/Eten/Eten2.ogg' type='audio/ogg'>
+   <source src='../Kern/Muziek/Eten/Eten2.wav' type='audio/wav'>
+  </audio>
+  <audio id='aandacht1' preload='auto' style='display:none'>
+   <source src='../Kern/Muziek/Aandacht/Aandacht1.mp3' type='audio/mpeg'>
+   <source src='../Kern/Muziek/Aandacht/Aandacht1.ogg' type='audio/ogg'>
+   <source src='../Kern/Muziek/Aandacht/Aandacht1.wav' type='audio/wav'>
+  </audio>
+  <audio id='aandacht2' preload='auto' style='display:none'>
+   <source src='../Kern/Muziek/Aandacht/Aandacht2.mp3' type='audio/mpeg'>
+   <source src='../Kern/Muziek/Aandacht/Aandacht2.ogg' type='audio/ogg'>
+  <source src='../Kern/Muziek/Aandacht/Aandacht2.wav' type='audio/wav'>
+  </audio>
+  <audio id='kennis1' preload='auto' style='display:none'>
+   <source src='../Kern/Muziek/Kennis/Kennis1.mp3' type='audio/mpeg'>
+   <source src='../Kern/Muziek/Kennis/Kennis1.ogg' type='audio/ogg'>
+   <source src='../Kern/Muziek/Kennis/Kennis1.wav' type='audio/wav'>
+  </audio>
+  <audio id='kennis2' preload='auto' style='display:none'>
+   <source src='../Kern/Muziek/Kennis/Kennis2.mp3' type='audio/mpeg'>
+   <source src='../Kern/Muziek/Kennis/Kennis2.ogg' type='audio/ogg'>
+   <source src='../Kern/Muziek/Kennis/Kennis2.wav' type='audio/wav'>
+  </audio>
+  </div>
+  <audio id='henktrol' onended='document.getElementById("henktrol").play()' preload='auto' loop='loop' style='display:none'>
+   <source src='../Kern/Muziek/Henktrol/Henktrol.mp3' type='audio/mpeg'>
+   <source src='../Kern/Muziek/Bgmusic/Henktrol.ogg' type='audio/ogg'>
+   <source src='../Kern/Muziek/Bgmusic/Henktrol.wav' type='audio/wav'>
+  </audio>
+ <div id="scripts" style="display:none">
+<script type="text/javascript" language="JavaScript1.1" src="../Kern/Kern.js" id="Kern"></script>
+<script type="text/javascript" language="JavaScript1.1" src="../Config.js" id="Configuratiebestand"></script>
+<script type="text/javascript" language="JavaScript1.1" src="../Kern/Toolbox.js" id="Toolbox"></script>
+
+
+ <script type="text/javascript" language="JavaScript1.1">
+//Globale variabelen
+//instellingen
+var instellingen
+var instellingensaveversie
+var copyrightgezien
+var browservar
+var spelmodule
+var geluid
+var donkeremodus
+var gekleurdetekst
+var shell
+var grenzen
+//spel
+var speldatatotaal
+var speldatageneriek
+var speldataversiespecifiek
+var speldatamodule
+var saveversie
+var spelspecifiekesaveversie
+var honger
+var hongerkeren
+var hongertijd
+var hongertijdslot
+var aandacht
+var aandachtkeren
+var aandachttijd
+var aandachttijdslot
+var kennis
+var kenniskeren
+var kennistijd
+var kennistijdslot
+var keuzekeren
+var ziekte
+var lijsttrekker
+var lijsttrekkerinstellingen
+var tijd
+var begintijd
+//tests
+var audiotest
+var lstest
+//configuratie
+var spelmodulesarray
+var shellsarray
+var achtergrondkleur
+var spelmoduletaal
+var spelmoduleswisselen
+var shellswisselen
+var balkzichtbaar
+var KGEdit
+var HTTPSaan
+var donkeraan
+var donkerstandaard
+var versie
+var hongerkeuzes
+var aandachtkeuzes
+var kenniskeuzes
+var keuzes
+var keuzegrens
+var hongertijd
+var aandachttijd
+var kennistijd
+var interval
+var hongeromlaaglaag
+var hongeromlaagmiddel
+var hongeromlaaghoog
+var hongeromhooglaag
+var hongeromhooghoog
+var aandachtomlaaglaag
+var aandachtomlaagmiddel
+var aandachtomlaaghoog
+var aandachtomhoog
+var kennisomlaaglaag
+var kennisomlaaghoog
+var kennisomhooglaag
+var kennisomhooghoog
+var hongerlaag
+var aandachtlaag
+var kennislaag
+var hongergrens
+var aandachtgrens
+var kennisgrens
+var hongerbasis
+var aandachtbasis
+var kennisbasis
+var eenapril
+var embedgeluid = "uit"
+var ziektetijd
+var ziektekans
+var branding
+var branding_titel
+//Maakt een array met alle knopnamen en laadt de modules en shells uit het configuratiebestand
+var knoppenarray=[
+"naar_spel",
+"nieuw_spel",
+"nieuw_spel_2",
+"naar_menu",
+"naar_menu_2",
+"naar_menu_3",
+"naar_menu_4",
+"naar_menu_5",
+"instellingen",
+"module_kiezen",
+"thema_kiezen",
+"overzicht",
+"gegevens_verwijderen",
+"hongerknop",
+"aandachtknop",
+"kennisknop",
+"partijsite",
+"chat_legen",
+"wanneer_verkiezingen",
+"geluid_aan",
+"geen_muziek",
+"geluid_uit",
+"donker_aan",
+"donker_uit",
+"tekstkleur_uit",
+"tekstkleur_aan",
+"versie",
+"contact",
+"herstarten",
+"jaspel",
+"neespel",
+"javerwijderen",
+"neeverwijderen"
+]
+</script>
+
+<!--[if lt IE 9]>
+<script type="text/javascript" language="JavaScript1.1">
+ if (/Windows/i.test(navigator.userAgent)) {
+  if (window.location.protocol == "file:") {
+   var audiopad = decodeURI(window.location.href).split("/")
+   audiopad.pop()
+   audiopad.pop()
+   audiopad.shift()
+   audiopad.shift()
+   audiopad.shift()
+   audiopad = audiopad.join("/")
+   audiopad = audiopad + "/Kern/Muziek"
+  }
+  else {
+   var audiopad = "../Kern/Muziek"
+  }
+  document.getElementById("audio").innerHTML = "" +
+  "<object id='bgmusic' classid='CLSID:6BF52A52-394A-11d3-B153-00C04F79FAA6' height='0px' width='0px'> <param name='url' value='" + audiopad + "/Bgmusic/Bgmusic.wav'> <param name='volume' value='7'> <param name='loop' value=true'> <param name='autostart' value='false'> </object>" +
+  "<object id='eten1' classid='CLSID:6BF52A52-394A-11d3-B153-00C04F79FAA6' height='0px' width='0px'> <param name='url' value='" + audiopad + "/Eten/Eten1.wav'> <param name='volume' value='7'> <param name='loop' value=false'> <param name='autostart' value='false'> </object>" +
+  "<object id='eten2' classid='CLSID:6BF52A52-394A-11d3-B153-00C04F79FAA6' height='0px' width='0px'> <param name='url' value='" + audiopad + "/Eten/Eten2.wav'> <param name='volume' value='7'> <param name='loop' value=false'> <param name='autostart' value='false'> </object>" +
+  "<object id='aandacht1' classid='CLSID:6BF52A52-394A-11d3-B153-00C04F79FAA6' height='0px' width='0px'> <param name='url' value='" + audiopad + "/Aandacht/Aandacht1.wav'> <param name='volume' value='7'> <param name='loop' value=false'> <param name='autostart' value='false'> </object>" +
+  "<object id='aandacht2' classid='CLSID:6BF52A52-394A-11d3-B153-00C04F79FAA6' height='0px' width='0px'> <param name='url' value='" + audiopad + "/Aandacht/Aandacht2.wav'> <param name='volume' value='7'> <param name='loop' value=false'> <param name='autostart' value='false'> </object>" +
+  "<object id='kennis1' classid='CLSID:6BF52A52-394A-11d3-B153-00C04F79FAA6' height='0px' width='0px'> <param name='url' value='" + audiopad + "/Kennis/Kennis1.wav'> <param name='volume' value='7'> <param name='loop' value=false'> <param name='autostart' value='false'> </object>" +
+  "<object id='kennis2' classid='CLSID:6BF52A52-394A-11d3-B153-00C04F79FAA6' height='0px' width='0px'> <param name='url' value='" + audiopad + "/Kennis/Kennis2.wav'> <param name='volume' value='7'> <param name='loop' value=false'> <param name='autostart' value='false'> </object>" +
+  "<object id='henktrol' classid='CLSID:6BF52A52-394A-11d3-B153-00C04F79FAA6' height='0px' width='0px'> <param name='url' value='" + audiopad + "/Henktrol/Henktrol.wav'> <param name='volume' value='3'> <param name='loop' value=true'> <param name='autostart' value='false'> </object>"
+  if (document.getElementById("bgmusic").playState) {
+   embedgeluid = "aan"
+   setInterval(loopaudio, 1000)
+  }
+ }
+
+ function loopaudio() {
+  if (document.getElementById("bgmusic").playState == 1) {
+   document.getElementById("bgmusic").controls.play()
+  }
+  if (document.getElementById("henktrol").playState == 1) {
+   document.getElementById("henktrol").controls.play()
+  }
+ }
+</script>
+<![endif]-->
+
+<script type="text/javascript" language="JavaScript1.1">
+ //__________Kamergotchi is oorspronkelijk bedacht door Arjen Lubach van het VPRO-programma Zondag met Lubach.__________\\
+ //__________https://www.vpro.nl/zondag-met-lubach.html__________\\
+ //__________Webpagina en programma door Thomas Greve, met delen van het internet__________\\
+
+function shell_opstartfunc(){
+configfunc()
+
+if (getQueryString ("1april")) {
+ if (getQueryString ("1april") == "aan" || getQueryString ("1april") == "uit") {
+  eenapril = getQueryString ("1april")
+ }
+}
+
+if (getQueryString ("balkzichtbaar")) {
+ if (getQueryString ("balkzichtbaar") == "aan" || getQueryString ("balkzichtbaar") == "uit") {
+  balkzichtbaar = getQueryString ("balkzichtbaar")
+ }
+}
+
+//Dit script genereert hieronder de knoppen voor de modules en de shells met de knoppen om van deze menu's terug naar het hoofdmenu te gaan.
+//De extra knoppen die worden verborgen en het opnieuw toepassen van een deel van de CSS is omdat de weergave in Opera 7.0 en Mozilla 0.6 anders niet klopt.
+//Om onbekende redenen nemen deze de CSS niet mee bij het invoegen en wordt de laatste knop meer naar links weergegeven.
+for (i = 0; i < spelmodulesarray.length - 1; i+=2) {
+ var naam = spelmodulesarray[i]
+ var beschrijving = spelmodulesarray[i+1]
+ var knopnummer1 = knoppenarray.length * 2 + 1
+ var knopnummer2 = knoppenarray.length * 2 + 2
+
+ document.getElementById("modules-knoppen").innerHTML = document.getElementById("modules-knoppen").innerHTML + 
+   "<div id='" + naam + "-div' style='width:90%;margin:0;padding:0;border:0 none;font-size:0;font-family:sans-serif'>"+
+   "<button id='" + naam + "' onclick='modulefunc(" + i + ")' style='width:100%;height:100%;padding:2px;margin:1px;word-wrap:break-word;font-family:sans-serif'><table style='width:100%;margin:0;padding:0;border:0 none;border-collapse:collapse;table-layout:fixed;font-family:sans-serif;vertical-align:middle'>" +
+      "<tr>" +
+       "<td style='width:3px'><img id='knop" + knopnummer1 + "' src='../Kern/Knoppen/Knophoogte.gif' alt=''></td>" +
+       "<td id='" + naam + "-tekst' style='text-align:center;word-wrap:break-word;font-size:14px'>" + beschrijving + "</td>" +
+       "<td style='width:3px'><img id='knop" + knopnummer2 + "' src='../Kern/Knoppen/Knophoogte.gif' alt=''></td>" +
+      "</tr>" +
+    "</table></button>" +
+    "<div id='" + naam + "-form-div'>" +
+    "<form id='" + naam + "-form' style='margin:0;padding:0;display:inline'>" +
+      "<input type='button' id='" + naam + "-knop2' onclick='modulefunc(" + i + ")' style='width:100%;height:50px;margin:1px;font-family:sans-serif;font-size:14px' value='" + beschrijving +"'>" +
+      "<input type='submit' id='" + naam + "-submit'style='display:none'>" +
+     "</form>" +
+    "</div>" +
+   "</div>"
+ knoppenarray[knoppenarray.length] = naam
+}
+ document.getElementById("modules-knoppen").innerHTML = document.getElementById("modules-knoppen").innerHTML + 
+   "<div id='naar_menu_3-div' style='width:90%;margin:0;padding:0;border:0 none;font-size:0;font-family:sans-serif'>"+
+   "<button id='naar_menu_3' onclick='naarmenufunc()' style='width:100%;height:100%;padding:2px;margin:1px;word-wrap:break-word;font-family:sans-serif'><table style='width:100%;margin:0;padding:0;border:0 none;border-collapse:collapse;table-layout:fixed;font-family:sans-serif;vertical-align:middle'>" +
+      "<tr>" +
+       "<td style='width:3px'><img id='knop65' src='../Kern/Knoppen/Knophoogte.gif' alt=''></td>" +
+       "<td id='naar_menu_3-tekst' style='text-align:center;word-wrap:break-word;font-size:14px'>Terug naar het menu</td>" +
+       "<td style='width:3px'><img id='knop66' src='../Kern/Knoppen/Knophoogte.gif' alt=''></td>" +
+      "</tr>" +
+    "</table></button>" +
+    "<div id='naar_menu_3-form-div'>" +
+    "<form id='naar_menu_3-form' style='margin:0;padding:0;display:inline'>" +
+      "<input type='button' id='naar_menu_3-knop2' onclick='naarmenufunc()' style='width:100%;height:50px;margin:1px;font-family:sans-serif;font-size:14px' value=''>" +
+      "<input type='submit' id='naar_menu_3-submit' style='display:none'>" +
+     "</form>" +
+    "</div>" +
+   "</div>"
+for (i = 0; i < spelmodulesarray.length - 1; i+=2) {
+ var naam = spelmodulesarray[i]
+ document.getElementById(naam + "-form").style.margin = "0"
+ document.getElementById(naam + "-form").style.padding = "0"
+ document.getElementById(naam + "-form").style.display = "inline"
+ document.getElementById(naam + "-knop2").style.width = "100%"
+ document.getElementById(naam + "-knop2").style.height = "50px"
+ document.getElementById(naam + "-knop2").style.margin = "1px"
+ document.getElementById(naam + "-knop2").style.fontFamily = "sans-serif"
+ document.getElementById(naam + "-knop2").style.fontSize = "14px"
+ document.getElementById(naam + "-submit").style.display = "none"
+ document.getElementById(naam + "-div").style.width = "90%"
+ document.getElementById(naam + "-div").style.margin = "0"
+ document.getElementById(naam + "-div").style.padding = "0"
+ document.getElementById(naam + "-div").style.border = "0 none"
+ document.getElementById(naam + "-div").style.fontSize = "0"
+ document.getElementById(naam + "-div").style.fontFamily = "sans-serif"
+ document.getElementById(naam + "-tekst").style.textAlign = "center"
+}
+ document.getElementById("naar_menu_3-form").style.margin = "0"
+ document.getElementById("naar_menu_3-form").style.padding = "0"
+ document.getElementById("naar_menu_3-form").style.display = "inline"
+ document.getElementById("naar_menu_3-knop2").style.width = "100%"
+ document.getElementById("naar_menu_3-knop2").style.height = "50px"
+ document.getElementById("naar_menu_3-knop2").style.margin = "1px"
+ document.getElementById("naar_menu_3-knop2").style.fontFamily = "sans-serif"
+ document.getElementById("naar_menu_3-knop2").style.fontSize = "14px"
+ document.getElementById("naar_menu_3-submit").style.display = "none"
+ document.getElementById("naar_menu_3-div").style.width = "90%"
+ document.getElementById("naar_menu_3-div").style.margin = "0"
+ document.getElementById("naar_menu_3-div").style.padding = "0"
+ document.getElementById("naar_menu_3-div").style.border = "0 none"
+ document.getElementById("naar_menu_3-div").style.fontSize = "0"
+ document.getElementById("naar_menu_3-div").style.fontFamily = "sans-serif"
+
+for (i = 0; i < shellsarray.length - 1; i+=3) {
+ var naam = shellsarray[i]
+ var beschrijving = shellsarray[i+1]
+ var knopnummer1 = knoppenarray.length * 2 + 1
+ var knopnummer2 = knoppenarray.length * 2 + 2
+ document.getElementById("shells-knoppen").innerHTML = document.getElementById("shells-knoppen").innerHTML + 
+   "<div id='shell" + naam + "-div' style='width:90%;margin:0;padding:0;border:0 none;font-size:0;font-family:sans-serif'>"+
+   "<button id='shell" + naam + "' onclick='shellfunc(" + i + ")' style='width:100%;height:100%;padding:2px;margin:1px;word-wrap:break-word;font-family:sans-serif'><table style='width:100%;margin:0;padding:0;border:0 none;border-collapse:collapse;table-layout:fixed;font-family:sans-serif;vertical-align:middle'>" +
+      "<tr>" +
+       "<td style='width:3px'><img id='knop" + knopnummer1 + "' src='../Kern/Knoppen/Knophoogte.gif' alt=''></td>" +
+       "<td id='shell" + naam + "-tekst' style='text-align:center;word-wrap:break-word;font-size:14px'>" + beschrijving + "</td>" +
+       "<td style='width:3px'><img id='knop" + knopnummer2 + "' src='../Kern/Knoppen/Knophoogte.gif' alt=''></td>" +
+      "</tr>" +
+    "</table></button>" +
+    "<div id='shell" + naam + "-form-div'>" +
+    "<form id='shell" + naam + "-form' style='margin:0;padding:0;display:inline'>" +
+      "<input type='button' id='shell" + naam + "-knop2' onclick='shellfunc(" + i + ")' style='width:100%;height:50px;margin:1px;font-family:sans-serif;font-size:14px' value='" + beschrijving +"'>" +
+      "<input type='submit' id='shell" + naam + "-submit' style='display:none'>" +
+     "</form>" +
+    "</div>" +
+   "</div>"
+ knoppenarray[knoppenarray.length] = "shell" + naam
+}
+ document.getElementById("shells-knoppen").innerHTML = document.getElementById("shells-knoppen").innerHTML + 
+   "<div id='naar_menu_5-div' style='width:90%;margin:0;padding:0;border:0 none;font-size:0;font-family:sans-serif'>"+
+   "<button id='naar_menu_5' onclick='naarmenufunc()' style='width:100%;height:100%;padding:2px;margin:1px;word-wrap:break-word;font-family:sans-serif'><table style='width:100%;margin:0;padding:0;border:0 none;border-collapse:collapse;table-layout:fixed;font-family:sans-serif;vertical-align:middle'>" +
+      "<tr>" +
+       "<td style='width:3px'><img id='knop67' src='../Kern/Knoppen/Knophoogte.gif' alt=''></td>" +
+       "<td id='naar_menu_5-tekst' style='text-align:center;word-wrap:break-word;font-size:14px'>Terug naar het menu</td>" +
+       "<td style='width:3px'><img id='knop68' src='../Kern/Knoppen/Knophoogte.gif' alt=''></td>" +
+      "</tr>" +
+    "</table></button>" +
+    "<div id='naar_menu_5-form-div'>" +
+    "<form id='naar_menu_5-form' style='margin:0;padding:0;display:inline'>" +
+      "<input type='button' id='naar_menu_5-knop2' onclick='naarmenufunc()' style='width:100%;height:50px;margin:1px;font-family:sans-serif;font-size:14px' value=''>" +
+      "<input type='submit' id='naar_menu_5-submit' style='display:none'>" +
+     "</form>" +
+    "</div>" +
+   "</div>"
+for (i = 0; i < shellsarray.length - 1; i+=3) {
+ var naam = shellsarray[i]
+ document.getElementById("shell" + naam + "-form").style.margin = "0"
+ document.getElementById("shell" + naam + "-form").style.padding = "0"
+ document.getElementById("shell" + naam + "-form").style.display = "inline"
+ document.getElementById("shell" + naam + "-knop2").style.width = "100%"
+ document.getElementById("shell" + naam + "-knop2").style.height = "50px"
+ document.getElementById("shell" + naam + "-knop2").style.margin = "1px"
+ document.getElementById("shell" + naam + "-knop2").style.fontFamily = "sans-serif"
+ document.getElementById("shell" + naam + "-knop2").style.fontSize = "14px"
+ document.getElementById("shell" + naam + "-submit").style.display = "none"
+ document.getElementById("shell" + naam + "-div").style.width = "90%"
+ document.getElementById("shell" + naam + "-div").style.margin = "0"
+ document.getElementById("shell" + naam + "-div").style.padding = "0"
+ document.getElementById("shell" + naam + "-div").style.border = "0 none"
+ document.getElementById("shell" + naam + "-div").style.fontSize = "0"
+ document.getElementById("shell" + naam + "-div").style.fontFamily = "sans-serif"
+}
+ document.getElementById("naar_menu_5-form").style.margin = "0"
+ document.getElementById("naar_menu_5-form").style.padding = "0"
+ document.getElementById("naar_menu_5-form").style.display = "inline"
+ document.getElementById("naar_menu_5-knop2").style.width = "100%"
+ document.getElementById("naar_menu_5-knop2").style.height = "50px"
+ document.getElementById("naar_menu_5-knop2").style.margin = "1px"
+ document.getElementById("naar_menu_5-knop2").style.fontFamily = "sans-serif"
+ document.getElementById("naar_menu_5-knop2").style.fontSize = "14px"
+ document.getElementById("naar_menu_5-submit").style.display = "none"
+ document.getElementById("naar_menu_5-div").style.width = "90%"
+ document.getElementById("naar_menu_5-div").style.margin = "0"
+ document.getElementById("naar_menu_5-div").style.padding = "0"
+ document.getElementById("naar_menu_5-div").style.border = "0 none"
+ document.getElementById("naar_menu_5-div").style.fontSize = "0"
+ document.getElementById("naar_menu_5-div").style.fontFamily = "sans-serif"
+if (moduleswisselen == "uit") {
+  document.getElementById("module_kiezen-div").style.display = "none"
+}
+if (shellswisselen == "uit") {
+  document.getElementById("shells_kiezen-div").style.display = "none"
+}
+document.title = branding_titel
+if (balkzichtbaar == "aan") {
+  document.getElementById("balk").style.display = "block"
+}
+if (KGEdit == "aan") {
+ document.getElementById("links").innerHTML= document.getElementById("links").innerHTML + " &nbsp; <a href='../../KGEdit/KGEdit.html' id='link7' style='word-wrap:break-word;color:#000000;background-color:#FFFFFF'>KGEdit</a>"
+}
+if (donkeraan == "uit") {
+  document.getElementById("donker_aan-div").style.display = "none"
+  document.getElementById("donker_uit-div").style.display = "none"
+}
+opstartfunc()
+}
+
+ //----------Alle cookies verwijderen----------\\
+
+function clearListCookies() { 
+// Hier worden alle cookies verwijderd.
+deleteCookie("kgo_instellingen")
+for (i = 0; i < spelmodulesarray.length - 1; i+=2) {
+ deleteCookie("kgo_speldata_" + spelmodulesarray[i])
+}
+}
+
+ //----------Thema toepassen----------\\
+
+function themafunc() {
+ var spelmodulefunctie = spelmodule + "_strings"
+ var strings = window.frames["Module"][spelmodulefunctie]()
+ if (knopsimpel == "aan" && browservar == "vector") {
+  document.getElementById("naar_spel").innerHTML=strings[0]
+  document.getElementById("nieuw_spel").innerHTML=strings[1]
+  document.getElementById("nieuw_spel_2").innerHTML=strings[1]
+  document.getElementById("naar_menu").innerHTML=strings[2]
+  document.getElementById("naar_menu_2").innerHTML=strings[2]
+  document.getElementById("naar_menu_3").innerHTML=strings[2]
+  document.getElementById("naar_menu_4").innerHTML=strings[2]
+  document.getElementById("naar_menu_5").innerHTML=strings[2]
+  document.getElementById("instellingen").innerHTML=strings[3]
+  document.getElementById("module_kiezen").innerHTML=strings[4]
+  document.getElementById("overzicht").innerHTML=strings[5]
+  document.getElementById("gegevens_verwijderen").innerHTML=strings[6]
+  document.getElementById("partijsite").innerHTML=strings[7]
+  document.getElementById("chat_legen").innerHTML=strings[8]
+  document.getElementById("wanneer_verkiezingen").innerHTML=strings[9]
+  document.getElementById("geluid_aan").innerHTML=strings[10]
+  document.getElementById("geen_muziek").innerHTML=strings[11]
+  document.getElementById("geluid_uit").innerHTML=strings[12]
+  document.getElementById("donker_aan").innerHTML=strings[13]
+  document.getElementById("donker_uit").innerHTML=strings[14]
+  document.getElementById("tekstkleur_uit").innerHTML=strings[15]
+  document.getElementById("tekstkleur_aan").innerHTML=strings[16]
+  document.getElementById("versie").innerHTML=strings[17]
+  document.getElementById("contact").innerHTML=strings[18]
+  document.getElementById("honger").innerHTML=strings[19]
+  document.getElementById("aandacht").innerHTML=strings[20]
+  document.getElementById("kennis").innerHTML=strings[21]
+  document.getElementById("geluk").innerHTML=strings[22]
+  document.getElementById("geleefd").innerHTML=strings[23]
+  document.getElementById("herstarten").innerHTML=strings[24]
+  document.getElementById("jaspel").innerHTML=strings[25]
+  document.getElementById("neespel").innerHTML=strings[26]
+  document.getElementById("javerwijderen").innerHTML=strings[25]
+  document.getElementById("neeverwijderen").innerHTML=strings[26]
+  document.getElementById("thema_kiezen").innerHTML=strings[30]
+ }
+ else if (knopsimpel == "aan" && browservar != "vector") {
+  document.getElementById("naar_spel-knop2").value=strings[0]
+  document.getElementById("nieuw_spel-knop2").value=strings[1]
+  document.getElementById("nieuw_spel_2-knop2").value=strings[1]
+  document.getElementById("naar_menu-knop2").value=strings[2]
+  document.getElementById("naar_menu_2-knop2").value=strings[2]
+  document.getElementById("naar_menu_3-knop2").value=strings[2]
+  document.getElementById("naar_menu_4-knop2").value=strings[2]
+  document.getElementById("naar_menu_5-knop2").value=strings[2]
+  document.getElementById("instellingen-knop2").value=strings[3]
+  document.getElementById("module_kiezen-knop2").value=strings[4]
+  document.getElementById("overzicht-knop2").value=strings[5]
+  document.getElementById("gegevens_verwijderen-knop2").value=strings[6]
+  document.getElementById("partijsite-knop2").value=strings[7]
+  document.getElementById("chat_legen-knop2").value=strings[8]
+  document.getElementById("wanneer_verkiezingen-knop2").value=strings[9]
+  document.getElementById("geluid_aan-knop2").value=strings[10]
+  document.getElementById("geen_muziek-knop2").value=strings[11]
+  document.getElementById("geluid_uit-knop2").value=strings[12]
+  document.getElementById("donker_aan-knop2").value=strings[13]
+  document.getElementById("donker_uit-knop2").value=strings[14]
+  document.getElementById("tekstkleur_uit-knop2").value=strings[15]
+  document.getElementById("tekstkleur_aan-knop2").value=strings[16]
+  document.getElementById("versie-knop2").value=strings[17]
+  document.getElementById("contact-knop2").value=strings[18]
+  document.getElementById("honger").value=strings[19]
+  document.getElementById("aandacht").value=strings[20]
+  document.getElementById("kennis").value=strings[21]
+  document.getElementById("geluk").value=strings[22]
+  document.getElementById("geleefd").value=strings[23]
+  document.getElementById("herstarten-knop2").value=strings[24]
+  document.getElementById("jaspel-knop2").value=strings[25]
+  document.getElementById("neespel-knop2").value=strings[26]
+  document.getElementById("javerwijderen-knop2").value=strings[25]
+  document.getElementById("neeverwijderen-knop2").value=strings[26]
+  document.getElementById("hongerknop-knop2").value=strings[27]
+  document.getElementById("aandachtknop-knop2").value=strings[28]
+  document.getElementById("kennisknop-knop2").value=strings[29]
+  document.getElementById("thema_kiezen-knop2").value=strings[30]
+ }
+ else {
+  document.getElementById("naar_spel-tekst").innerHTML="<center>" + strings[0] + "</center>"
+  document.getElementById("nieuw_spel-tekst").innerHTML="<center>" + strings[1] + "</center>"
+  document.getElementById("nieuw_spel_2-tekst").innerHTML="<center>" + strings[1] + "</center>"
+  document.getElementById("naar_menu-tekst").innerHTML="<center>" + strings[2] + "</center>"
+  document.getElementById("naar_menu_2-tekst").innerHTML="<center>" + strings[2] + "</center>"
+  document.getElementById("naar_menu_3-tekst").innerHTML="<center>" + strings[2] + "</center>"
+  document.getElementById("naar_menu_4-tekst").innerHTML="<center>" + strings[2] + "</center>"
+  document.getElementById("naar_menu_5-tekst").innerHTML="<center>" + strings[2] + "</center>"
+  document.getElementById("instellingen-tekst").innerHTML="<center>" + strings[3] + "</center>"
+  document.getElementById("module_kiezen-tekst").innerHTML="<center>" + strings[4] + "</center>"
+  document.getElementById("overzicht-tekst").innerHTML="<center>" + strings[5] + "</center>"
+  document.getElementById("gegevens_verwijderen-tekst").innerHTML="<center>" + strings[6] + "</center>"
+  document.getElementById("partijsite-tekst").innerHTML="<center>" + strings[7] + "</center>"
+  document.getElementById("chat_legen-tekst").innerHTML="<center>" + strings[8] + "</center>"
+  document.getElementById("wanneer_verkiezingen-tekst").innerHTML="<center>" + strings[9] + "</center>"
+  document.getElementById("geluid_aan-tekst").innerHTML="<center>" + strings[10] + "</center>"
+  document.getElementById("geen_muziek-tekst").innerHTML="<center>" + strings[11] + "</center>"
+  document.getElementById("geluid_uit-tekst").innerHTML="<center>" + strings[12] + "</center>"
+  document.getElementById("donker_aan-tekst").innerHTML="<center>" + strings[13] + "</center>"
+  document.getElementById("donker_uit-tekst").innerHTML="<center>" + strings[14] + "</center>"
+  document.getElementById("tekstkleur_uit-tekst").innerHTML="<center>" + strings[15] + "</center>"
+  document.getElementById("tekstkleur_aan-tekst").innerHTML="<center>" + strings[16] + "</center>"
+  document.getElementById("versie-tekst").innerHTML="<center>" + strings[17] + "</center>"
+  document.getElementById("contact-tekst").innerHTML="<center>" + strings[18] + "</center>"
+  document.getElementById("honger").innerHTML= strings[19]
+  document.getElementById("aandacht").innerHTML= strings[20]
+  document.getElementById("kennis").innerHTML= strings[21]
+  document.getElementById("geluk").innerHTML= strings[22]
+  document.getElementById("geleefd").innerHTML= strings[23]
+  document.getElementById("herstarten-tekst").innerHTML="<center>" + strings[24] + "</center>"
+  document.getElementById("jaspel-tekst").innerHTML="<center>" + strings[25] + "</center>"
+  document.getElementById("neespel-tekst").innerHTML="<center>" + strings[26] + "</center>"
+  document.getElementById("javerwijderen-tekst").innerHTML="<center>" + strings[25] + "</center>"
+  document.getElementById("neeverwijderen-tekst").innerHTML="<center>" + strings[26] + "</center>"
+  document.getElementById("thema_kiezen-tekst").innerHTML="<center>" + strings[30] + "</center>"
+ }
+ document.getElementById("bevestigingspel").innerHTML=strings[31]
+ document.getElementById("bevestigingverwijder").innerHTML=strings[32]
+
+ if (donkeremodus == "aan" && donkeraan != "uit" && browservar != "mono") {
+  var achtervoegseldonker = "donker"
+ }
+ else{
+  var achtervoegseldonker = "licht"
+ }
+ switch(browservar) {
+ case "vector":
+  if (knopsimpel == "aan") {
+   document.getElementById("hongerknop").innerHTML="<img src='../Kern/Knoppen/Honger/Honger-" + achtervoegseldonker + ".svg' alt='" + strings[27] + "' style='vertical-align:middle;height:calc(100vw / 24);min-height:50px;max-width:100%'>"
+   document.getElementById("aandachtknop").innerHTML="<img src='../Kern/Knoppen/Aandacht/Aandacht-" + achtervoegseldonker + ".svg' alt='" + strings[28] + "' style='vertical-align:middle;height:calc(100vw / 24);min-height:50px;max-width:100%'>"
+   document.getElementById("kennisknop").innerHTML="<img src='../Kern/Knoppen/Kennis/Kennis-" + achtervoegseldonker + ".svg' alt='" + strings[29] + "' style='vertical-align:middle;height:calc(100vw / 24);min-height:50px;max-width:100%'>"
+  }
+  else {
+   document.getElementById("hongerknop-tekst").innerHTML="<img src='../Kern/Knoppen/Honger/Honger-" + achtervoegseldonker + ".svg' alt='" + strings[27] + "' style='vertical-align:middle;height:calc(100vw / 24);min-height:50px;max-width:100%'>"
+   document.getElementById("aandachtknop-tekst").innerHTML="<img src='../Kern/Knoppen/Aandacht/Aandacht-" + achtervoegseldonker + ".svg' alt='" + strings[28] + "' style='vertical-align:middle;height:calc(100vw / 24);min-height:50px;max-width:100%'>"
+   document.getElementById("kennisknop-tekst").innerHTML="<img src='../Kern/Knoppen/Kennis/Kennis-" + achtervoegseldonker + ".svg' alt='" + strings[29] + "' style='vertical-align:middle;height:calc(100vw / 24);min-height:50px;max-width:100%'>"
+  }
+ break
+ case "transparent":
+  if (knopsimpel == "aan") {
+   document.getElementById("hongerknop").innerHTML="<img src='../Kern/Knoppen/Honger/Honger-" + achtervoegseldonker + ".png' alt='" + strings[27] + "' style='vertical-align:middle'>"
+   document.getElementById("aandachtknop").innerHTML="<img src='../Kern/Knoppen/Aandacht/Aandacht-" + achtervoegseldonker + ".png' alt='" + strings[28] + "' style='vertical-align:middle'>"
+   document.getElementById("kennisknop").innerHTML="<img src='../Kern/Knoppen/Kennis/Kennis-" + achtervoegseldonker + ".png' alt='" + strings[29] + "' style='vertical-align:middle'>"
+  }
+  else {
+   document.getElementById("hongerknop-tekst").innerHTML="<img src='../Kern/Knoppen/Honger/Honger-" + achtervoegseldonker + ".png' alt='" + strings[27] + "' style='vertical-align:middle'>"
+   document.getElementById("aandachtknop-tekst").innerHTML="<img src='../Kern/Knoppen/Aandacht/Aandacht-" + achtervoegseldonker + ".png' alt='" + strings[28] + "' style='vertical-align:middle'>"
+   document.getElementById("kennisknop-tekst").innerHTML="<img src='../Kern/Knoppen/Kennis/Kennis-" + achtervoegseldonker + ".png' alt='" + strings[29] + "' style='vertical-align:middle'>"
+  }
+ break
+ case "solid":
+  if (knopsimpel == "aan") {
+   document.getElementById("hongerknop").innerHTML="<img src='../Kern/Knoppen/Honger/Honger-" + achtervoegseldonker + ".gif' alt='" + strings[27] + "'  style='vertical-align:middle'>"
+   document.getElementById("aandachtknop").innerHTML="<img src='../Kern/Knoppen/Aandacht/Aandacht-" + achtervoegseldonker + ".gif' alt='" + strings[28] + "' style='vertical-align:middle'>"
+   document.getElementById("kennisknop").innerHTML="<img src='../Kern/Knoppen/Kennis/Kennis-" + achtervoegseldonker + ".gif' alt='" + strings[29] + "' style='vertical-align:middle'>"
+  }
+  else {
+   document.getElementById("hongerknop-tekst").innerHTML="<img src='../Kern/Knoppen/Honger/Honger-" + achtervoegseldonker + ".gif' alt='" + strings[27] + "' style='vertical-align:middle'>"
+   document.getElementById("aandachtknop-tekst").innerHTML="<img src='../Kern/Knoppen/Aandacht/Aandacht-" + achtervoegseldonker + ".gif' alt='" + strings[28] + "' style='vertical-align:middle'>"
+   document.getElementById("kennisknop-tekst").innerHTML="<img src='../Kern/Knoppen/kennis/Kennis-" + achtervoegseldonker + ".gif' alt='" + strings[29] + "' style='vertical-align:middle'>"
+  }
+ break
+ case "mono":
+  if (knopsimpel == "aan") {
+   document.getElementById("hongerknop").innerHTML="<img src='../Kern/Knoppen/Honger/Honger-mono.gif' alt='" + strings[27] + "' style='vertical-align:middle'>"
+   document.getElementById("aandachtknop").innerHTML="<img src='../Kern/Knoppen/Aandacht/Aandacht-mono.gif' alt='" + strings[28] + "' style='vertical-align:middle'>"
+   document.getElementById("kennisknop").innerHTML="<img src='../Kern/Knoppen/Kennis/Kennis-mono.gif' alt='" + strings[29] + "'style='vertical-align:middle'>"
+  }
+  else {
+   document.getElementById("hongerknop-tekst").innerHTML="<img src='../Kern/Knoppen/Honger/Honger-mono.gif' alt='" + strings[27] + "' style='vertical-align:middle'>"
+   document.getElementById("aandachtknop-tekst").innerHTML="<img src='../Kern/Knoppen/Aandacht/Aandacht-mono.gif' alt='" + strings[28] + "' style='vertical-align:middle'>"
+   document.getElementById("kennisknop-tekst").innerHTML="<img src='../Kern/Knoppen/Kennis/Kennis-mono.gif' alt='" + strings[29] + "'style='vertical-align:middle'>"
+ }
+ break
+ }
+
+ if (donkeremodus == "aan" && donkeraan != "uit" && browservar != "mono" && donkeraan != "uit") {
+  window.frames["Module"].document.body.lang = moduletaal
+  window.frames["Module"].document.body.style.color = "#D3D3D3"
+  window.frames["Module"].document.body.style.backgroundColor = "#D3D3D3"
+  window.frames["Module"].document.body.bgColor = "#D3D3D3"
+  document.getElementById("body").style.backgroundColor = achtergrondkleur
+  document.getElementById("body").bgColor = achtergrondkleur
+  document.getElementById("body").style.color = "#D3D3D3"
+  document.getElementById("body").text = "#D3D3D3"
+  document.getElementById("body").lang = moduletaal
+  try {
+   if (typeof window.parent.kgo_Achtergrondkleurbijwerken() == "function") {
+    window.parent.kgo_Achtergrondkleurbijwerken()
+   }
+  }
+  catch(error) {
+   var niets = error
+  }
+  document.getElementById("balk1").style.color = "#D3D3D3"
+  document.getElementById("balk1").style.backgroundColor = "#474747"
+  document.getElementById("balk2").style.color = "#474747"
+  document.getElementById("balk2").style.backgroundColor = "#3D3D3D"
+  document.getElementById("chattabel").style.color = "#D3D3D3"
+  document.getElementById("chattabel").style.backgroundColor = "#3D3D3D"
+  document.getElementById("chattabel").style.border = "1px solid #3D3D3D"
+  document.getElementById("chat").style.color = "#D3D3D3"
+  document.getElementById("chat").style.backgroundColor = "#474747"
+  document.getElementById("bevestigingspel-div").style.color = "#D3D3D3"
+  document.getElementById("bevestigingspel-div").style.backgroundColor = "#474747"
+  document.getElementById("bevestigingspel-div").style.border = "1px solid #000000"
+  document.getElementById("bevestigingspel").style.color = "#D3D3D3"
+  document.getElementById("bevestigingspel").style.backgroundColor = "#474747"
+  document.getElementById("bevestigingverwijderen-div").style.color = "#D3D3D3"
+  document.getElementById("bevestigingverwijderen-div").style.backgroundColor = "#474747"
+  document.getElementById("bevestigingverwijderen-div").style.border = "1px solid #000000"
+  document.getElementById("bevestigingverwijder").style.color = "#D3D3D3"
+  document.getElementById("bevestigingverwijder").style.backgroundColor = "#474747"
+  if (KGEdit == "aan") {
+   var aantallinks = 8
+  }
+  else {
+   var aantallinks = 7
+  }
+  for (i = 1; i < aantallinks; i++) {
+   document.getElementById("link" + i).style.color = "#D3D3D3"
+   document.getElementById("link" + i).style.backgroundColor = "#474747"
+  }
+ }
+ else {
+  window.frames["Module"].document.body.lang = moduletaal
+  window.frames["Module"].document.body.style.color = "#000000"
+  window.frames["Module"].document.body.style.backgroundColor = "#000000"
+  window.frames["Module"].document.body.bgColor = "#000000"
+  document.getElementById("body").style.backgroundColor = achtergrondkleur
+  document.getElementById("body").bgColor = achtergrondkleur
+  document.getElementById("body").style.color = "#000000"
+  document.getElementById("body").text = "#000000"
+  document.getElementById("body").lang = moduletaal
+  try {
+   if (typeof window.parent.kgo_Achtergrondkleurbijwerken() == "function") {
+    window.parent.kgo_Achtergrondkleurbijwerken()
+   }
+  }
+  catch(error) {
+   var niets = error
+  }
+  document.getElementById("balk1").style.color = "#000000"
+  document.getElementById("balk1").style.backgroundColor = "#FFFFFF"
+  document.getElementById("balk2").style.color = "#FFFFFF"
+  document.getElementById("balk2").style.backgroundColor = "#000000"
+  document.getElementById("chattabel").style.color = "#000000"
+  document.getElementById("chattabel").style.backgroundColor = "#FFFFFF"
+  document.getElementById("chattabel").style.border = "1px solid #000000"
+  document.getElementById("chat").style.color = "#000000"
+  document.getElementById("chat").style.backgroundColor = "#FFFFFF"
+  document.getElementById("bevestigingspel-div").style.color = "#000000"
+  document.getElementById("bevestigingspel-div").style.backgroundColor = "#FFFFFF"
+  document.getElementById("bevestigingspel-div").style.border = "1px solid #000000"
+  document.getElementById("bevestigingspel").style.color = "#000000"
+  document.getElementById("bevestigingspel").style.backgroundColor = "#FFFFFF"
+  document.getElementById("bevestigingverwijderen-div").style.color = "#000000"
+  document.getElementById("bevestigingverwijderen-div").style.backgroundColor = "#FFFFFF"
+  document.getElementById("bevestigingverwijderen-div").style.border = "1px solid #000000"
+  document.getElementById("bevestigingverwijder").style.color = "#000000"
+  document.getElementById("bevestigingverwijder").style.backgroundColor = "#FFFFFF"
+  if (KGEdit == "aan") {
+   var aantallinks = 8
+  }
+  else {
+   var aantallinks = 7
+  }
+  for (i = 1; i < aantallinks; i++) {
+   document.getElementById("link" + i).style.color = "#000000"
+   document.getElementById("link" + i).style.backgroundColor = "#FFFFFF"
+  }
+ }
+
+ if (browservar != "vector" && knopsimpel == "aan") {
+  for (i = 0; i < knoppenarray.length; i++) {
+   document.getElementById(knoppenarray[i]).style.display = "none"
+  }
+
+  for (i = 0; i < knoppenarray.length; i++) {
+   thema2func(knoppenarray[i] + "-knop2", browservar, knopsimpel, donkeremodus)
+  }
+ }
+ else {
+  for (i = 0; i < knoppenarray.length; i++) {
+   var x = knoppenarray[i] + "-form-div"
+   document.getElementById(x).innerHTML = ""
+   thema2func(knoppenarray[i], browservar, knopsimpel, donkeremodus)
+   if (knopsimpel != "aan") {
+    thema2func(knoppenarray[i] + "-tekst", browservar, knopsimpel, donkeremodus)
+   }
+  }
+ }
+
+ if (knopsimpel == "aan") {
+  for (i = 0; i < spelmodulesarray.length; i+=2) {
+   document.getElementById(spelmodulesarray[i]).innerHTML=spelmodulesarray[i+1]
+  }
+  for (i = 0; i < shellsarray.length - 1; i+=3) {
+   document.getElementById("shell" + shellsarray[i]).innerHTML=shellsarray[i+1]
+  }
+ }
+
+ if (/Gecko/i.test(navigator.userAgent) || /Opera 7.0/i.test(navigator.userAgent)) {
+  if (/Gecko/i.test(navigator.userAgent) && /; 0.8\)/i.test(navigator.userAgent) || /Gecko/i.test(navigator.userAgent) && /; 0.7\)/i.test(navigator.userAgent) || /Gecko/i.test(navigator.userAgent) && /; 0.6\)/i.test(navigator.userAgent) || /Gecko/i.test(navigator.userAgent) && /; M18\)/i.test(navigator.userAgent) || /Gecko/i.test(navigator.userAgent) && /; M17\)/i.test(navigator.userAgent) || /Gecko/i.test(navigator.userAgent) && /; M16\)/i.test(navigator.userAgent) || /Gecko/i.test(navigator.userAgent) && /; M15\)/i.test(navigator.userAgent) || /Gecko/i.test(navigator.userAgent) && /; M14\)/i.test(navigator.userAgent) || /Gecko/i.test(navigator.userAgent) && /; M13\)/i.test(navigator.userAgent) || /Gecko/i.test(navigator.userAgent) && /; M12\)/i.test(navigator.userAgent)  || /Gecko/i.test(navigator.userAgent) && /; M11\)/i.test(navigator.userAgent)  || /Gecko/i.test(navigator.userAgent) && /; M10\)/i.test(navigator.userAgent)  || /Gecko/i.test(navigator.userAgent) && /; M9\)/i.test(navigator.userAgent)  || /Gecko/i.test(navigator.userAgent) && /; M8\)/i.test(navigator.userAgent)  || /Gecko/i.test(navigator.userAgent) && /; M7\)/i.test(navigator.userAgent)  || /Gecko/i.test(navigator.userAgent) && /; M6\)/i.test(navigator.userAgent)  || /Gecko/i.test(navigator.userAgent) && /; M5\)/i.test(navigator.userAgent)  || /Gecko/i.test(navigator.userAgent) && /; M4\)/i.test(navigator.userAgent)  || /Gecko/i.test(navigator.userAgent) && /; M13\)/i.test(navigator.userAgent)  || /Gecko/i.test(navigator.userAgent) && /; M3\)/i.test(navigator.userAgent)  || /Gecko/i.test(navigator.userAgent) && /; M2\)/i.test(navigator.userAgent)  || /Gecko/i.test(navigator.userAgent) && /; M1\)/i.test(navigator.userAgent)) {
+   for (i = 0; i < knoppenarray.length; i++) {
+    document.getElementById(knoppenarray[i] + "-knop2").style.height = ""
+   }
+  }
+
+  if (/Opera 7.0/i.test(navigator.userAgent) || /Gecko/i.test(navigator.userAgent) && /; 0.6\)/i.test(navigator.userAgent) || /Gecko/i.test(navigator.userAgent) && /; M18\)/i.test(navigator.userAgent) || /Gecko/i.test(navigator.userAgent) && /; M17\)/i.test(navigator.userAgent) || /Gecko/i.test(navigator.userAgent) && /; M16\)/i.test(navigator.userAgent) || /Gecko/i.test(navigator.userAgent) && /; M15\)/i.test(navigator.userAgent) || /Gecko/i.test(navigator.userAgent) && /; M14\)/i.test(navigator.userAgent) || /Gecko/i.test(navigator.userAgent) && /; M13\)/i.test(navigator.userAgent) || /Gecko/i.test(navigator.userAgent) && /; M12\)/i.test(navigator.userAgent)  || /Gecko/i.test(navigator.userAgent) && /; M11\)/i.test(navigator.userAgent)  || /Gecko/i.test(navigator.userAgent) && /; M10\)/i.test(navigator.userAgent)  || /Gecko/i.test(navigator.userAgent) && /; M9\)/i.test(navigator.userAgent)  || /Gecko/i.test(navigator.userAgent) && /; M8\)/i.test(navigator.userAgent)  || /Gecko/i.test(navigator.userAgent) && /; M7\)/i.test(navigator.userAgent)  || /Gecko/i.test(navigator.userAgent) && /; M6\)/i.test(navigator.userAgent)  || /Gecko/i.test(navigator.userAgent) && /; M5\)/i.test(navigator.userAgent)  || /Gecko/i.test(navigator.userAgent) && /; M4\)/i.test(navigator.userAgent)  || /Gecko/i.test(navigator.userAgent) && /; M13\)/i.test(navigator.userAgent)  || /Gecko/i.test(navigator.userAgent) && /; M3\)/i.test(navigator.userAgent)  || /Gecko/i.test(navigator.userAgent) && /; M2\)/i.test(navigator.userAgent)  || /Gecko/i.test(navigator.userAgent) && /; M1\)/i.test(navigator.userAgent)) {
+   document.getElementById("knoppentabel").style.textAlign = "center"
+   for (i = 0; i < knoppenarray.length; i++) {
+    document.getElementById(knoppenarray[i] + "-knop2").style.width = "350px"
+   }
+  }
+ }
+
+ if (/MSIE /i.test(navigator.userAgent) && /Mac_PowerPC/i.test(navigator.userAgent)) {
+     for (i = 0; i < knoppenarray.length; i++) {
+    var test = document.getElementById(knoppenarray[i] + "-div").innerHTML
+    document.getElementById(knoppenarray[i] + "-div").innerHTML = " "
+    document.getElementById(knoppenarray[i] + "-div").innerHTML = test
+   }
+  document.getElementById("chat").style.overflow = "visible"
+ }
+
+ if (browservar == "vector") {
+  if (knopsimpel == "aan") {
+   tekstgroottesimpel()
+   setInterval(tekstgroottesimpel, 1000)
+  }
+  else {
+   var knopafbeeldingen = knoppenarray.length * 2 + 1
+   for (i = 1; i < knopafbeeldingen; i++) {
+    document.getElementById("knop" + i).setAttribute ("style", "vertical-align:middle;height:calc(100vw / 24);min-height:50px;width:1px")
+   }
+   tekstgrootte()
+   setInterval(tekstgrootte, 1000)
+  }
+ }
+}
+
+function thema2func(input, browservar, knopsimpel, donkeremodus) {
+ if (donkeremodus == "aan" && donkeraan != "uit" && browservar != "mono" && donkeraan != "uit") {
+  document.getElementById(input).style.color = "#D3D3D3"
+  document.getElementById(input).style.backgroundColor = "#474747"
+  document.getElementById(input).style.borderColor = "#3D3D3D"
+ }
+ else if (browservar != "mono") {
+  document.getElementById(input).style.color = "#000000"
+  document.getElementById(input).style.backgroundColor = "#EFEFEF"
+  document.getElementById(input).style.borderColor = "#FEFEFE"
+ }
+ else {
+  document.getElementById(input).style.color = "#000000"
+  document.getElementById(input).style.backgroundColor = "#FFFFFF"
+  document.getElementById(input).style.borderColor = "#000000"
+ }
+
+ if (knopsimpel == "aan" && browservar == "transparent") {
+  document.getElementById(input).style.fontSize = "14px"
+  document.getElementById(input).style.minHeight = "60px"
+ }
+
+ if (knopsimpel == "aan" && browservar == "solid" || knopsimpel == "aan" && browservar == "mono") {
+  document.getElementById(input).style.fontSize = "14px"
+  document.getElementById(input).style.height = "60px"
+ }
+}
+
+//----------Tekstfunctie----------\\
+
+function tekstfunc (tekst2var, modus) {
+ var tekst = tekst2var
+ if (browservar == "mono" || donkeremodus == "aan" && donkeraan != "uit" && browservar != "mono" && donkeraan != "uit") {
+  var tekstkleur2var = "uit"
+ }
+ else {
+  var tekstkleur2var = gekleurdetekst
+ }
+ var spelmodulefunctie = spelmodule + "_tekstfunc"
+ if (/Netscape6/i.test(navigator.userAgent) && /6.1/i.test(navigator.userAgent)) {
+  document.getElementById("chat").style.display = "none"
+ }
+
+ var array = window.frames["Module"][spelmodulefunctie](tekst2var, modus, versie, lijsttrekker, lijsttrekkerinstellingen, hongertijd, aandachttijd, kennistijd)
+ array = array.split("<|>")
+ var tekst = array[0]
+ var kleur = array[1]
+ if (tekstkleur2var == "aan") {
+  var chatvar = "<a style='color:" + kleur + "'>" + tekst + "</a><br><br>" + document.getElementById("chat").innerHTML
+  var chatarray = chatvar.split('<br><br>',25)
+  var chatvar = chatarray.join('<br><br>')
+  document.getElementById("chat").innerHTML= chatvar
+ }
+ else {
+  var chatvar = tekst + "<br><br>" + document.getElementById("chat").innerHTML
+  var chatarray = chatvar.split('<br><br>',25)
+  var chatvar = chatarray.join('<br><br>')
+  document.getElementById("chat").innerHTML= chatvar
+ }
+
+ if (/Netscape6/i.test(navigator.userAgent) && /6.1/i.test(navigator.userAgent)) {
+  document.getElementById("chat").style.display = "block"
+ }
+ return tekst
+}
+
+//----------Wisselen van vaste naar variabele tekstgrootte----------\\
+
+function tekstgrootte(){
+ var breedte = document.body.clientWidth
+ for (i = 0; i < knoppenarray.length; i++) {
+  tekstgrootte2(knoppenarray[i] + "-tekst", breedte)
+ }
+
+ if (breedte > 1200) {
+  document.getElementById("chat").style.fontSize = "1vw"
+  document.getElementById("chat").style.height = "11vw"
+  document.getElementById("chattabel").style.height = "11vw"
+ }
+ else {
+  document.getElementById("chat").style.fontSize = "14px"
+  document.getElementById("chat").style.height = "150px"
+  document.getElementById("chattabel").style.height = "150px"
+ }
+}
+
+//------------------------\\
+
+function tekstgroottesimpel(){
+ var breedte = document.body.clientWidth
+ for (i = 0; i < knoppenarray.length; i++) {
+  tekstgrootte2(knoppenarray[i], breedte)
+ }
+
+ if (breedte > 1200) {
+  document.getElementById("chat").style.fontSize = "1vw"
+  document.getElementById("chat").style.height = "11vw"
+  document.getElementById("chattabel").style.height = "11vw"
+ }
+ else {
+  document.getElementById("chat").style.fontSize = "14px"
+  document.getElementById("chat").style.height = "150px"
+  document.getElementById("chattabel").style.height = "150px"
+ }
+}
+
+//------------------------\\
+
+function tekstgrootte2 (input, breedte){
+ if (breedte > 1200) {
+  document.body.style.fontSize = "1vw"
+  document.getElementById(input).style.fontSize = "1vw"
+  document.getElementById(input).style.minHeight = "calc(100vw / 24)"
+ }
+ else {
+  document.body.style.fontSize = "14px"
+  document.getElementById(input).style.fontSize = "14px"
+  document.getElementById(input).style.minHeight = "60px"
+ }
+}
+  </script>
+ </div>
+</center>
+</body>
+</html>

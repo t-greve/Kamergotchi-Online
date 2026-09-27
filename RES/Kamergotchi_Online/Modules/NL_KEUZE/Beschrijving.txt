@@ -1,0 +1,1 @@
+Een module waarbij je een afbeelding van het internet als Kamergotchi kunt gebruiken.

@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="nl-NL" style="width:100%;height:100%;margin:0;padding:0;border:0 none">
+
+ <!--Kamergotchi is oorspronkelijk bedacht door Arjen Lubach van het VPRO-programma Zondag met Lubach.-->
+ <!--https://www.vpro.nl/zondag-met-lubach.html-->
+ <!--Webpagina en programma door Thomas Greve, met delen van het internet-->
+
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+ <meta http-equiv="MSThemeCompatible" content="Yes">
+ <meta http-equiv="Content-Script-Type" content="text/javascript">
+ <meta http-equiv="Content-Style-Type" content="text/css">
+ <meta name="title" content="Kamergotchi Online">
+ <meta name="description" content="Speel Kamergotchi op het internet! Verzorg je lijsttrekker en probeer hem of haar zo lang mogelijk in leven te houden.">
+ <meta name="Subject" content="Kamergotchi">
+ <meta name="keywords" content="Kamergotchi Online, Kamergotchi, Zondag met Lubach, game">
+ <meta name="copyright" content="Kamergotchi is oorspronkelijk bedacht door Arjen Lubach van het VPRO-programma Zondag met Lubach: https://www.vpro.nl/zondag-met-lubach.html">
+ <meta name="page-type" content="Game">
+ <meta name="robots" content="index, nofollow">
+ <meta name="Generator" content="Notepad">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="HandheldFriendly" content="true">
+
+ <title>Kamergotchi Online</title>
+
+ <!--Standaard favicon -->
+ <link rel="shortcut icon" type="image/x-icon" sizes="16x16 24x24 32x32 48x48 64x64" href="../../favicon.ico">
+ <link rel="icon" type="image/x-icon" sizes="16x16 24x24 32x32 48x48 64x64" href="../../favicon.ico">
+
+ <!--Icoontjes voor het startscherm van iPhone OS/iOS/iPadOS-->
+ <meta name="apple-mobile-web-app-capable" content="yes">
+ <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon-180x180.png">
+ <link rel="apple-touch-icon" sizes="167x167" href="../../apple-touch-icon-167x167.png">  
+ <link rel="apple-touch-icon" sizes="152x152" href="../../apple-touch-icon-152x152.png">
+ <link rel="apple-touch-icon" sizes="120x120" href="../../apple-touch-icon-120x120.png">
+ <link rel="apple-touch-icon" sizes="114x114" href="../../apple-touch-icon-114x114.png">
+ <link rel="apple-touch-icon" sizes="76x76" href="../../apple-touch-icon-76x76.png">
+ <link rel="apple-touch-icon" sizes="72x72" href="../../apple-touch-icon-72x72.png">
+ <link rel="apple-touch-icon" sizes="60x60" href="../../apple-touch-icon-60x60.png">
+ <link rel="apple-touch-icon" sizes="57x57" href="../../apple-touch-icon-57x57.png">
+
+ <!--Icoon voor een vastgezet tablad op Safari voor Mac-->
+ <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#DA3332">
+
+ <!--PNG-favicons-->
+ <link rel="icon" type="image/png" sizes="192x192" href="../../android-chrome-192x192.png">
+ <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+ <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+ <meta name="mobile-web-app-capable" content="yes">
+ <link rel="manifest" href="../../site.webmanifest">
+ <meta name="theme-color" content="#5AB5D8" media="(prefers-color-scheme: light)">
+ <meta name="theme-color" content="#2D5A6B" media="(prefers-color-scheme: dark)">
+
+ <!--Icoontjes voor tegeltjes in Windows en Windows Phone-->
+ <meta name="msapplication-TileColor" content="#5AB5D8">
+ <meta name="msapplication-TileImage" content="../../mstile-144x144.png">
+ <meta name="msapplication-config" content="../../browserconfig.xml">
+
+ <!--Internet Explorer 5 en 6 vergeten de favicon nadat de cache is geleegd totdat de pagina opnieuw aan de favorieten wordt toegevoegd of wordt geladen-->
+ <!--[if lte IE 6]>
+  <script type="text/javascript" language="JavaScript">
+   (new Image).src="../../favicon.ico"
+  </script>
+ <![endif]-->
+
+ <script type="text/javascript" language="JavaScript">
+ <!--
+  //Zorgt ervoor dat er geen foutmedingen worden weergegeven. Sommige oude browsers worden anders overspoeld met foutmeldingen.
+  window.onerror = silenterror
+  function silenterror() {
+   return true
+ }
+ //-->
+ </script>
+</head>
+
+<body id="body" onload="opstartfunc()" style="width:100%;height:100%;margin:0;padding:0;border:0 none;font-size:14px;font-family:sans-serif;overflow:hidden;-ms-overflow-style:none">
+ <iframe id="spelframe" name="spelframe" frameBorder=0 topmargin=0 bottommargin=0 leftmargin=0 rightmargin=0 marginheight=0 marginwidth=0 seamless="seamless" scrolling="yes" style="margin:0;padding:0;border:0;width:100%;height:100%;min-height:100%"></iframe>
+ <div id="scripts" style="display:none">
+ <script type="text/javascript" language="JavaScript1.1" src="Config.js" id="Configuratiebestand"></script>
+ <script type="text/javascript" language="JavaScript1.1">
+//Globale variabelen
+//instellingen
+var instellingen
+var instellingensaveversie
+var copyrightgezien
+var browservar
+var spelmodule
+var geluid
+var donkeremodus
+var gekleurdetekst
+var shell
+var grenzen
+//spel
+var speldatatotaal
+var speldatageneriek
+var speldataversiespecifiek
+var speldatamodule
+var saveversie
+var spelspecifiekesaveversie
+var honger
+var hongerkeren
+var hongertijd
+var hongertijdslot
+var aandacht
+var aandachtkeren
+var aandachttijd
+var aandachttijdslot
+var kennis
+var kenniskeren
+var kennistijd
+var kennistijdslot
+var keuzekeren
+var ziekte
+var lijsttrekker
+var lijsttrekkerinstellingen
+var tijd
+var begintijd
+//tests
+var audiotest
+var lstest
+//configuratie
+var spelmodulesarray
+var shellsarray
+var achtergrondkleur
+var spelmoduletaal
+var spelmoduleswisselen
+var shellswisselen
+var balkzichtbaar
+var KGEdit
+var HTTPSaan
+var donkeraan
+var donkerstandaard
+var versie
+var hongerkeuzes
+var aandachtkeuzes
+var kenniskeuzes
+var keuzes
+var keuzegrens
+var hongertijd
+var aandachttijd
+var kennistijd
+var interval
+var hongeromlaaglaag
+var hongeromlaagmiddel
+var hongeromlaaghoog
+var hongeromhooglaag
+var hongeromhooghoog
+var aandachtomlaaglaag
+var aandachtomlaagmiddel
+var aandachtomlaaghoog
+var aandachtomhoog
+var kennisomlaaglaag
+var kennisomlaaghoog
+var kennisomhooglaag
+var kennisomhooghoog
+var hongerlaag
+var aandachtlaag
+var kennislaag
+var hongergrens
+var aandachtgrens
+var kennisgrens
+var hongerbasis
+var aandachtbasis
+var kennisbasis
+var eenapril
+var embedgeluid = "uit"
+var ziektetijd
+var ziektekans
+var branding
+var branding_titel
+ </script>
+
+ <script type="text/javascript" language="JavaScript1.1" src="Kern/Toolbox.js"></script>
+ <script type="text/javascript" language="JavaScript1.1">
+ function opstartfunc() {
+  configfunc()
+  document.title = branding_titel
+
+ //Hier wordt gekeken welke shell is ingesteld voor Kamergotchi Online en wordt de juiste shell
+ //in het iframe geladen met een script in het configuratiebestand.
+ if (/MSIE /i.test(navigator.userAgent) && /Mac_PowerPC/i.test(navigator.userAgent)) {
+  document.getElementById("body").scroll = "yes"
+  var hoogte = document.getElementById("body").scrollHeight + "px"
+  document.getElementById("body").style.height = hoogte
+ }
+
+ var instellingen = getCookie("kgo_instellingen")
+ if (instellingen) {
+  var versiedomlezen = instellingen.substring(0,6)
+  if (versiedomlezen == "KGO213") {
+   instellingen = instellingen.split(">")
+   instellingensaveversie = instellingen[0]
+   copyrightgezien = instellingen[1]
+   spelmodule = instellingen [2]
+   geluid = instellingen[3]
+   donkeremodus = instellingen[4]
+   gekleurdetekst = instellingen[5]
+   shell = instellingen[6]
+   protocol = instellingen[7]
+   instellingen = instellingensaveversie + ">" + copyrightgezien +  ">" + spelmodule + ">" + geluid + ">" + donkeremodus + ">" + gekleurdetekst + ">" + shell + ">" + "http"
+   setCookie("kgo_instellingen", instellingen, 365)
+  }
+  else if (versiedomlezen == "KG212>") {
+   instellingen = instellingen.split(">")
+   instellingensaveversie = "KGO213"
+   copyrightgezien = instellingen[1]
+   spelmodule = instellingen [3]
+   geluid = instellingen[4]
+   donkeremodus = instellingen[5]
+   gekleurdetekst = instellingen[6]
+   shell = parseInt(instellingen[7]) * 3
+   protocol = instellingen[8]
+   instellingen = instellingensaveversie + ">" + copyrightgezien +  ">" + spelmodule + ">" + geluid + ">" + donkeremodus + ">" + gekleurdetekst + ">" + shell + ">" + "http"
+   setCookie("kgo_instellingen", instellingen, 365)
+  }
+  else if (versiedomlezen == "KG210>") {
+   instellingen = instellingen.split(">")
+   instellingensaveversie = "KGO213"
+   copyrightgezien = instellingen[1]
+   spelmodule = instellingen [3]
+   geluid = instellingen[4]
+   donkeremodus = instellingen[5]
+   gekleurdetekst = instellingen[6]
+   shell = iparseInt(instellingen[7]) * 3
+   protocol = "http"
+   instellingen = instellingensaveversie + ">" + copyrightgezien +  ">" + spelmodule + ">" + geluid + ">" + donkeremodus + ">" + gekleurdetekst + ">" + shell + ">" + protocol
+   setCookie("kgo_instellingen", instellingen, 365)
+  }
+  else if (versiedomlezen == "KG209>") {
+   document.getElementById("instellingencookie-div").innerHTML=instellingen
+   instellingen = instellingen.split(">")
+   instellingensaveversie = instellingen[0]
+   copyrightgezien = instellingen[1]
+   spelmodule = instellingen [3]
+   geluid = instellingen[4]
+   donkeremodus = instellingen[5]
+   gekleurdetekst = instellingen[6]
+   instellingensaveversie = "KGO213"
+   shell = 0
+   protocol = "http"
+   instellingen = instellingensaveversie + ">" + copyrightgezien +  ">" + spelmodule + ">" + geluid + ">" + donkeremodus + ">" + gekleurdetekst + ">" + shell + ">" + protocol
+   setCookie("kgo_instellingen", instellingen, 365)
+  }
+  else {
+   instellingensaveversie = "KGO213"
+   copyrightgezien = "leeg"
+   spelmodule = "leeg"
+   geluid = "leeg"
+   donkeremodus = "leeg"
+   gekleurdetekst = "leeg"
+   shell = 0
+   protocol = "http"
+   instellingen = instellingensaveversie + ">" + copyrightgezien +  ">" + spelmodule + ">" + geluid + ">" + donkeremodus + ">" + gekleurdetekst + ">" + shell + ">" + protocol
+   setCookie("kgo_instellingen", instellingen, 365)
+  }
+ }
+ else {
+  instellingensaveversie = "KGO213"
+  copyrightgezien = "leeg"
+  spelmodule = "leeg"
+  geluid = "leeg"
+  donkeremodus = "leeg"
+  gekleurdetekst = "leeg"
+  shell = 0
+  protocol = "http"
+  instellingen = instellingensaveversie + ">" + copyrightgezien +  ">" + spelmodule + ">" + geluid + ">" + donkeremodus + ">" + gekleurdetekst + ">" + shell + ">" + protocol
+  setCookie("kgo_instellingen", instellingen, 365)
+ }
+ if (window.location.protocol == "https:") {
+  protocol = "https"
+  https2test()
+ }
+ else if (protocol == "https") {
+  try {
+   var img = new Image()
+   img.onload = function() {
+    protocol = "https"
+    https2test()
+   }
+   img.onerror = function() {
+    protocol = "http"
+    https2test()
+   }
+   var adres = window.location.hostname + window.location.pathname
+   adres = adres.split("/")
+   adres[adres.length - 1] = "Kern/HTTPSTest/HTTPSTest.png"
+   adres = adres.join("/")
+   img.src = "https://" + adres
+  }
+  catch (error) {
+   protocol = "http"
+   https2test()
+  }
+ }
+ else {
+  protocol = "http"
+  https2test()
+ }
+}
+
+function kgo_Achtergrondkleurbijwerken() {
+ if(window.frames["spelframe"].document.body) {
+  var kleur = window.frames["spelframe"].document.body.style.backgroundColor
+  document.getElementById("body").bgcolor = kleur
+  document.getElementById("body").style.backgroundColor = kleur
+ }
+}
+
+function https2test() {
+ instellingen = instellingensaveversie + ">" + copyrightgezien +  ">" + spelmodule + ">" + geluid + ">" + donkeremodus + ">" + gekleurdetekst + ">" + shell + ">" + protocol
+ setCookie("kgo_instellingen", instellingen, 365)
+ document.getElementById("spelframe").style.width = "100%"
+ if (window.location.protocol != "https:" && protocol == "https") {
+  window.location.href = "https://" + window.location.hostname + window.location.pathname + window.location.search
+ }
+ else {
+  if (copyrightgezien == "gelezen" && shell % 3 == 0 && shell < shellsarray.length) {
+   if ((/Opera/i.test(navigator.userAgent) && /Nintendo/i.test(navigator.userAgent) && /DS/i.test(navigator.userAgent)) || (/MSIE 6.0; Nitro/i.test(navigator.userAgent) && /Opera 8./i.test(navigator.userAgent))) {
+    window.location.href = shellsarray[parseInt(shell)+2] + location.search
+   }
+   else {
+    document.getElementById("spelframe").src = shellsarray[parseInt(shell)+2] + location.search
+   }
+  }
+  else {
+   if ((/Opera/i.test(navigator.userAgent) && /Nintendo/i.test(navigator.userAgent) && /DS/i.test(navigator.userAgent)) || (/MSIE 6.0; Nitro/i.test(navigator.userAgent) && /Opera 8./i.test(navigator.userAgent))) {
+    window.location.href = "Frames/Begin.html" + location.search
+   }
+   else {
+    document.getElementById("spelframe").src = "Frames/Begin.html" + location.search
+   }
+  }
+ }
+}
+ </script>
+</div>
+</body>
+</html>
