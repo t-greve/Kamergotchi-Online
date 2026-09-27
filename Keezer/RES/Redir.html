@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="nl-NL" style="width:100%;height:100%;margin:0;padding:0;border:0 none">
+
+<head>
+    <title>Keezer's Quest</title>
+    <meta charset="utf-8">
+    <meta name="description" value="Welkom, Keezer. Er gaat iets moois gebeuren. Je staat aan de rand van het bos. Klaar om dit grote avontuur te beginnen. Het belooft een bijzondere tocht te worden, want in het bos is veel gaande.">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,shrink-to-fit=no">
+    <meta name="HandheldFriendly" content="true">
+ <!--Standaard favicon -->
+ <link rel="shortcut icon" type="image/x-icon" sizes="16x16 24x24 32x32 48x48 64x64" href="../favicon.ico">
+ <link rel="icon" type="image/x-icon" sizes="16x16 24x24 32x32 48x48 64x64" href="../favicon.ico">
+
+ <!--Icoontjes voor het startscherm van iPhone OS/iOS/iPadOS-->
+ <meta name="apple-mobile-web-app-capable" content="yes">
+ <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon-180x180.png">
+ <link rel="apple-touch-icon" sizes="167x167" href="../apple-touch-icon-167x167.png">  
+ <link rel="apple-touch-icon" sizes="152x152" href="../apple-touch-icon-152x152.png">
+ <link rel="apple-touch-icon" sizes="120x120" href="../apple-touch-icon-120x120.png">
+ <link rel="apple-touch-icon" sizes="114x114" href="../apple-touch-icon-114x114.png">
+ <link rel="apple-touch-icon" sizes="76x76" href="../apple-touch-icon-76x76.png">
+ <link rel="apple-touch-icon" sizes="72x72" href="../apple-touch-icon-72x72.png">
+ <link rel="apple-touch-icon" sizes="60x60" href="../apple-touch-icon-60x60.png">
+ <link rel="apple-touch-icon" sizes="57x57" href="../apple-touch-icon-57x57.png">
+
+ <!--Icoon voor een vastgezet tablad op Safari voor Mac-->
+ <link rel="mask-icon" href="../safari-pinned-tab.svg" color="#333333">
+
+ <!--PNG-favicons-->
+ <link rel="icon" type="image/png" sizes="192x192" href="../android-chrome-192x192.png">
+ <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+ <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+ <meta name="mobile-web-app-capable" content="yes">
+ <link rel="manifest" href="../site.webmanifest">
+
+ <!--Icoontjes voor tegeltjes in Windows en Windows Phone-->
+ <meta name="msapplication-TileColor" content="#333333">
+ <meta name="msapplication-TileImage" content="../mstile-144x144.png">
+ <meta name="theme-color" content="#000000">
+ <meta name="msapplication-config" content="../browserconfig.xml">
+
+ <!--Internet Explorer 5 en 6 vergeten de favicon nadat de cache is geleegd totdat de pagina opnieuw aan de favorieten wordt toegevoegd of wordt geladen-->
+ <!--[if lte IE 6]>
+  <script type="text/javascript" language="JavaScript">
+   (new Image).src="../favicon.ico"
+  </script>
+ <![endif]-->
+
+ <script type="text/javascript" language="JavaScript">
+ <!--
+  //Zorgt ervoor dat er geen foutmedingen worden weergegeven. Sommige oude browsers worden anders overspoeld met foutmeldingen.
+  window.onerror = silenterror
+  function silenterror() {
+   return true
+ }
+ //-->
+ </script>
+</head>
+
+<body bgcolor="#FFFFFF" style="background-color:#FFFFFF">
+<div id="test" style="display:none">&nbsp;</div>
+
+ <script type="text/javascript" language="JavaScript1.3" src="Keezers_Quest/Game/toolbox/Toolbox.js"></script>
+
+ <script type="text/javascript" language="JavaScript">
+  var doorverwijzen = 0
+ </script>
+
+  <script type="text/javascript" language="JavaScript1.3">
+    if (browserbepaalfunc()[0] == "vector") {
+     doorverwijzen = 1
+     window.location.href="Keezers_Quest/Keezers_Quest.html"
+    }
+  </script>
+
+ <script type="text/javascript" language="JavaScript">
+  //Alle niet-doorverwezen browsers worden naar de legacyversie doorverstuurd.
+  if (doorverwijzen == 0) {
+   doorverwijzen = 1
+   window.location.href="Fouten/Niet_ondersteund.html"
+  }
+ </script>
+</body>
+</html>

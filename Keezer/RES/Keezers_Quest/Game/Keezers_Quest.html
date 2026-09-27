@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en" style="width:100%;height:100%;margin:0;padding:0;border:0 none">
+
+<head>
+    <title>Keezer's Quest</title>
+    <meta charset="utf-8">
+    <meta name="description" value="Welkom, Keezer. Er gaat iets moois gebeuren. Je staat aan de rand van het bos. Klaar om dit grote avontuur te beginnen. Het belooft een bijzondere tocht te worden, want in het bos is veel gaande.">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,shrink-to-fit=no">
+    <meta name="HandheldFriendly" content="true">
+ <!--Standaard favicon -->
+ <link rel="shortcut icon" type="image/x-icon" sizes="16x16 24x24 32x32 48x48 64x64" href="../../../favicon.ico">
+ <link rel="icon" type="image/x-icon" sizes="16x16 24x24 32x32 48x48 64x64" href="../../../favicon.ico">
+
+ <!--Icoontjes voor het startscherm van iPhone OS/iOS/iPadOS-->
+ <meta name="apple-mobile-web-app-capable" content="yes">
+ <link rel="apple-touch-icon" sizes="180x180" href="../../../apple-touch-icon-180x180.png">
+ <link rel="apple-touch-icon" sizes="167x167" href="../../../apple-touch-icon-167x167.png">  
+ <link rel="apple-touch-icon" sizes="152x152" href="../../../apple-touch-icon-152x152.png">
+ <link rel="apple-touch-icon" sizes="120x120" href="../../../apple-touch-icon-120x120.png">
+ <link rel="apple-touch-icon" sizes="114x114" href="../../../apple-touch-icon-114x114.png">
+ <link rel="apple-touch-icon" sizes="76x76" href="../../../apple-touch-icon-76x76.png">
+ <link rel="apple-touch-icon" sizes="72x72" href="../../../apple-touch-icon-72x72.png">
+ <link rel="apple-touch-icon" sizes="60x60" href="../../../apple-touch-icon-60x60.png">
+ <link rel="apple-touch-icon" sizes="57x57" href="../../../apple-touch-icon-57x57.png">
+
+ <!--Icoon voor een vastgezet tablad op Safari voor Mac-->
+ <link rel="mask-icon" href="../../../safari-pinned-tab.svg" color="#333333">
+
+ <!--PNG-favicons-->
+ <link rel="icon" type="image/png" sizes="192x192" href="../../../android-chrome-192x192.png">
+ <link rel="icon" type="image/png" sizes="32x32" href="../../../favicon-32x32.png">
+ <link rel="icon" type="image/png" sizes="16x16" href="../../../favicon-16x16.png">
+ <meta name="mobile-web-app-capable" content="yes">
+ <link rel="manifest" href="../../../site.webmanifest">
+
+ <!--Icoontjes voor tegeltjes in Windows en Windows Phone-->
+ <meta name="msapplication-TileColor" content="#333333">
+ <meta name="msapplication-TileImage" content="../../../mstile-144x144.png">
+ <meta name="theme-color" content="#000000">
+ <meta name="msapplication-config" content="../../../browserconfig.xml">
+
+ <!--Internet Explorer 5 en 6 vergeten de favicon nadat de cache is geleegd totdat de pagina opnieuw aan de favorieten wordt toegevoegd of wordt geladen-->
+ <!--[if lte IE 6]>
+  <script type="text/javascript" language="JavaScript">
+   (new Image).src="../../favicon.ico"
+  </script>
+ <![endif]-->
+
+ <script type="text/javascript" language="JavaScript">
+ <!--
+  //Zorgt ervoor dat er geen foutmedingen worden weergegeven. Sommige oude browsers worden anders overspoeld met foutmeldingen.
+  window.onerror = silenterror
+  function silenterror() {
+   return true
+ }
+ //-->
+ </script>
+ <script src="toolbox/Toolbox.js"></script>
+ <script src="modules/standaard/module.js"></script>
+    <link rel="stylesheet" href="misc/fonts.css">
+    <style>
+        #splash {
+            display: flex;
+            width:100%;
+            height:100%;
+            margin:0;
+            padding:0;
+            border:0;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #000000;
+            color: #FFFFFF;
+            font: 10vmin Onesize;
+            text-align: center
+        }
+    </style>
+</head>
+
+<body style="background-color:#3B3B3B;width:100%;height:100%;margin:0;padding:0;border:0 none"><noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root" style="margin:0;padding:0;border:0 none"></div>
+    <div id="splash"><div>BEZIG MET LADEN</div></div>
+    <script>
+     var overlay
+     var spelmodule
+     var partijen
+     var scenes
+     var eindscenes
+     var personages
+     var objecten
+     var achtergronden
+     var cuts
+     var personagepad
+     var objectenpad
+     var scenepad
+     var logopad
+     var audiopad
+     var afbeeldingpaden
+     var keezerconfig
+
+     function gegevensladen(){
+      var instellingenarray = getCookie("kqo_instellingen")
+       if (instellingenarray ) {
+        var instellingenversie = instellingenarray.substring(0,6)
+         if (instellingenversie == "KQO102") {
+          instellingenarray = instellingenarray.split(">")
+          overlay = instellingenarray[1]
+          spelmodule = instellingenarray[2]
+          if (spelmodule == "standaard" || spelmodule == "metalhenktrol") {
+            partijen = instellingenarray[3]
+          }
+          else {
+            partijen = "standaard"
+          }
+          keezerconfig = instellingenarray[4]
+         }
+         else{
+          overlay = 'standaard'
+          spelmodule = 'standaard'
+          partijen = "standaard"
+          keezerconfig = ' ' + 
+          '{"variant":"haar1",' +
+          '"skinColor":{"ratio":0.09330450198768483,"color":"rgb(163, 99, 81)"},' +
+          '"hairColor":{"ratio":0.3601774402849361,"color":"rgb(208, 86, 69)"},' +
+          '"clothesColor":{"ratio":0.7829331814122847,"color":"rgb(62, 74, 132)"},' +
+          '"bril":false,' +
+          '"doggyName":"Hondje"},'
+          keezerconfig = keezerconfig.slice(0, -1)
+         }
+       }
+       else{
+        overlay = 'standaard'
+        spelmodule = 'standaard'
+        partijen = "standaard"
+        keezerconfig = ' ' + 
+        '{"variant":"haar1",' +
+        '"skinColor":{"ratio":0.09330450198768483,"color":"rgb(163, 99, 81)"},' +
+        '"hairColor":{"ratio":0.3601774402849361,"color":"rgb(208, 86, 69)"},' +
+        '"clothesColor":{"ratio":0.7829331814122847,"color":"rgb(62, 74, 132)"},' +
+        '"bril":false,' +
+        '"doggyName":"Hondje"},'
+        keezerconfig = keezerconfig.slice(0, -1)
+       }
+      }
+
+      function opslaan(){
+       instellingenarray = "KQO102" + ">" + overlay + ">" + spelmodule + ">" + partijen + ">" + keezerconfig
+       setCookie("kqo_instellingen", instellingenarray, 365)
+      }
+
+      function modulekoppelen(spelmodule) {
+       loadScript("modules/" + spelmodule + "/module.js", opstartfunctie)
+      }
+
+      function loadScript(url, callback) {
+       // adding the script element to the head as suggested before
+       var head = document.getElementsByTagName('head')[0];
+       var script = document.createElement('script');
+       script.type = 'text/javascript';
+       script.src = url;
+
+       // then bind the event to the callback function 
+       // there are several events for cross browser compatibility
+       script.onreadystatechange = callback;
+       script.onload = callback;
+
+       // fire the loading
+       head.appendChild(script);
+      }
+
+      function opstartfunctie(){
+        scenefunctie()
+        opstart2functie([])
+      }
+        function opstart2functie(e) {
+            function r(r) {
+                for (var n, l, f = r[0], i = r[1], a = r[2], c = 0, s = []; c < f.length; c++) l = f[c], Object.prototype.hasOwnProperty.call(o, l) && o[l] && s.push(o[l][0]), o[l] = 0;
+                for (n in i) Object.prototype.hasOwnProperty.call(i, n) && (e[n] = i[n]);
+                for (p && p(r); s.length;) s.shift()();
+                return u.push.apply(u, a || []), t()
+            }
+
+            function t() {
+                for (var e, r = 0; r < u.length; r++) {
+                    for (var t = u[r], n = !0, f = 1; f < t.length; f++) {
+                        var i = t[f];
+                        0 !== o[i] && (n = !1)
+                    }
+                    n && (u.splice(r--, 1), e = l(l.s = t[0]))
+                }
+                return e
+            }
+            var n = {},
+                o = {
+                    1: 0
+                },
+                u = [];
+
+            function l(r) {
+                if (n[r]) return n[r].exports;
+                var t = n[r] = {
+                    i: r,
+                    l: !1,
+                    exports: {}
+                };
+                return e[r].call(t.exports, t, t.exports, l), t.l = !0, t.exports
+            }
+            l.m = e, l.c = n, l.d = function(e, r, t) {
+                l.o(e, r) || Object.defineProperty(e, r, {
+                    enumerable: !0,
+                    get: t
+                })
+            }, l.r = function(e) {
+                "undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(e, Symbol.toStringTag, {
+                    value: "Module"
+                }), Object.defineProperty(e, "__esModule", {
+                    value: !0
+                })
+            }, l.t = function(e, r) {
+                if (1 & r && (e = l(e)), 8 & r) return e;
+                if (4 & r && "object" == typeof e && e && e.__esModule) return e;
+                var t = Object.create(null);
+                if (l.r(t), Object.defineProperty(t, "default", {
+                        enumerable: !0,
+                        value: e
+                    }), 2 & r && "string" != typeof e)
+                    for (var n in e) l.d(t, n, function(r) {
+                        return e[r]
+                    }.bind(null, n));
+                return t
+            }, l.n = function(e) {
+                var r = e && e.__esModule ? function() {
+                    return e.default
+                } : function() {
+                    return e
+                };
+                return l.d(r, "a", r), r
+            }, l.o = function(e, r) {
+                return Object.prototype.hasOwnProperty.call(e, r)
+            }, l.p = "/";
+            var f = this.webpackJsonpkeezer = this.webpackJsonpkeezer || [],
+                i = f.push.bind(f);
+            f.push = r, f = f.slice();
+            for (var a = 0; a < f.length; a++) r(f[a]);
+            var p = i;
+            t()
+        }
+        if (browserbepaalfunc()[0] == "vector") {
+         gegevensladen()
+         modulekoppelen(spelmodule)
+        }
+    </script>
+    <script src="static/js/2.4ef4127a.chunk.js"></script>
+    <script src="static/js/main.b8df2fe8.chunk.js"></script>
+</body>
+
+</html>

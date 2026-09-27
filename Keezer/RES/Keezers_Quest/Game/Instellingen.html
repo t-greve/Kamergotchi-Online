@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="nl-NL" style="margin:0;padding:0;border:0 none">
+
+<head>
+    <title>Instellingen</title>
+    <meta charset="utf-8">
+    <meta name="description" value="Welkom, Keezer. Er gaat iets moois gebeuren. Je staat aan de rand van het bos. Klaar om dit grote avontuur te beginnen. Het belooft een bijzondere tocht te worden, want in het bos is veel gaande.">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,shrink-to-fit=no">
+    <meta name="HandheldFriendly" content="true">
+
+ <!--Standaard favicon -->
+ <link rel="shortcut icon" type="image/x-icon" sizes="16x16 24x24 32x32 48x48 64x64" href="../../favicon.ico">
+ <link rel="icon" type="image/x-icon" sizes="16x16 24x24 32x32 48x48 64x64" href="../../favicon.ico">
+
+ <!--Icoontjes voor het startscherm van iPhone OS/iOS/iPadOS-->
+ <meta name="apple-mobile-web-app-capable" content="yes">
+ <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon-180x180.png">
+ <link rel="apple-touch-icon" sizes="167x167" href="../../apple-touch-icon-167x167.png">  
+ <link rel="apple-touch-icon" sizes="152x152" href="../../apple-touch-icon-152x152.png">
+ <link rel="apple-touch-icon" sizes="120x120" href="../../apple-touch-icon-120x120.png">
+ <link rel="apple-touch-icon" sizes="114x114" href="../../apple-touch-icon-114x114.png">
+ <link rel="apple-touch-icon" sizes="76x76" href="../../apple-touch-icon-76x76.png">
+ <link rel="apple-touch-icon" sizes="72x72" href="../../apple-touch-icon-72x72.png">
+ <link rel="apple-touch-icon" sizes="60x60" href="../../apple-touch-icon-60x60.png">
+ <link rel="apple-touch-icon" sizes="57x57" href="../../apple-touch-icon-57x57.png">
+
+ <!--Icoon voor een vastgezet tablad op Safari voor Mac-->
+ <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#333333">
+
+ <!--PNG-favicons-->
+ <link rel="icon" type="image/png" sizes="192x192" href="../../android-chrome-192x192.png">
+ <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+ <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+ <meta name="mobile-web-app-capable" content="yes">
+ <link rel="manifest" href="../../site.webmanifest">
+
+ <!--Icoontjes voor tegeltjes in Windows en Windows Phone-->
+ <meta name="msapplication-TileColor" content="#333333">
+ <meta name="msapplication-TileImage" content="../../mstile-144x144.png">
+ <meta name="theme-color" content="#000000">
+ <meta name="msapplication-config" content="../../browserconfig.xml">
+
+ <script type="text/javascript" language="JavaScript">
+ <!--
+  //Zorgt ervoor dat er geen foutmedingen worden weergegeven. Sommige oude browsers worden anders overspoeld met foutmeldingen.
+  window.onerror = silenterror
+  function silenterror() {
+   return true
+ }
+ //-->
+ </script>
+</head>
+
+<body bgcolor="#3B3B3B" text="#FFFFFF" link="#FFFFFF" alink="#FFFFFF" vlink="#FFFFFF" topmargin=0 bottommargin=0 leftmargin=0 rightmargin=0 marginheight=0 marginwidth=0 style="width:100%;margin:0;padding:0;border:0 none;background-color:#3B3B3B;margin-left:auto;margin-right:auto;font-size:14px;font-family:sans-serif">
+<form id="instellingenform" onsubmit="return gegevensopslaan()">
+  <b>Modules</b><br>
+  Stel in welke module er wordt gebruikt voor het spel. Een module is een set afbeeldingen, geluiden en partijen.
+  <br><br>
+  <select name="spelmodule" id="spelmodule" style="font-family:sans-serif;font-size:1em;color:#FFFFFF;background-color:#3B3B3B;border-color:#FFFFFF;accent-color:#FFFFFF">
+    <option value="standaard">Standaard</option>
+    <option value="metalhenktrol">Metal-versie van het Henk-Trol-thema</option>
+  </select><br><br>
+  <br><br>
+  <b>Overlays</b><br>
+  Stel in welke overlay er wordt gebruikt voor het spel:
+  <br><br>
+  <select name="overlay" id="overlay" style="font-family:sans-serif;font-size:1em;color:#FFFFFF;background-color:#3B3B3B;border-color:#FFFFFF;accent-color:#FFFFFF">
+    <option value="standaard">Standaard</option>
+    <option value="geencrt">Zonder CRT-effect</option>
+  </select><br><br>
+  <br><br>
+  <b>Keezer-profielen</b><br>
+  Bewaar of laad een uiterlijk van Keezer.
+  <br><br>
+  <input type="button" id="uploadkeezer-knop" value="Laad een Keezer-profiel" onclick="document.getElementById('uploadkeezer').click()" style="font-family:sans-serif;font-size:1em;color:#FFFFFF;background-color:#3B3B3B;border-color:#FFFFFF;accent-color:#FFFFFF">
+  <input type="file" id="uploadkeezer" accept=".keezer" tabindex="-1" onchange="uploadkeezerfunc()" style="display:none;font-family:sans-serif;font-size:1em;color:#FFFFFF;background-color:#3B3B3B;border-color:#FFFFFF;accent-color:#FFFFFF">
+  <br><br>
+  <input type="button" id="downloadkeezer" value="Huidige profiel downloaden" onclick="downloadkeezerfunc()" style="font-family:sans-serif;font-size:1em;color:#FFFFFF;background-color:#3B3B3B;border-color:#FFFFFF;accent-color:#FFFFFF">
+  <input type="button" id="resetkeezer" value="Het profiel van Keezer resetten" onclick="resetkeezerfunc()" style="font-family:sans-serif;font-size:1em;color:#FFFFFF;background-color:#3B3B3B;border-color:#FFFFFF;accent-color:#FFFFFF">
+  <br><br><br>
+  <b>Partijen</b><br>
+  Stel in welke partijen worden meegenomen in het spel (in modules die die niet aanpassen).
+  Voor normale gameplay zijn minimaal 6 partijen nodig, waarvan minstens 1 linkse en 1 rechtse.
+  <br><br>
+  <div style="display:flex">
+  <div id="partijenlinks" style="flex:25%">
+    <b>Linkse partijen:</b>
+   <div id="d66"><input type="checkbox" name="checkbox-d66" id="checkbox-d66" style="width:1em;height:1em;font-family:sans-serif;font-size:1em;color:#FFFFFF;background-color:#3B3B3B;border-color:#FFFFFF;accent-color:#FFFFFF"><label for="checkbox-d66">D66</label></div>
+   <div id="pvda"><input type="checkbox" name="checkbox-pvda" id="checkbox-pvda" style="width:1em;height:1em;font-family:sans-serif;font-size:1em;color:#FFFFFF;background-color:#3B3B3B;border-color:#FFFFFF;accent-color:#FFFFFF"><label for="checkbox-pvda">Partij van de Arbeid</label></div>
+   <div id="pvdd"><input type="checkbox" name="checkbox-pvdd" id="checkbox-pvdd" style="width:1em;height:1em;font-family:sans-serif;font-size:1em;color:#FFFFFF;background-color:#3B3B3B;border-color:#FFFFFF;accent-color:#FFFFFF"><label for="checkbox-pvdd">Partij voor de Dieren</label></div>
+   <div id="denk"><input type="checkbox" name="checkbox-denk" id="checkbox-denk" style="width:1em;height:1em;font-family:sans-serif;font-size:1em;color:#FFFFFF;background-color:#3B3B3B;border-color:#FFFFFF;accent-color:#FFFFFF"><label for="checkbox-denk">DENK</label></div>
+   <div id="cu"><input type="checkbox" name="checkbox-cu" id="checkbox-cu" style="width:1em;height:1em;font-family:sans-serif;font-size:1em;color:#FFFFFF;background-color:#3B3B3B;border-color:#FFFFFF;accent-color:#FFFFFF"><label for="checkbox-cu">ChristenUnie</label></div>
+   <div id="bij1"><input type="checkbox" name="checkbox-bij1" id="checkbox-bij1" style="width:1em;height:1em;font-family:sans-serif;font-size:1em;color:#FFFFFF;background-color:#3B3B3B;border-color:#FFFFFF;accent-color:#FFFFFF"><label for="checkbox-bij1">BIJ1</label></div>
+   <div id="gl"><input type="checkbox" name="checkbox-gl" id="checkbox-gl" style="width:1em;height:1em;font-family:sans-serif;font-size:1em;color:#FFFFFF;background-color:#3B3B3B;border-color:#FFFFFF;accent-color:#FFFFFF"><label for="checkbox-gl">GroenLinks</label></div>
+   <div id="sp"><input type="checkbox" name="checkbox-sp" id="checkbox-sp" style="width:1em;height:1em;font-family:sans-serif;font-size:1em;color:#FFFFFF;background-color:#3B3B3B;border-color:#FFFFFF;accent-color:#FFFFFF"><label for="checkbox-sp">SP</label></div>
+  </div>
+  <div id="partijenrechts" style="flex:25%">
+    <b>Rechtse partijen</b>
+   <div id="vvd"><input type="checkbox" name="checkbox-vvd" id="checkbox-vvd" style="width:1em;height:1em;font-family:sans-serif;font-size:1em;color:#FFFFFF;background-color:#3B3B3B;border-color:#FFFFFF;accent-color:#FFFFFF"><label for="checkbox-vvd">VVD</label></div>
+   <div id="cda"><input type="checkbox" name="checkbox-cda" id="checkbox-cda" style="width:1em;height:1em;font-family:sans-serif;font-size:1em;color:#FFFFFF;background-color:#3B3B3B;border-color:#FFFFFF;accent-color:#FFFFFF"><label for="checkbox-cda">CDA</label></div>
+   <div id="fvd"><input type="checkbox" name="checkbox-fvd" id="checkbox-fvd" style="width:1em;height:1em;font-family:sans-serif;font-size:1em;color:#FFFFFF;background-color:#3B3B3B;border-color:#FFFFFF;accent-color:#FFFFFF"><label for="checkbox-fvd">Forum voor Democratie</label></div>
+   <div id="ja21"><input type="checkbox" name="checkbox-ja21" id="checkbox-ja21" style="width:1em;height:1em;font-family:sans-serif;font-size:1em;color:#FFFFFF;background-color:#3B3B3B;border-color:#FFFFFF;accent-color:#FFFFFF"><label for="checkbox-ja21">JA21</label></div>
+   <div id="pvv"><input type="checkbox" name="checkbox-pvv" id="checkbox-pvv" style="width:1em;height:1em;font-family:sans-serif;font-size:1em;color:#FFFFFF;background-color:#3B3B3B;border-color:#FFFFFF;accent-color:#FFFFFF"><label for="checkbox-pvv">PVV</label></div>
+   <div id="sgp"><input type="checkbox" name="checkbox-sgp" id="checkbox-sgp" style="width:1em;height:1em;font-family:sans-serif;font-size:1em;color:#FFFFFF;background-color:#3B3B3B;border-color:#FFFFFF;accent-color:#FFFFFF"><label for="checkbox-sgp" >SGP</label></div>
+   <div id="50plus"><input type="checkbox" name="checkbox-50plus" id="checkbox-50plus" style="width:1em;height:1em;font-family:sans-serif;font-size:1em;color:#FFFFFF;background-color:#3B3B3B;border-color:#FFFFFF;accent-color:#FFFFFF"><label for="checkbox-50plus" style="font-family:sans-serif;font-size:1em;color:#FFFFFF;background-color:#3B3B3B;border-color:#FFFFFF;accent-color:#FFFFFF">50PLUS</label></div>
+   <div id="henk-krol"><input type="checkbox" name="checkbox-henk-krol" id="checkbox-henk-krol" style="width:1em;height:1em;font-family:sans-serif;font-size:1em;color:#FFFFFF;background-color:#3B3B3B;border-color:#FFFFFF;accent-color:#FFFFFF"><label for="checkbox-henk-krol">Henk Krol</label></div>
+  </div>
+  <div style="flex:50%"></div>
+  </div>
+  <br><br>
+  <b>Opslaan</b><br>
+  Sla de gemaakte wijzigingen op of maak deze ongedaan.
+  <br><br>
+  <input type="submit" id="opslaan" value="Opslaan" style="font-family:sans-serif;font-size:1em;color:#FFFFFF;background-color:#3B3B3B;border-color:#FFFFFF;accent-color:#FFFFFF"></input>
+  <input type="button" id="resetten" value="Wijzigingen ongedaan maken" onclick="(gegevensladen())" style="font-family:sans-serif;font-size:1em;color:#FFFFFF;background-color:#3B3B3B;border-color:#FFFFFF;accent-color:#FFFFFF""></input>
+  <br>
+  <br>
+  <br>
+  <i>Keezer's Quest versie 1.02 - augustus 2026</i>
+</form>
+</body>
+</html>
+
+ <script type="text/javascript" language="JavaScript" src="toolbox/Toolbox.js"></script>
+ <script type="text/javascript" language="JavaScript">
+  var keezerconfig
+
+  function gegevensladen(){
+   instellingenarray = getCookie("kqo_instellingen")
+   if (instellingenarray) {
+    var instellingenversie = instellingenarray.substring(0,6)
+    if (instellingenversie == "KQO102") {
+     instellingenarray = instellingenarray.split(">")
+     var overlay = instellingenarray[1]
+     var spelmodule = instellingenarray[2]
+     var partijen = instellingenarray[3]
+     keezerconfig = instellingenarray[4]
+    }
+    else{
+     var overlay = 'standaard'
+     var spelmodule = 'standaard'
+     var partijen = '' + 
+     '{"code":"vvd","shortName":"VVD","longName":"VVD","wing":"right"},' +
+     '{"code":"cda","shortName":"CDA","longName":"CDA","wing":"right"},' + 
+     '{"code":"fvd","shortName":"FvD","longName":"Forum voor Democratie","wing":"right"},' +
+     '{"code":"ja21","shortName":"JA21","longName":"JA21","wing":"right"},' +
+     '{"code":"pvv","shortName":"PVV","longName":"PVV","wing":"right"},' +
+     '{"code":"sgp","shortName":"SGP","longName":"SGP","wing":"right"},' +
+     '{"code":"50plus","shortName":"50PLUS","longName":"50PLUS","wing":"right"},' +
+     '{"code":"henk-krol","shortName":"Henk Krol","longName":"Henk Krol","wing":"right"},' +
+     '{"code":"d66","shortName":"D66","longName":"D66","wing":"left"},' +
+     '{"code":"pvda","shortName":"PvdA","longName":"Partij van de Arbeid","wing":"left"},' +
+     '{"code":"pvdd","shortName":"PvdD","longName":"Partij voor de Dieren","wing":"left"},' +
+     '{"code":"denk","shortName":"DENK","longName":"DENK","wing":"left"},' +
+     '{"code":"cu","shortName":"CU","longName":"ChristenUnie","wing":"left"},' +
+     '{"code":"bij1","shortName":"BIJ1","longName":"BIJ1","wing":"left"},' +
+     '{"code":"gl","shortName":"GL","longName":"GroenLinks","wing":"left"},' +
+     '{"code":"sp","shortName":"SP","longName":"SP","wing":"left"},'
+     partijen = partijen.slice(0, -1) + ']'
+     keezerconfig = ' ' + 
+     '{"variant":"haar1",' +
+     '"skinColor":{"ratio":0.09330450198768483,"color":"rgb(163, 99, 81)"},' +
+     '"hairColor":{"ratio":0.3601774402849361,"color":"rgb(208, 86, 69)"},' +
+     '"clothesColor":{"ratio":0.7829331814122847,"color":"rgb(62, 74, 132)"},' +
+     '"bril":false,' +
+     '"doggyName":"Hondje"},'
+     keezerconfig = keezerconfig.slice(0, -1)
+    }
+   }
+   else{
+     var overlay = 'standaard'
+     var spelmodule = 'standaard'
+     var partijen = '' + 
+     '{"code":"vvd","shortName":"VVD","longName":"VVD","wing":"right"},' +
+     '{"code":"cda","shortName":"CDA","longName":"CDA","wing":"right"},' + 
+     '{"code":"fvd","shortName":"FvD","longName":"Forum voor Democratie","wing":"right"},' +
+     '{"code":"ja21","shortName":"JA21","longName":"JA21","wing":"right"},' +
+     '{"code":"pvv","shortName":"PVV","longName":"PVV","wing":"right"},' +
+     '{"code":"sgp","shortName":"SGP","longName":"SGP","wing":"right"},' +
+     '{"code":"50plus","shortName":"50PLUS","longName":"50PLUS","wing":"right"},' +
+     '{"code":"henk-krol","shortName":"Henk Krol","longName":"Henk Krol","wing":"right"},' +
+     '{"code":"d66","shortName":"D66","longName":"D66","wing":"left"},' +
+     '{"code":"pvda","shortName":"PvdA","longName":"Partij van de Arbeid","wing":"left"},' +
+     '{"code":"pvdd","shortName":"PvdD","longName":"Partij voor de Dieren","wing":"left"},' +
+     '{"code":"denk","shortName":"DENK","longName":"DENK","wing":"left"},' +
+     '{"code":"cu","shortName":"CU","longName":"ChristenUnie","wing":"left"},' +
+     '{"code":"bij1","shortName":"BIJ1","longName":"BIJ1","wing":"left"},' +
+     '{"code":"gl","shortName":"GL","longName":"GroenLinks","wing":"left"},' +
+     '{"code":"sp","shortName":"SP","longName":"SP","wing":"left"},'
+     partijen = partijen.slice(0, -1) + ']'
+     keezerconfig = ' ' + 
+     '{"variant":"haar1",' +
+     '"skinColor":{"ratio":0.09330450198768483,"color":"rgb(163, 99, 81)"},' +
+     '"hairColor":{"ratio":0.3601774402849361,"color":"rgb(208, 86, 69)"},' +
+     '"clothesColor":{"ratio":0.7829331814122847,"color":"rgb(62, 74, 132)"},' +
+     '"bril":false,' +
+     '"doggyName":"Hondje"},'
+     keezerconfig = keezerconfig.slice(0, -1)
+   }
+   document.getElementById("spelmodule").value = spelmodule
+   document.getElementById("overlay").value = overlay
+   var partijarray= ["d66", "pvda", "pvdd", "denk", "cu", "bij1", "gl", "sp", "vvd", "cda", "fvd", "ja21", "pvv", "sgp", "50plus", "henk-krol"]
+   var lengte = partijarray.length
+   for (var i = 0; i < lengte; i++) {
+    if(partijen.includes(partijarray[i])){
+     document.getElementById("checkbox-" + partijarray[i]).checked = true
+    }
+    else{
+      document.getElementById("checkbox-" + partijarray[i]).checked = false
+    }
+   }
+  }
+
+  function gegevensopslaan(){
+   var spelmodule = document.getElementById("spelmodule").value
+   var overlay = document.getElementById("overlay").value
+   var partijen = '['
+   if (document.getElementById("checkbox-vvd").checked) partijen = partijen + '{"code":"vvd","shortName":"VVD","longName":"VVD","wing":"right"},'
+   if (document.getElementById("checkbox-cda").checked) partijen = partijen + '{"code":"cda","shortName":"CDA","longName":"CDA","wing":"right"},'
+   if (document.getElementById("checkbox-fvd").checked) partijen = partijen + '{"code":"fvd","shortName":"FvD","longName":"Forum voor Democratie","wing":"right"},'
+   if (document.getElementById("checkbox-ja21").checked) partijen = partijen + '{"code":"ja21","shortName":"JA21","longName":"JA21","wing":"right"},'
+   if (document.getElementById("checkbox-pvv").checked) partijen = partijen + '{"code":"pvv","shortName":"PVV","longName":"PVV","wing":"right"},'
+   if (document.getElementById("checkbox-sgp").checked) partijen = partijen + '{"code":"sgp","shortName":"SGP","longName":"SGP","wing":"right"},'
+   if (document.getElementById("checkbox-50plus").checked) partijen = partijen + '{"code":"50plus","shortName":"50PLUS","longName":"50PLUS","wing":"right"},'
+   if (document.getElementById("checkbox-henk-krol").checked) partijen = partijen + '{"code":"henk-krol","shortName":"Henk Krol","longName":"Henk Krol","wing":"right"},'
+   if (document.getElementById("checkbox-d66").checked) partijen = partijen + '{"code":"d66","shortName":"D66","longName":"D66","wing":"left"},'
+   if (document.getElementById("checkbox-pvda").checked) partijen = partijen + '{"code":"pvda","shortName":"PvdA","longName":"Partij van de Arbeid","wing":"left"},'
+   if (document.getElementById("checkbox-pvdd").checked) partijen = partijen + '{"code":"pvdd","shortName":"PvdD","longName":"Partij voor de Dieren","wing":"left"},'
+   if (document.getElementById("checkbox-denk").checked) partijen = partijen + '{"code":"denk","shortName":"DENK","longName":"DENK","wing":"left"},'
+   if (document.getElementById("checkbox-cu").checked) partijen = partijen + '{"code":"cu","shortName":"CU","longName":"ChristenUnie","wing":"left"},'
+   if (document.getElementById("checkbox-bij1").checked) partijen = partijen + '{"code":"bij1","shortName":"BIJ1","longName":"BIJ1","wing":"left"},'
+   if (document.getElementById("checkbox-gl").checked) partijen = partijen + '{"code":"gl","shortName":"GL","longName":"GroenLinks","wing":"left"},'
+   if (document.getElementById("checkbox-sp").checked) partijen = partijen + '{"code":"sp","shortName":"SP","longName":"SP","wing":"left"},'
+   partijen = partijen.slice(0, -1) + ']'
+   instellingenarray = "KQO102" + ">" + overlay + ">" + spelmodule + ">" + partijen + ">" + keezerconfig
+   setCookie("kqo_instellingen", instellingenarray, 365)
+   window.location.href="Keezers_Quest.html"
+   return false
+  }
+
+ function uploadkeezerfunc(){
+  var fileToLoad = document.getElementById("uploadkeezer").files[0]
+  var fileReader = new FileReader()
+  fileReader.onload = function(fileLoadedEvent){
+   var array = fileLoadedEvent.target.result
+   if (!array) {
+    array = " "
+   }
+   var versie = array.substring(0,6)
+   array = array.split(">")
+   if (versie == "KQP101") {
+    keezerconfig = array[1]
+   }
+   else{
+    alert("Fout bij het lezen: Ongeldig bestand")
+    document.getElementById("uploadkeezer").type=""
+    document.getElementById("uploadkeezer").type="file"
+   }
+  }
+  fileReader.readAsText(fileToLoad, "UTF-8")
+ }
+
+
+ function downloadkeezerfunc() {
+  var datastring = "KQP101" + ">" + keezerconfig
+  var element = document.createElement('a')
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(datastring))
+  element.setAttribute('download', "Profiel.keezer")
+  element.style.display = 'none'
+  document.body.appendChild(element)
+  element.click()
+  document.body.removeChild(element)
+ }
+
+ function resetkeezerfunc(){
+  keezerconfig = ' ' + 
+  '{"variant":"haar1",' +
+  '"skinColor":{"ratio":0.09330450198768483,"color":"rgb(163, 99, 81)"},' +
+  '"hairColor":{"ratio":0.3601774402849361,"color":"rgb(208, 86, 69)"},' +
+  '"clothesColor":{"ratio":0.7829331814122847,"color":"rgb(62, 74, 132)"},' +
+  '"bril":false,' +
+  '"doggyName":"Hondje"},'
+  keezerconfig = keezerconfig.slice(0, -1)
+ }
+
+  function tekstgroottesimpel() {
+  var breedte = window.parent.document.body.clientWidth
+  if (breedte > 1200) {
+   document.body.style.fontSize = "1vw"
+  }
+  else {
+   document.body.style.fontSize = "14px"
+  }
+ }
+
+  tekstgroottesimpel()
+  setInterval(tekstgroottesimpel, 1000)
+  gegevensladen()
+ </script>

@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="nl-NL" style="margin:0;padding:0;border:0 none;width:100%;height:100%">
+
+<head>
+    <title>Keezer's Quest</title>
+    <meta charset="utf-8">
+    <meta name="description" value="Welkom, Keezer. Er gaat iets moois gebeuren. Je staat aan de rand van het bos. Klaar om dit grote avontuur te beginnen. Het belooft een bijzondere tocht te worden, want in het bos is veel gaande.">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,shrink-to-fit=no">
+    <meta name="HandheldFriendly" content="true">
+
+ <!--Standaard favicon -->
+ <link rel="shortcut icon" type="image/x-icon" sizes="16x16 24x24 32x32 48x48 64x64" href="../../favicon.ico">
+ <link rel="icon" type="image/x-icon" sizes="16x16 24x24 32x32 48x48 64x64" href="../../favicon.ico">
+
+ <!--Icoontjes voor het startscherm van iPhone OS/iOS/iPadOS-->
+ <meta name="apple-mobile-web-app-capable" content="yes">
+ <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon-180x180.png">
+ <link rel="apple-touch-icon" sizes="167x167" href="../../apple-touch-icon-167x167.png">  
+ <link rel="apple-touch-icon" sizes="152x152" href="../../apple-touch-icon-152x152.png">
+ <link rel="apple-touch-icon" sizes="120x120" href="../../apple-touch-icon-120x120.png">
+ <link rel="apple-touch-icon" sizes="114x114" href="../../apple-touch-icon-114x114.png">
+ <link rel="apple-touch-icon" sizes="76x76" href="../../apple-touch-icon-76x76.png">
+ <link rel="apple-touch-icon" sizes="72x72" href="../../apple-touch-icon-72x72.png">
+ <link rel="apple-touch-icon" sizes="60x60" href="../../apple-touch-icon-60x60.png">
+ <link rel="apple-touch-icon" sizes="57x57" href="../../apple-touch-icon-57x57.png">
+
+ <!--Icoon voor een vastgezet tablad op Safari voor Mac-->
+ <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#333333">
+
+ <!--PNG-favicons-->
+ <link rel="icon" type="image/png" sizes="192x192" href="../../android-chrome-192x192.png">
+ <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+ <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+ <meta name="mobile-web-app-capable" content="yes">
+ <link rel="manifest" href="../../site.webmanifest">
+
+ <!--Icoontjes voor tegeltjes in Windows en Windows Phone-->
+ <meta name="msapplication-TileColor" content="#333333">
+ <meta name="msapplication-TileImage" content="../../mstile-144x144.png">
+ <meta name="theme-color" content="#000000">
+ <meta name="msapplication-config" content="../../browserconfig.xml">
+
+ <!--Internet Explorer 5 en 6 vergeten de favicon nadat de cache is geleegd totdat de pagina opnieuw aan de favorieten wordt toegevoegd of wordt geladen-->
+ <!--[if lte IE 6]>
+  <script type="text/javascript" language="JavaScript">
+   (new Image).src="../../favicon.ico"
+  </script>
+ <![endif]-->
+
+ <script type="text/javascript" language="JavaScript">
+ <!--
+  //Zorgt ervoor dat er geen foutmedingen worden weergegeven. Sommige oude browsers worden anders overspoeld met foutmeldingen.
+  window.onerror = silenterror
+  function silenterror() {
+   return true
+ }
+ //-->
+ </script>
+ <script src="Game/toolbox/Toolbox.js"></script>
+</head>
+
+<body bgcolor="#333333" text="#000000" link="#000000" alink="#000000" vlink="#000000" topmargin=0 bottommargin=0 leftmargin=0 rightmargin=0 marginheight=0 marginwidth=0 style="width:100%;height:100%;margin:0;padding:0;border:0 none;background-color:#333333;margin-left:auto;margin-right:auto;font-size:14px;font-family:sans-serif;display:flex;flex-direction:row;flex-flow:column">
+<div id="balk" style="display:none">
+ <div id="balk1" bgcolor="#FFFFFF" style="width:100%;text-align:center;margin:0;padding:0px;border:0 none;background-color:#FFFFFF">
+  <center>
+   <h2 style="margin-top:0px;margin-bottom:0px;word-wrap:break-word;white-space:normal">Keezer's Quest</h2>
+   <div id="links" style="margin:0;padding:4px;border:0 none">
+    <center>
+     <a href="../Keezers_Quest/Keezers_Quest.html" id="link1" style="word-wrap:break-word;color:#000000;background-color:#FFFFFF">Spel</a> &nbsp; 
+     <a href="../Downloads/Downloads.html" id="link3" style="word-wrap:break-word;color:#000000;background-color:#FFFFFF">Downloads</a> &nbsp; 
+     <a href="../Geschiedenis/Geschiedenis.html" id="link2" style="word-wrap:break-word;color:#000000;background-color:#FFFFFF">Geschiedenis</a>
+    </center>
+   </div>
+  </center>
+ </div>
+ <div id="balk2" bgcolor="#000000" style="width:100%;height:1px;margin:0;padding:0;border:0;background-color:#000000;font-size:0;line-height:1px;overflow:hidden"></div>
+ </div>
+ <div id="achtergrond" style="display:none;flex-direction:row;flex-flow: row wrap;height:100%;text-align:center">
+ <div style="flex:0 0 4%;background-color:#3B3B3B;color:#ffffff"><div style="width:calc(100% - 2px);height:calc(100% - 20px);margin:0;padding:0;padding-top:10px;padding-bottom:10px;border-right:1px solid #000000;display:flex;justify-content:center;align-items:center"><a href="javascript:void(0);" onclick="wisselfunc()"><img src="Game/misc/tandwiel.png" style="width:70%"></img></a></div></div>
+ <div style="flex:1 1 92%;margin:0;padding:0;border:0 none;background-color:#3B3B3B;display:flex;justify-content:center;align-items:center"><iframe id="Game" tabindex="1" src="Game/Keezers_Quest.html" style="width:calc(100% - 50px);height:calc(100% - 50px);margin:0px;padding:0;border:0 none"></iframe></div>
+ <div style="flex:0 0 4%;background-color:#3B3B3B;color:#ffffff"><div style="width:calc(100% - 2px);height:calc(100% - 20px);margin:0;padding:0;padding-top:10px;padding-bottom:10px;border-left:1px solid #3B3B3B"></div></div>
+ </div>
+ <script>
+  if (!/Electron/i.test(navigator.userAgent) || !/Chrome/i.test(navigator.userAgent) || !window.location.protocol == "file:") {
+   document.getElementById("balk").style.display = "block"
+  }
+ </script>
+ <script>
+ if (browserbepaalfunc()[0] == "vector") {
+  document.getElementById("achtergrond").style.display="flex"
+  tekstgroottesimpel()
+  setInterval(tekstgroottesimpel, 1000)
+ }
+
+ function tekstgroottesimpel() {
+  var breedte = document.body.clientWidth
+  if (breedte > 1200) {
+   document.body.style.fontSize = "1vw"
+  }
+  else {
+   document.body.style.fontSize = "14px"
+  }
+ }
+
+ function wisselfunc(){
+  if (document.getElementById("Game").src.includes("Keezers_Quest.html")) {
+   document.getElementById("Game").src = "Game/Instellingen.html"
+  }
+  else{
+   document.getElementById("Game").src = "Game/Keezers_Quest.html"
+  }
+}
+ </script>
+</body>
+</html>
