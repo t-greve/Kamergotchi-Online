@@ -1,0 +1,711 @@
+<!doctype html>
+<html lang="nl-NL" id="html" style="width:100%;margin:0;padding:0;border:0 none">
+
+
+ <!--Kamergotchi is oorspronkelijk bedacht door Arjen Lubach van het VPRO-programma Zondag met Lubach.-->
+ <!--https://www.vpro.nl/zondag-met-lubach.html-->
+ <!--Webpagina en programma door Thomas Greve, met delen van het internet-->
+
+
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+ <meta http-equiv="MSThemeCompatible" content="Yes">
+ <meta http-equiv="Content-Script-Type" content="text/javascript">
+ <meta http-equiv="Content-Style-Type" content="text/css">
+ <meta name="title" content="Kamergotchi Online">
+ <meta name="description" content="Vernieuwde Kamergotchi's voor de Tweede Kamerverkiezingen van 2021.">
+ <meta name="Subject" content="Kamergotchi">
+ <meta name="keywords" content="Kamergotchi Online, Kamergotchi, Zondag met Lubach, game">
+ <meta name="copyright" content="Kamergotchi is oorspronkelijk bedacht door Arjen Lubach van het VPRO-programma Zondag met Lubach: https://www.vpro.nl/zondag-met-lubach.html">
+ <meta name="page-type" content="Game">
+ <meta name="robots" content="index, nofollow">
+ <meta name="Generator" content="Notepad">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="HandheldFriendly" content="true">
+
+ <title>Kamergotchi Online</title>
+
+ <script type="text/javascript" language="JavaScript">
+
+//----------Opstarten----------\\
+
+function NL_2017_opstarten(browservar, donkeremodus, donkeraan, spelmodule) {
+ var lijsttrekkerinstellingen = "Janpeter"
+ var moduletaal = "nl-NL"
+ if (donkeremodus == "aan" && donkeraan != "uit" && browservar != "mono" && donkeraan != "uit") {
+  var achtergrondkleur = "#2D5A6B"
+ }
+ else if (browservar != "mono") {
+  var achtergrondkleur = "#5AB5D8"
+ }
+ else {
+  var achtergrondkleur = "#FFFFFF"
+ }
+ return[lijsttrekkerinstellingen, moduletaal, achtergrondkleur]
+}
+
+//----------Genereer het overzicht van Kamergotchi's----------\\
+
+function NL_2017_overzichtgenereren(browservar,spelmodule, donkeremodus) {
+ window.parent.overzichtgenereren("Alexander","Alexander","http://nl.wikipedia.org/wiki/Alexander_Pechtold",browservar,spelmodule, donkeremodus)
+ window.parent.overzichtgenereren("Ancilla","Ancilla","http://nl.wikipedia.org/wiki/Ancilla_van_de_Leest",browservar,spelmodule, donkeremodus)
+ window.parent.overzichtgenereren("Emile","Emile","http://nl.wikipedia.org/wiki/Emile_Roemer",browservar,spelmodule, donkeremodus)
+ window.parent.overzichtgenereren("Geert","Geert","http://nl.wikipedia.org/wiki/Geert_Wilders",browservar,spelmodule, donkeremodus)
+ window.parent.overzichtgenereren("Gertjan","Gert-Jan","http://nl.wikipedia.org/wiki/Gert-Jan_Segers",browservar,spelmodule, donkeremodus)
+ window.parent.overzichtgenereren("Henk","Henk","http://nl.wikipedia.org/wiki/Henk_Krol",browservar,spelmodule, donkeremodus)
+ window.parent.overzichtgenereren("Jand","Jan","http://nl.wikipedia.org/wiki/Jan_Dijkgraaf",browservar,spelmodule, donkeremodus)
+ window.parent.overzichtgenereren("Janr","Jan","http://nl.wikipedia.org/wiki/Jan_Roos_(journalist)",browservar,spelmodule, donkeremodus)
+ window.parent.overzichtgenereren("Janpeter","Jan-Peter","http://nl.wikipedia.org/wiki/Jan_Peter_Balkenende",browservar,spelmodule, donkeremodus)
+ window.parent.overzichtgenereren("Jesse","Jesse","http://nl.wikipedia.org/wiki/Jesse_Klaver",browservar,spelmodule, donkeremodus)
+ window.parent.overzichtgenereren("Kees","Kees","http://nl.wikipedia.org/wiki/Kees_van_der_Staaij",browservar,spelmodule, donkeremodus)
+ window.parent.overzichtgenereren("Lodewijk","Lodewijk","http://nl.wikipedia.org/wiki/Lodewijk_Asscher",browservar,spelmodule, donkeremodus)
+ window.parent.overzichtgenereren("Marianne","Marianne","http://nl.wikipedia.org/wiki/Marianne_Thieme",browservar,spelmodule, donkeremodus)
+ window.parent.overzichtgenereren("Mark","Mark","http://nl.wikipedia.org/wiki/Mark_Rutte",browservar,spelmodule, donkeremodus)
+ window.parent.overzichtgenereren("Sybrand","Sybrand","http://nl.wikipedia.org/wiki/Sybrand_van_Haersma_Buma",browservar,spelmodule, donkeremodus)
+ window.parent.overzichtgenereren("Sylvana","Sylvana","http://nl.wikipedia.org/wiki/Sylvana_Simons",browservar,spelmodule, donkeremodus)
+ window.parent.overzichtgenereren("Thierry","Thierry","http://nl.wikipedia.org/wiki/Thierry_Baudet",browservar,spelmodule, donkeremodus)
+ window.parent.overzichtgenereren("Tunahan","Tunahan","http://nl.wikipedia.org/wiki/Tunahan_Kuzu",browservar,spelmodule, donkeremodus)
+ window.parent.document.getElementById("overzichtsdiv-inhoud").innerHTML = window.parent.document.getElementById("overzichtsdiv-inhoud").innerHTML + "<div id='overzichtbestaat' style='width:1px;height:1px;display:none'></div>"
+}
+
+//----------Een array met alle lijsttrekkers uit de module----------\\
+
+function NL_2017_lijsttrekkers() {
+  var lijsttrekkers = [
+  "Alexander",
+  "Ancilla",
+  "Emile",
+  "Geert",
+  "Gertjan",
+  "Henk",
+  "Jand",
+  "Janr",
+  "Jesse",
+  "Kees",
+  "Lodewijk",
+  "Marianne",
+  "Mark",
+  "Sybrand",
+  "Sylvana",
+  "Thierry",
+  "Tunahan",
+  "Janpeter"
+ ]
+ return lijsttrekkers
+}
+
+//----------Een array met strings voor de knoppen----------\\
+
+function NL_2017_strings() {
+ var tekst = [
+  "Naar spel",
+  "Nieuw spel",
+  "Terug naar het menu",
+  "Instellingen",
+  "Module kiezen",
+  "Bekijk het overzicht van alle Kamergotchi's",
+  "Spelgegevens verwijderen",
+  "Ga naar de website van de partij",
+  "Chat legen",
+  "Wanneer zijn de verkiezingen?",
+  "Geluid: uit",
+  "Geluid: aan",
+  "Geluid: geen achtergrondmuziek",
+  "Donkere modus: uit",
+  "Donkere modus: aan",
+  "Gekleurde tekst: aan",
+  "Gekleurde tekst: uit",
+  "Kamergotchi-versie",
+  "Contact",
+  "Honger:",
+  "Aandacht:",
+  "Kennis:",
+  "Geluk:",
+  "Dagen in leven:",
+  "Het spel herstarten",
+  "Ok",
+  "Annuleren",
+  "De Kamergotchi eten geven",
+  "De Kamergotchi aandacht geven",
+  "De Kamergotchi iets leren",
+  "Thema kiezen",
+  "Door een nieuw spel te beginnen, wordt je oude spel verwijderd.<br>Druk op Ok om een nieuw spel te beginnen.",
+  "Waarschuwing: Alle gegevens van alle modules worden verwijderd.<br>Druk op Ok om door te gaan.",
+  "Probeer een versleutelde verbinding te gebruiken (HTTPS)"
+ ]
+ return tekst
+}
+
+//----------Tekstfunctie----------\\
+
+function NL_2017_tekstfunc (tekst2var, modus, versie, lijsttrekker, lijsttrekkerinstellingen, hongertijd, aandachttijd, kennistijd) {
+ var tekst = tekst2var
+
+ switch (modus) {
+ case "start":
+  var chatpersonage = "Arjen"
+ break
+
+ case "spel":
+  var chatpersonage = lijsttrekker
+ break
+
+ case "instellingen":
+  var chatpersonage = lijsttrekkerinstellingen
+ break
+ }
+
+ switch (chatpersonage) {
+ case "Alexander":
+  var kandidaat = "Alexander"
+  var partij = "D66"
+  var geslacht = "hij"
+  var website = "http://www.d66.nl/"
+  var kleur = "#03A75B"
+ break
+
+ case "Ancilla":
+  var kandidaat = "Ancilla"
+  var partij = "de Piratenpartij"
+  var geslacht = "zij"
+  var website = "http://www.piratenpartij.nl/"
+  var kleur = "#6E469C"
+ break
+
+ case "Emile":
+  var kandidaat = "Emile"
+  var partij = "de SP"
+  var geslacht = "hij"
+  var website = "http://www.sp.nl/"
+  var kleur = "#E60000"
+ break
+
+ case "Geert":
+  var kandidaat = "Geert"
+  var partij = "de PVV"
+  var geslacht = "hij"
+  var website = "http://www.pvv.nl/"
+  var kleur = "#1E4872"
+ break
+
+ case "Gertjan":
+  var kandidaat = "Gert-Jan"
+  var partij = "de ChristenUnie"
+  var geslacht = "hij"
+  var website = "http://www.christenunie.nl/"
+  var kleur = "#00A5E8"
+ break
+
+ case "Henk":
+  var kandidaat = "Henk"
+  var partij = "50PLUS"
+  var geslacht = "hij"
+  var website = "http://www.50pluspartij.nl/"
+  var kleur = "#690362"
+ break
+
+ case "Jand": 
+  var kandidaat = "Jan"
+  var partij = "GeenPeil"
+  var geslacht = "hij"
+  var website = "http://www.geenstijl.nl/tag/geenpeil"
+  var kleur = "#FECA26"
+ break
+
+ case "Janr":
+  var kandidaat = "Jan"
+  var partij = "VoorNederland"
+  var geslacht = "hij"
+  var website = "http://www.vnl.nu/"
+  var kleur = "#0082BB"
+ break
+
+ case "Janpeter":
+  var kandidaat = "Jan-Peter"
+  var partij = "het CDA"
+  var geslacht = "hij"
+  var website = "http://www.cda.nl/"
+  var kleur = "#007A5F"
+ break
+
+ case "Jesse":
+  var kandidaat = "Jesse"
+  var partij = "GroenLinks"
+  var geslacht = "hij"
+  var website = "http://www.groenlinks.nl/"
+  var kleur = "#39A835"
+ break
+
+ case "Kees":
+  var kandidaat = "Kees"
+  var partij = "de SGP"
+  var geslacht = "hij"
+  var website = "http://www.sgp.nl/"
+  var kleur = "#EA5B0C"
+ break
+
+ case "Lodewijk":
+  var kandidaat = "Lodewijk"
+  var partij = "de PvdA"
+  var geslacht = "hij"
+  var website = "http://www.pvda.nl/"
+  var kleur = "#C1272D"
+ break
+
+ case "Marianne":
+  var kandidaat = "Marianne"
+  var partij = "de Partij voor de Dieren"
+  var geslacht = "zij"
+  var website = "http://www.partijvoordedieren.nl/"
+  var kleur = "#006B2D"
+ break
+
+ case "Mark":
+  var kandidaat = "Mark"
+  var partij = "de VVD"
+  var geslacht = "hij"
+  var website = "http://www.vvd.nl/"
+  var kleur = "#000977"
+ break
+
+ case "Sybrand":
+  var kandidaat = "Sybrand"
+  var partij = "het CDA"
+  var geslacht = "hij"
+  var website = "http://www.cda.nl/"
+  var kleur = "#007A5F"
+ break
+
+ case "Sylvana":
+  var kandidaat = "Sylvana"
+  var partij = "Artikel 1"
+  var geslacht = "zij"
+  var website = "http://www.bij1.org/"
+  var kleur = "#F69403"
+ break
+
+ case "Thierry":
+  var kandidaat = "Thierry"
+  var partij = "Forum voor Democratie"
+  var geslacht = "hij"
+  var website = "http://www.fvd.nl/"
+  var kleur = "#841717"
+ break
+
+ case "Tunahan":
+  var kandidaat = "Tunahan"
+  var partij = "DENK"
+  var geslacht = "hij"
+  var website = "http://www.bewegingdenk.nl/"
+  var kleur = "#41B9BD"
+ break
+
+ default:
+  var kandidaat = "Arjen"
+  var partij = "Zondag met Lubach"
+  var geslacht = "hij"
+  var website = "http://www.vpro.nl/zondag-met-lubach.html"
+  var kleur = "#0090CD"
+  break
+ }
+
+ switch(tekst) {
+ case "eerstekeer":
+  var tekst = kandidaat + ": Hoi, ik ben " + kandidaat + " van " + partij + ". Ik hoop dat je goed voor mij gaat zorgen."
+ break
+
+ case "terug":
+ var dag = new Date().getDate()
+ var maand = new Date().getMonth()
+ var jaar = new Date().getFullYear()
+ var paasarray = NL_2017_pasen(jaar)
+ var paasdag = paasarray[0]
+ var paasmaand = paasarray[1] 
+ var paas1datum = new Date(jaar, paasmaand, paasdag)
+
+ var carnaval1datum = new Date(jaar, paasmaand, paasdag)
+ carnaval1datum.setDate(carnaval1datum.getDate() - 49)
+ var carnaval1dag = carnaval1datum.getDate()
+ var carnaval1maand = carnaval1datum.getMonth()
+
+ var carnaval2datum = new Date(jaar, paasmaand, paasdag)
+ carnaval2datum.setDate(carnaval2datum.getDate() - 48)
+ var carnaval2dag = carnaval2datum.getDate()
+ var carnaval2maand = carnaval2datum.getMonth()
+
+ var carnaval3datum = new Date(jaar, paasmaand, paasdag)
+ carnaval3datum.setDate(carnaval3datum.getDate() - 47)
+ var carnaval3dag = carnaval3datum.getDate()
+ var carnaval3maand = carnaval3datum.getMonth()
+
+ var paas2datum = new Date(jaar, paasmaand, paasdag)
+ paas2datum.setDate(paas2datum.getDate() + 1)
+ var paas2dag = paas2datum.getDate()
+ var paas2maand = paas2datum.getMonth()
+
+ if (dag == 1 && maand == 0){
+  var tekst = kandidaat + ": Gelukkig Nieuwjaar!"
+ }
+ else if (dag == 19 && maand == 1 && jaar > 2017) {
+  var tijd = jaar - 2017
+  var tekst = kandidaat + ": Vandaag is het " + tijd + " jaar sinds het originele Kamergotchi uitkwam."
+ }
+ else if (dag == 27 && maand == 3){
+  var tekst = kandidaat + ": Fijne Koningsdag! Oranje boven!"
+ }
+ else if (dag == carnaval1dag && maand == carnaval1maand || dag == carnaval2dag && maand == carnaval2maand || dag == carnaval3dag && maand == carnaval3maand) {
+  var tekst = kandidaat + ": Vandaag is het carnaval! Alaaf!"
+ } 
+ else if (dag == paasdag && maand == paasmaand || dag == paas2dag && maand == paas2maand) {
+  var tekst = kandidaat + ": Vrolijk Pasen!"
+ }
+ else if (dag == 4 && maand == 4){
+  var tekst = kandidaat + ": Vandaag is de dodenherdenking."
+ }
+ else if (dag == 5 && maand == 4){
+  var tekst = kandidaat + ": Fijne Bevrijdingsdag!"
+ }
+ else if (dag == 22 && maand == 9) {
+  var tekst = kandidaat + ": Vandaag is Arjen Lubach, de bedenker van het oorspronkelijke Kamergotchi, jarig. Gefeliciteerd, Arjen!"
+ }
+ else if (dag == 11 && maand == 10){
+  var tekst = kandidaat + ": Een fijne Sint-Maarten!"
+ }
+ else if (dag == 5 && maand == 11 && chatpersonage !== "Tunahan" && chatpersonage !== "Sylvana"){
+  var tekst = kandidaat + ": Een fijne Sinterklaas!"
+ }
+ else if (dag == 25 && maand == 11 || dag == 26 && maand == 11){
+  var tekst = kandidaat + ": Een fijne kerst!"
+ }
+ else if (dag == 31 && maand == 11){
+  var tekst = kandidaat + ": Fijne Oudejaarsdag!"
+ }
+ else {
+  var tekst = kandidaat + ": Hoi!"
+ }
+ break
+
+ case "hongertekort":
+  var tekst = kandidaat + ": Ik heb honger. Heb jij mischien nog ergens wat te eten?"
+ break
+
+ case "aandachttekort":
+  var tekst = kandidaat + ": Ben je er nog?"
+ break
+
+ case "kennistekort1":
+  var tekst = kandidaat + ": Ik loop een beetje achter."
+ break
+
+ case "kennistekort2":
+  var tekst = kandidaat + ": Ik heb wat bijscholing nodig."
+ break
+
+ case "kennistekort3":
+  var tekst = kandidaat + ": Ik moet wel weten waar ik over praat! Geef me wat extra kennis!"
+ break
+
+ case "hongervol":
+
+  if (hongertijd !== 1) {
+   var tekst = kandidaat + ": Ik zit nu vol. Kan je over " + hongertijd + " minuten weer terugkomen?"
+  }
+
+  else {
+   var tekst = kandidaat + ": Ik zit nu vol. Kan je over 1 minuut weer terugkomen?"
+  }
+ break
+
+ case "aandachtvol":
+
+  if (aandachttijd !== 1) {
+  var tekst = kandidaat + ": Ik heb nu wel genoeg aandacht gehad. Kan je mij even " + aandachttijd + " minuten met rust laten?"
+  }
+
+  else {
+   var tekst = kandidaat + ": Ik heb nu wel genoeg aandacht gehad. Kan je mij even 1 minuut met rust laten?"
+  }
+ break
+
+ case "kennisvol":
+
+  if (kennistijd !== 1) {
+   var tekst = kandidaat + ": Ik heb hoofdpijn van al die lesstof. Kan ik even " + kennistijd + " minuten wat anders doen?"
+  }
+
+  else {
+   var tekst = kandidaat + ": Ik heb hoofdpijn van al die lesstof. Kan ik even 1 minuut wat anders doen?"
+  }
+ break
+
+ case "hongerdood":
+  var gekleurdetekst = "uit"
+  var tekst = "Je hebt niet goed voor " + kandidaat + " gezorgd en " + geslacht + " is overleden."
+ break
+
+ case "aandachtdood":
+  var gekleurdetekst = "uit"
+  var tekst = "Je hebt " + kandidaat + " niet genoeg aandacht gegeven, " + geslacht + " voelde zich verwaarloosd en is weggelopen."
+ break
+
+ case "kennisdood":
+  var gekleurdetekst = "uit"
+  var tekst = kandidaat + " heeft besloten dat " + geslacht + " ergens anders meer kans op voldoende opleiding heeft en is weggelopen."
+ break
+
+ case "5minuten":
+  var tekst = kandidaat + ": Er zijn weer 5 minuten voorbij."
+ break
+
+ case "honger":
+  var tekst = kandidaat + ": Ik lust wel weer wat."
+ break
+
+ case "aandacht":
+  var tekst = kandidaat + ": Als je wil, kan je me weer aandacht geven."
+ break
+
+ case "kennis":
+  var tekst = kandidaat + ": Ik ben klaar voor de volgende les."
+ break
+
+ case "ziekte":
+  if (geslacht == "zij") {
+   var hemhaar = "haar"
+  }
+  else {
+   var hemhaar = "hem"
+  }
+  var gekleurdetekst = "uit"
+  var tekst = kandidaat + " is ziek geworden. Geef " + hemhaar + " wat extra aandacht."
+ break
+
+ case "gezond":
+  var gekleurdetekst = "uit"
+  var tekst = kandidaat + " is weer gezond."
+ break
+
+ case "niezen":
+  var tekst = kandidaat + ": Hatsjoe!"
+ break
+
+ case "hoofdpijn":
+  var tekst = kandidaat + ": Ik heb hoofdpijn!"
+ break
+
+ case "website":
+  var tekst = kandidaat + ": De website van " + partij + " opent in een nieuw venster. Bedankt voor je interesse!"
+  window.open(website, "_blank")
+ break
+
+ case "instellingen":
+  var tekst = kandidaat + ": Hoi, ik ben " + kandidaat + " van " + partij + ". Ik beheer de instellingen."
+ break
+
+ case "geluidaan":
+  var tekst = kandidaat + ": Het geluid staat nu aan."
+ break
+
+ case "geluiduit":
+  var tekst = kandidaat + ": Het geluid staat nu uit."
+ break
+
+ case "geluidachtergrond":
+  var tekst = kandidaat + ": De achtergrondmuziek staat nu uit, overige geluidseffecten staan aan."
+ break
+
+ case "donkeraan":
+  var tekst = kandidaat + ": De donkere modus staat nu aan."
+ break
+
+ case "donkeruit":
+  var tekst = kandidaat + ": De donkere modus staat nu uit."
+ break
+
+ case "tekstkleuraan":
+  var tekst = kandidaat + ": Gekleurde tekst staat nu aan."
+ break
+
+ case "tekstkleuruit":
+  var tekst = kandidaat + ": Gekleurde tekst staat nu uit."
+ break
+
+ case "nietondersteund":
+  var tekst = kandidaat + ": Deze functie wordt niet ondersteund in deze brouwser. Wissel naar een modernere browser om deze functie te gebruiken."
+ break
+
+ case "beeldnietondersteund":
+  var tekst = kandidaat + ": Deze functie wordt niet ondersteund op dit beeldscherm. Een beeldscherm met minimaal 256 kleuren is vereist om deze functie te gebruiken."
+ break
+
+ case "tekstkleurdonkernietondersteund":
+  var tekst = kandidaat + ": Gekleurde tekst gaat niet samen met de donkere modus vanwege contrastproblemen."
+ break
+
+ case "geenhttps":
+  var tekst = kandidaat + ": Deze browser kan geen versleutelde verbinding (HTTPS) gebruiken."
+ break
+
+ case "versie":
+  var tekst = kandidaat + ": Dit is "+ window.parent.document.title + " versie " + versie + "."
+ break
+
+ case "contact":
+  var tekst = kandidaat + ": De ontwikkelaar van " + window.parent.document.title + " is te bereiken door een e-mail te sturen naar <a href='mailto:kamergotchi@greve.biz' target='_blank' rel='noopener noreferrer' style='color:inherit;background-color:inherit'>kamergotchi@greve.biz</a>."
+ break
+
+ case "copyright":
+  var tekst = "Kamergotchi is oorspronkelijk bedacht door Arjen Lubach van het VPRO-programma Zondag met Lubach.\nhttps://www.vpro.nl/zondag-met-lubach.html"
+ break
+
+ case "modulekiezen":
+  var tekst = kandidaat + ": Een module is een set Kamergotchi's en een taal voor de interface."
+ break
+
+ case "shellkiezen":
+  var tekst = kandidaat + ": Een thema is een andere interface voor Kamergotchi Online."
+ break
+
+ case "verkiezingen":
+  var tekst = kandidaat + ": Vergeet niet om op 15 maart 2017 te gaan stemmen!"
+ break
+
+ case "verkiezingenditjaar":
+  var tekst = kandidaat + ": Vergeet niet om op 15 maart te gaan stemmen!"
+ break
+
+ case "verkiezingenvolgendeweek":
+  var tekst = kandidaat + ": Vergeet niet om volgende week op 15 maart te gaan stemmen!"
+ break
+
+ case "verkiezingendezeweek":
+  var tekst = kandidaat + ": Vergeet niet om woensdag te gaan stemmen!"
+ break
+
+ case "verkiezingenvandaag":
+  var tekst = kandidaat + ": Vergeet niet om vandaag te gaan stemmen!"
+ break
+
+ case "verkiezingenzijn":
+  var tekst = kandidaat + ": De verkiezingen zijn op 15 maart 2017."
+ break
+
+ case "verkiezingennu":
+  var tekst = kandidaat + ": De verkiezingen zijn vandaag. Heb jij al gestemd?"
+ break
+
+ case "verkiezingenwaren":
+  var tekst = kandidaat + ": De verkiezingen waren op 15 maart 2017."
+ break
+ }
+
+ var tekst = tekst + "<|>" + kleur
+ return tekst
+}
+
+//----------Wanneer zijn de verkiezingen----------\\
+
+function NL_2017_datum(dag, maand, jaar) {
+ if (jaar < 2017) {
+  var random = Math.floor(Math.random() * 25) + 1
+  if (random == 24) {
+   window.parent.tekstfunc("verkiezingen", "spel")
+  }
+ }
+
+ if (jaar == 2017 && maand < 2) {
+  var random = Math.floor(Math.random() * 15) + 1
+  if (random == 14) {
+   window.parent.tekstfunc("verkiezingenditjaar", "spel")
+  }
+ }
+
+ if (jaar == 2017 && maand == 2 && dag < 6) {
+  var random = Math.floor(Math.random() * 15) + 1
+  if (random == 14) {
+   window.parent.tekstfunc("verkiezingenditjaar", "spel")
+  }
+ }
+
+ if (jaar == 2017 && maand == 2 && dag <13 && dag > 5) {
+  var random = Math.floor(Math.random() * 10) + 1
+  if (random == 9) {
+   window.parent.tekstfunc("verkiezingenvolgendeweek", "spel")
+  }
+ }
+
+ if (jaar == 2017 && maand == 2 && dag > 12 && dag < 15) {
+  var random = Math.floor(Math.random() * 5) + 1
+  if (random == 4) {
+   window.parent.tekstfunc("verkiezingendezeweek", "spel")
+  }
+ }
+
+ if (jaar == 2017 && maand == 2 && dag == 15) {
+  var random = Math.floor(Math.random() * 5) + 1
+  if (random == 4) {
+   window.parent.tekstfunc("verkiezingenvandaag", "spel")
+  }
+ }
+}
+
+//------------------------\\
+
+function NL_2017_verkiezingen(dag, maand, jaar) {
+
+ if (jaar < 2017) {
+   window.parent.tekstfunc("verkiezingenzijn", "spel")
+ }
+
+ if (jaar == 2017 && maand < 2) {
+  window.parent.tekstfunc("verkiezingenzijn", "spel")
+ }
+
+ if (jaar == 2017 && maand == 2 && dag < 15) {
+  window.parent.tekstfunc("verkiezingenzijn", "spel")
+ }
+
+ if (jaar == 2017 && maand == 2 && dag == 15) {
+  window.parent.tekstfunc("verkiezingennu", "spel")
+ }
+
+ if (jaar == 2017 && maand == 2 && dag > 15) {
+  window.parent.tekstfunc("verkiezingenwaren", "spel")
+ }
+
+ if (jaar == 2017 && maand > 2) {
+  window.parent.tekstfunc("verkiezingenwaren", "spel")
+ }
+
+ if (jaar > 2017) {
+   window.parent.tekstfunc("verkiezingenwaren", "spel")
+ }
+}
+
+
+//----------Berekening van de datum van Pasen in een jaar----------\\
+
+function NL_2017_pasen(Y) {
+ var C = Math.floor(Y/100)
+ var N = Y - 19*Math.floor(Y/19)
+ var K = Math.floor((C - 17)/25)
+ var I = C - Math.floor(C/4) - Math.floor((C - K)/3) + 19*N + 15
+ I = I - 30*Math.floor((I/30))
+ I = I - Math.floor(I/28)*(1 - Math.floor(I/28)*Math.floor(29/(I + 1))*Math.floor((21 - N)/11))
+ var J = Y + Math.floor(Y/4) + I + 2 - C + Math.floor(C/4)
+ J = J - 7*Math.floor(J/7)
+ var L = I - J
+ var M = 3 + Math.floor((L + 40)/44)
+ var D = L + 28 - 31*Math.floor(M/4)
+ M = M - 1
+ var paasstring = D + '>' + M
+ var paasarray = paasstring.split('>')
+ return paasarray
+}
+ </script>
+</head>
+<body id="body" onload="window.parent.opstart2func()" topmargin=0 bottommargin=0 leftmargin=0 rightmargin=0 marginheight=0 marginwidth=0 style="width:100%;margin:0;padding:0;border:0 none;margin-left:auto;margin-right:auto;font-size:14px;font-family:sans-serif">
+</body>
+</html>

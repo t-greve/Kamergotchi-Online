@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="nl-NL" style="width:100%;margin:0;padding:0;border:0 none">
+
+
+ <!--Kamergotchi is oorspronkelijk bedacht door Arjen Lubach van het VPRO-programma Zondag met Lubach.-->
+ <!--https://www.vpro.nl/zondag-met-lubach.html-->
+ <!--Webpagina en programma door Thomas Greve, met delen van het internet-->
+
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+ <meta http-equiv="MSThemeCompatible" content="Yes">
+ <meta http-equiv="Content-Script-Type" content="text/javascript">
+ <meta http-equiv="Content-Style-Type" content="text/css">
+ <meta name="title" content="KGEdit">
+ <meta name="description" content="Een savegame-bewerker voor Kamergotchi">
+ <meta name="Subject" content="Kamergotchi">
+ <meta name="keywords" content="Kamergotchi Online, Kamergotchi, Zondag met Lubach, game">
+ <meta name="copyright" content="Kamergotchi is oorspronkelijk bedacht door Arjen Lubach van het VPRO-programma Zondag met Lubach: https://www.vpro.nl/zondag-met-lubach.html">
+ <meta name="page-type" content="Game">
+ <meta name="robots" content="index, nofollow">
+ <meta name="Generator" content="Notepad">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="HandheldFriendly" content="true">
+
+ <title>KGEdit</title>
+
+ <!--Standaard favicon -->
+ <link rel="shortcut icon" type="image/x-icon" sizes="16x16 24x24 32x32 48x48 64x64" href="../../favicon.ico">
+ <link rel="icon" type="image/x-icon" sizes="16x16 24x24 32x32 48x48 64x64" href="../../favicon.ico">
+
+ <!--Icoontjes voor het startscherm van iPhone OS/iOS/iPadOS-->
+ <meta name="apple-mobile-web-app-capable" content="yes">
+ <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon-180x180.png">
+ <link rel="apple-touch-icon" sizes="167x167" href="../../apple-touch-icon-167x167.png">  
+ <link rel="apple-touch-icon" sizes="152x152" href="../../apple-touch-icon-152x152.png">
+ <link rel="apple-touch-icon" sizes="120x120" href="../../apple-touch-icon-120x120.png">
+ <link rel="apple-touch-icon" sizes="114x114" href="../../apple-touch-icon-114x114.png">
+ <link rel="apple-touch-icon" sizes="76x76" href="../../apple-touch-icon-76x76.png">
+ <link rel="apple-touch-icon" sizes="72x72" href="../../apple-touch-icon-72x72.png">
+ <link rel="apple-touch-icon" sizes="60x60" href="../../apple-touch-icon-60x60.png">
+ <link rel="apple-touch-icon" sizes="57x57" href="../../apple-touch-icon-57x57.png">
+
+ <!--Icoon voor een vastgezet tablad op Safari voor Mac-->
+ <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#DA3332">
+
+ <!--PNG-favicons-->
+ <link rel="icon" type="image/png" sizes="192x192" href="../../android-chrome-192x192.png">
+ <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+ <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+ <meta name="mobile-web-app-capable" content="yes">
+ <link rel="manifest" href="../../site.webmanifest">
+ <meta name="theme-color" content="#5AB5D8" media="(prefers-color-scheme: light)">
+ <meta name="theme-color" content="#2D5A6B" media="(prefers-color-scheme: dark)">
+
+ <!--Icoontjes voor tegeltjes in Windows en Windows Phone-->
+ <meta name="msapplication-TileColor" content="#5AB5D8">
+ <meta name="msapplication-TileImage" content="../../mstile-144x144.png">
+ <meta name="msapplication-config" content="../../browserconfig.xml">
+
+ <!--Internet Explorer 5 en 6 vergeten de favicon nadat de cache is geleegd totdat de pagina opnieuw aan de favorieten wordt toegevoegd of wordt geladen-->
+ <!--[if lte IE 6]>
+  <script type="text/javascript" language="JavaScript">
+   (new Image).src="../../favicon.ico"
+  </script>
+ <![endif]-->
+
+ <script type="text/javascript" language="JavaScript">
+ <!--
+  //Zorgt ervoor dat er geen foutmedingen worden weergegeven. Sommige oude browsers worden anders overspoeld met foutmeldingen.
+  window.onerror = silenterror
+  function silenterror() {
+   return true
+ }
+ //-->
+ </script>
+<script type="text/javascript" language="JavaScript1.1" src="Scripts/Savegames.js"></script>
+<script type="text/javascript" language="JavaScript1.1" src="Scripts/Cookies.js"></script>
+<script type="text/javascript" language="JavaScript1.1">
+
+function invulfunc(variabele, waarde) {
+ if (!waarde && waarde != "0") {
+  document.getElementById(variabele).value="Geen"
+  document.getElementById(variabele).disabled=true
+ }
+ else if (waarde == "[object HTMLInputElement]") {
+  document.getElementById(variabele).value="Geen"
+  document.getElementById(variabele).disabled=true
+ }
+ else {
+  document.getElementById(variabele).value=waarde
+  if (variabele.indexOf("versie") == -1) {
+   document.getElementById(variabele).disabled=false
+  }
+ }
+}
+
+function opslaanfunc() {
+ var cookietype = document.getElementById("Output").value
+ var saveversie = document.getElementById("saveversie").value
+ var cookiestring = maakcookiestring(cookietype, saveversie)
+ if (cookietype.indexOf("kgb_speldata") !== -1) {
+  downloadfunc(cookiestring)
+ }
+ else {
+  setCookie(cookietype, cookiestring, 365)
+ }
+ laadfunc()
+}
+
+function laadfunc() {
+ document.getElementById("resultaten").style.display = "none"
+ var cookietype = document.getElementById("Input").value
+ document.getElementById("Output").value = cookietype
+ if (cookietype.indexOf("kgb_speldata") !== -1) {
+  if (kgbatch_tijdelijk == "leeg") {
+   document.getElementById("uploaden").click()
+  }
+  else {
+    var cookieinhoud = kgbatch_tijdelijk
+    parseCookie(cookietype, cookieinhoud)
+  }
+ }
+ else {
+  var cookieinhoud=getCookie(cookietype)
+  parseCookie(cookietype, cookieinhoud)
+ }
+}
+
+function verwijderfunc(){
+  var cookie = document.getElementById("Input").value
+  deleteCookie(cookie)
+  laadfunc()
+}
+
+function uploadfunc(){
+ var fileToLoad = document.getElementById("uploaden").files[0]
+ var fileReader = new FileReader()
+ fileReader.onload = function(fileLoadedEvent){
+  var array = fileLoadedEvent.target.result
+  if (!array) {
+   array = " "
+  }
+  var savetype = document.getElementById("Input").value
+  kgbatch_tijdelijk = array
+  parseCookie(savetype, array)
+ }
+ fileReader.readAsText(fileToLoad, "UTF-8")
+}
+
+function downloadfunc(datastring) {
+ var element = document.createElement('a')
+ element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(datastring))
+ element.setAttribute('download', "Behoeften.kgvar")
+ element.style.display = 'none'
+ document.body.appendChild(element)
+ element.click()
+ document.body.removeChild(element)
+}
+
+function geenafbeelding() {
+ var afbeelding = afbeelding = "Personages/Arjen.png"
+ document.getElementById("afbeelding").innerHTML="<img src='" + afbeelding + "' style='max-width:100%'>"
+}
+
+function weergaveveranderen(stand) {
+if (stand) {
+ document.getElementById("resultaten_los").style.display="none"
+ document.getElementById("resultaten_string").style.display="inline-block"
+ document.getElementById("versieopslaan_div").style.display="none"
+ document.getElementById("weergave_los").checked = false
+ document.getElementById("weergave_string").checked = true
+}
+else {
+ document.getElementById("resultaten_los").style.display="inline-block"
+ document.getElementById("resultaten_string").style.display="none"
+ document.getElementById("versieopslaan_div").style.display="inline-block"
+ document.getElementById("weergave_los").checked = true
+ document.getElementById("weergave_string").checked = false
+}
+}
+
+function weergaveveranderen_opslagversie() {
+var stand = document.getElementById("versieopslaan").value
+document.getElementById("spelspecifiekesaveversie").value = stand
+}
+
+function weergaveveranderen_opslagplek() {
+var stand = document.getElementById("Output").value
+if (stand.indexOf("kgl_speldata") !== -1) {
+ document.getElementById("versieopslaan").value = "KGL213"
+}
+else if (stand.indexOf("kgb_speldata") !== -1) {
+ document.getElementById("versieopslaan").value = "KGB110"
+}
+else {
+ document.getElementById("versieopslaan").value = "KGO213"
+}
+weergaveveranderen_opslagversie()
+}
+
+var kgbatch_tijdelijk = "leeg"
+</script>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" link="#000000" alink="#000000" vlink="#000000" topmargin=0 bottommargin=0 leftmargin=0 rightmargin=0 marginheight=0 marginwidth=0 style="width:100%;margin:0;padding:0;border:0 none;background-color:#FFFFFF;margin-left:auto;margin-right:auto;font-size:14px;font-family:sans-serif">
+<div id="balk1" bgcolor="#FFFFFF" style="width:100%;text-align:center;margin:0;padding:0px;border:0 none;background-color:#FFFFFF">
+ <center>
+  <h2 style="margin-top:0px;margin-bottom:0px;word-wrap:break-word;white-space:normal">Kamergotchi Online</h2>
+  <div id="flash" style="margin:0;padding:4px;border:0 none">
+   <b>KGEdit 2.00</b>
+  </div>
+ </center>
+</div>
+<div id="balk2" bgcolor="#000000" style="width:100%;height:1px;margin:0;padding:0;background-color:#000000;font-size:0;line-height:1px;overflow:hidden"></div>
+<div id="achtergrond1" bgcolor="#FFFFFF" style="width:100%;margin:0;padding:0;background-color:#FFFFFF"><br><br></div>
+<div id="balk3" bgcolor="#000000" style="width:100%;height:1px;margin:0;padding:0;background-color:#000000;font-size:0;line-height:1px;overflow:hidden"></div>
+<div bgcolor="#FFFFFF" style="margin:0;padding:10px;border:0 none;text-align:left;background-color:#FFFFFF;word-wrap:break-word;white-space:normal">
+<center>
+<div id="input-div" style="display:block">
+<form autocomplete="off" onsubmit="return false">
+<label style="width:100%;max-width:100%;margin:0;padding:0" for="Input">Selecteer een opslagitem:</label><br>
+<select name="Input" id="Input" onchange="kgbatch_tijdelijk = 'leeg';laadfunc()" style="max-width:90%">
+  <optgroup label="Kamergotchi Batch">
+   <option value="kgb_speldata">Speldata (Behoeften.kgvar)</option>
+  </optgroup>
+  <optgroup label="Kamergotchi Online">
+   <option value="kgo_instellingen">Instellingen</option>
+   <option value="kgo_speldata_NL_2017">Speldata Tweede Kamer Nederland 2017</option>
+   <option value="kgo_speldata_NL_AANGEPAST">Speldata Aangepaste Kamergotchi</option>
+  </optgroup>
+  <optgroup label="Kamergotchi Online Legacyversie">
+   <option value="kgl_instellingen">Instellingen</option>
+   <option value="kgl_speldata_Kern">Speldata voor browsers zonder frame-ondersteuning</option>
+   <option value="kgl_speldata_NL_2017">Speldata Tweede Kamer Nederland 2017</option>
+  </optgroup>
+  <option value="" disabled selected style="display:none">Maak een keuze</option>
+</select>
+</form>
+<br>
+Alleen versies van Kamergotchi met het gemeenschappelijke save-formaat worden ondersteund (1.10+ en 2.13+)
+</div>
+<br>
+<div id="uploaddiv" style="display:none">
+<form id="uploadform" autocomplete="off" onsubmit="return false">
+<label style="width:100%;max-width:100%;margin:0;padding:0;word-wrap:break-word" for="upload">Kies een spel ("Behoeften.kgvar") om te openen:</label><br>
+<input type="file" id="uploaden" accept=".kgvar" onchange="uploadfunc()" style="max-width:90%">
+</form>
+</div>
+<div id="tekstdiv" style="display:none">
+<form id="tekstform" autocomplete="off" onsubmit="aangepastecookieladen();return false">
+<label style="width:100%;max-width:100%;margin:0;padding:0:word-wrap:break-word" for="aangepastenaam">Typ de naam van de aangepaste cookie:</label><br>
+<input type="text" id="aangepastenaam" style="max-width:90%">
+<input type="submit" id="aangepastladen" value="Laad cookie">
+<br>
+</form>
+</div>
+<form id="resultatenform" autocomplete="off" onsubmit="return false">
+<div id="resultaten" style="display:none;vertical-align:top">
+   <div style="text-align:left;display:inline-block;margin:0;margin-left:auto;margin-right:auto;width:auto">
+    <input type="radio" id="weergave_los" name="weergave" value=false onchange="weergaveveranderen(false)" style="vertical-align:middle;margin:0" checked>
+    <label for="apart" style="word-wrap:break-word">De losse waarden bewerken</label><br>
+    <input type="radio" id="weergave_string" name="weergave" value=true onchange="weergaveveranderen(true)" style="vertical-align:middle;margin:0">
+    <label for="string" style="word-wrap:break-word">De hele string bewerken</label><br>
+   </div>
+   <br>
+   <br>
+   <div style="display:inline-block;width:50%;max-width:100%">
+   <span id="resultaten_los" style="display:none;width:100%;max-width:100%;vertical-align:top">
+    <span id="resultaten_los_instellingen" style="display:inline-block;width:100%;max-width:100%;vertical-align:top">
+    <span style="display:inline-block;margin:5px;padding:0">
+     <label style="width:100%;max-width:100%;margin:0;padding:0;;word-wrap:break-word" for="instellingensaveversie">instellingensaveversie</label><br>
+     <input id="instellingensaveversie" name="instellingensaveversie" disabled style="margin:0;padding:0;width:100%;max-width:100%;font-size:14px;font-family:sans-serif"><br>
+    </span>
+    <span style="display:inline-block;margin:5px;padding:0">
+     <label style="width:100%;max-width:100%;margin:0;padding:0;;word-wrap:break-word" for="copyrightgezien">copyrightgezien</label><br>
+     <input id="copyrightgezien" name="copyrightgezien" style="margin:0;padding:0;width:100%;max-width:100%;font-size:14px;font-family:sans-serif"><br>
+    </span>
+    <span style="display:inline-block;margin:5px;padding:0">
+     <label style="width:100%;max-width:100%;margin:0;padding:0;;word-wrap:break-word" for="spelmodule">spelmodule</label><br>
+     <input id="spelmodule" name="spelmodule" style="margin:0;padding:0;width:100%;max-width:100%;font-size:14px;font-family:sans-serif"><br>
+    </span>
+    <span style="display:inline-block;margin:5px;padding:0">
+     <label style="width:100%;max-width:100%;margin:0;padding:0;;word-wrap:break-word" for="geluid">geluid</label><br>
+     <input id="geluid" name="geluid" style="margin:0;padding:0;width:100%;max-width:100%;font-size:14px;font-family:sans-serif"><br>
+    </span>
+    <span style="display:inline-block;margin:5px;padding:0">
+     <label style="width:100%;max-width:100%;margin:0;padding:0;;word-wrap:break-word" for="donkeremodus">donkeremodus</label><br>
+     <input id="donkeremodus" name="donkeremodus" style="margin:0;padding:0;width:100%;max-width:100%;font-size:14px;font-family:sans-serif"><br>
+    </span>
+    <span style="display:inline-block;margin:5px;padding:0">
+     <label style="width:100%;max-width:100%;margin:0;padding:0;;word-wrap:break-word" for="tekstkleur">gekleurdetekst</label><br>
+     <input id="gekleurdetekst" name="tekstkleur" style="margin:0;padding:0;width:100%;max-width:100%;font-size:14px;font-family:sans-serif"><br>
+    </span>
+    <span style="display:inline-block;margin:5px;padding:0">
+     <label style="width:100%;max-width:100%;margin:0;padding:0;;word-wrap:break-word" for="shell">shell</label><br>
+     <input id="shell" name="shell" style="margin:0;padding:0;width:100%;max-width:100%;font-size:14px;font-family:sans-serif"><br>
+    </span>
+    <span style="display:inline-block;margin:5px;padding:0">
+     <label style="width:100%;max-width:100%;margin:0;padding:0;;word-wrap:break-word" for="gekleurdetekst">protocol</label><br>
+     <input id="protocol" name="protocol" style="margin:0;padding:0;width:100%;max-width:100%;font-size:14px;font-family:sans-serif"><br>
+    </span>
+    <span style="display:inline-block;margin:5px;padding:0">
+     <label style="width:100%;max-width:100%;margin:0;padding:0;;word-wrap:break-word" for="weergavemodus">weergavemodus</label><br>
+     <input id="weergavemodus" name="weergavemodus" style="margin:0;padding:0;width:100%;max-width:100%;font-size:14px;font-family:sans-serif"><br>
+    </span>
+    </span>
+    <span id="resultaten_los_spel" style="display:inline-block;width:100%;max-width:100%;vertical-align:top">
+    <span style="display:inline-block;margin:5px;padding:0">
+     <label style="width:100%;max-width:100%;margin:0;padding:0;;word-wrap:break-word" for="saveversie">saveversie</label><br>
+     <input id="saveversie" name="saveversie" disabled style="margin:0;padding:0;width:100%;max-width:100%;font-size:14px;font-family:sans-serif"><br>
+    </span>
+    <span style="display:inline-block;margin:5px;padding:0">
+     <label style="width:100%;max-width:100%;margin:0;padding:0;;word-wrap:break-word" for="honger">honger</label><br>
+     <input id="honger" name="honger" style="margin:0;padding:0;width:100%;max-width:100%;font-size:14px;font-family:sans-serif"><br>
+    </span>
+    <span style="display:inline-block;margin:5px;padding:0">
+     <label style="width:100%;max-width:100%;margin:0;padding:0;;word-wrap:break-word" for="hongerkeren">hongerkeren</label><br>
+     <input id="hongerkeren" name="hongerkeren" style="margin:0;padding:0;width:100%;max-width:100%;font-size:14px;font-family:sans-serif"><br>
+    </span>
+    <span style="display:inline-block;margin:5px;padding:0">
+     <label style="width:100%;max-width:100%;margin:0;padding:0;;word-wrap:break-word" for="hongertijd">hongertijd</label><br>
+     <input id="hongertijd" name="hongertijd" style="margin:0;padding:0;width:100%;max-width:100%;font-size:14px;font-family:sans-serif"><br>
+    </span>
+    <span style="display:inline-block;margin:5px;padding:0">
+     <label style="width:100%;max-width:100%;margin:0;padding:0;;word-wrap:break-word" for="hongertijdslot">hongertijdslot</label><br>
+     <input id="hongertijdslot" name="hongertijdslot" style="margin:0;padding:0;width:100%;max-width:100%;font-size:14px;font-family:sans-serif"><br>
+    </span>
+    <span style="display:inline-block;margin:5px;padding:0">
+     <label style="width:100%;max-width:100%;margin:0;padding:0;;word-wrap:break-word" for="aandacht">aandacht</label><br>
+     <input id="aandacht" name="aandacht" style="margin:0;padding:0;width:100%;max-width:100%;font-size:14px;font-family:sans-serif"><br>
+    </span>
+    <span style="display:inline-block;margin:5px;padding:0">
+     <label style="width:100%;max-width:100%;margin:0;padding:0;;word-wrap:break-word" for="aandachtkeren">aandachtkeren</label><br>
+     <input id="aandachtkeren" name="aandachtkeren" style="margin:0;padding:0;width:100%;max-width:100%;font-size:14px;font-family:sans-serif"><br>
+    </span>
+    <span style="display:inline-block;margin:5px;padding:0">
+     <label style="width:100%;max-width:100%;margin:0;padding:0;;word-wrap:break-word" for="aandachttijd">aandachttijd</label><br>
+     <input id="aandachttijd" name="aandachttijd" style="margin:0;padding:0;width:100%;max-width:100%;font-size:14px;font-family:sans-serif"><br>
+    </span>
+    <span style="display:inline-block;margin:5px;padding:0">
+     <label style="width:100%;max-width:100%;margin:0;padding:0;;word-wrap:break-word" for="aandachttijdslot">aandachttijdslot</label><br>
+     <input id="aandachttijdslot" name="aandachttijdslot" style="margin:0;padding:0;width:100%;max-width:100%;font-size:14px;font-family:sans-serif"><br>
+    </span>
+    <span style="display:inline-block;margin:5px;padding:0">
+     <label style="width:100%;max-width:100%;margin:0;padding:0;;word-wrap:break-word" for="kennis">kennis</label><br>
+     <input id="kennis" name="kennis" style="margin:0;padding:0;width:100%;max-width:100%;font-size:14px;font-family:sans-serif"><br>
+    </span>
+    <span style="display:inline-block;margin:5px;padding:0">
+     <label style="width:100%;max-width:100%;margin:0;padding:0;;word-wrap:break-word" for="kenniskeren">kenniskeren</label><br>
+     <input id="kenniskeren" name="kenniskeren" style="margin:0;padding:0;width:100%;max-width:100%;font-size:14px;font-family:sans-serif"><br>
+    </span>
+    <span style="display:inline-block;margin:5px;padding:0">
+     <label style="width:100%;max-width:100%;margin:0;padding:0;;word-wrap:break-word" for="kennistijd">kennistijd</label><br>
+     <input id="kennistijd" name="kennistijd" style="margin:0;padding:0;width:100%;max-width:100%;font-size:14px;font-family:sans-serif"><br>
+    </span>
+    <span style="display:inline-block;margin:5px;padding:0">
+     <label style="width:100%;max-width:100%;margin:0;padding:0;;word-wrap:break-word" for="kennistijdslot">kennistijdslot</label><br>
+     <input id="kennistijdslot" name="kennistijdslot" style="margin:0;padding:0;width:100%;max-width:100%;font-size:14px;font-family:sans-serif"><br>
+    </span>
+    <span style="display:inline-block;margin:5px;padding:0">
+     <label style="width:100%;max-width:100%;margin:0;padding:0;;word-wrap:break-word" for="keuzekeren">keuzekeren</label><br>
+     <input id="keuzekeren" name="keuzekeren" style="margin:0;padding:0;width:100%;max-width:100%;font-size:14px;font-family:sans-serif"><br>
+    </span>
+    <span style="display:inline-block;margin:5px;padding:0">
+     <label style="width:100%;max-width:100%;margin:0;padding:0;;word-wrap:break-word" for="ziekte">ziekte</label><br>
+     <input id="ziekte" name="ziekte" style="margin:0;padding:0;width:100%;max-width:100%;font-size:14px;font-family:sans-serif"><br>
+    </span>
+    <span style="display:inline-block;margin:5px;padding:0">
+     <label style="width:100%;max-width:100%;margin:0;padding:0;;word-wrap:break-word" for="lijsttrekker">lijsttrekker</label><br>
+     <input id="lijsttrekker" name="lijsttrekker" style="margin:0;padding:0;width:100%;max-width:100%;font-size:14px;font-family:sans-serif"><br>
+    </span>
+    <br><br>
+    <span style="display:inline-block;margin:5px;padding:0">
+     <label style="width:100%;max-width:100%;margin:0;padding:0;;word-wrap:break-word" for="spelspecifiekesaveversie">spelspecifiekesaveversie</label><br>
+     <input id="spelspecifiekesaveversie" name="spelspecifiekesaveversie" disabled style="margin:0;padding:0;width:100%;max-width:100%;font-size:14px;font-family:sans-serif"><br>
+    </span>
+    <span style="display:inline-block;margin:5px;padding:0">
+     <label style="width:100%;max-width:100%;margin:0;padding:0;;word-wrap:break-word" for="begintijd">begintijd</label><br>
+     <input id="begintijd" name="begintijd" style="margin:0;padding:0;width:100%;max-width:100%;font-size:14px;font-family:sans-serif"><br>
+    </span>
+    <span style="display:inline-block;margin:5px;padding:0">
+     <label style="width:100%;max-width:100%;margin:0;padding:0;;word-wrap:break-word" for="tijd">tijd</label><br>
+     <input id="tijd" name="tijd" style="margin:0;padding:0;width:100%;max-width:100%;font-size:14px;font-family:sans-serif"><br>
+    </span>
+    <span style="display:inline-block;margin:5px;padding:0">
+     <label style="width:100%;max-width:100%;margin:0;padding:0;;word-wrap:break-word" for="socialkeren">socialkeren</label><br>
+     <input id="socialkeren" name="socialkeren" style="margin:0;padding:0;width:100%;max-width:100%;font-size:14px;font-family:sans-serif"><br>
+    </span>
+    <br><br>
+    <span style="display:inline-block;margin:5px;padding:0">
+     <label style="width:100%;max-width:100%;margin:0;padding:0;;word-wrap:break-word" for="speldatamodulespecifiek">speldatamodulespecifiek</label><br>
+     <input id="speldatamodulespecifiek" name="speldatamodulespecifiek" style="margin:0;padding:0;width:100%;max-width:100%;font-size:14px;font-family:sans-serif"><br>
+    </span>
+    </span>
+    <br>
+    <br>
+   </span>
+   <span id="resultaten_string" style="display:none;width:100%;max-width:100%;vertical-align:top">
+    <span style="display:inline-block;margin:5px;padding:0">
+     <label style="width:100%;max-width:100%;margin:0;padding:0;;word-wrap:break-word" for="cookieinhoud">Alle data</label><br>
+     <textarea id="cookieinhoud" name="cookieinhoud" cols=60 rows=3 wrap="virtual" style="margin:0;padding:0;width:100%;max-width:100%;height:430px;font-size:14px;font-family:sans-serif"></textarea><br>
+    </span>
+    <br>
+    <br>
+   </span>
+  </div>
+   <span id="afbeelding" style="max-width:90%;padding:5px;display:inline-block;vertical-align:top">
+   </span>
+   <br>
+   <div id="output_div" style="display:block">
+    <form autocomplete="off" onsubmit="return false">
+     <label style="width:100%;max-width:100%;margin:0;padding:0" for="Output">Locatie om in op te slaan:</label><br>
+     <select name="Output" id="Output" onchange="weergaveveranderen_opslagplek()" style="max-width:90%">
+      <optgroup label="Kamergotchi Batch">
+       <option value="kgb_speldata"selected="selected">Speldata (Behoeften.kgvar)</option>
+      </optgroup>
+      <optgroup label="Kamergotchi Online">
+       <option value="kgo_instellingen">Instellingen</option>
+       <option value="kgo_speldata_NL_2017">Speldata Tweede Kamer Nederland 2017</option>
+       <option value="kgo_speldata_NL_AANGEPAST">Speldata Aangepaste Kamergotchi</option>
+      </optgroup>
+      <optgroup label="Kamergotchi Online Legacyversie">
+       <option value="kgl_instellingen">Instellingen</option>
+       <option value="kgl_speldata_Kern">Speldata voor browsers zonder frame-ondersteuning</option>
+       <option value="kgl_speldata_NL_2017">Speldata Tweede Kamer Nederland 2017</option>
+      </optgroup>
+     </select>
+    </form>
+    <br><br>
+   </div>
+   <br>
+   <div id="versieopslaan_div" style="display:inline-block">
+    <label style="width:100%;max-width:100%;margin:0;padding:0;;word-wrap:break-word" for="Versieopslaan">Formaat om in op te slaan:</label><br>
+    <select name="versieopslaan" id="versieopslaan" onchange="weergaveveranderen_opslagversie()" style="max-width:90%">
+     <option value="KGB110">Kamergotchi Batch 1.10</option>
+     <option value="KGO213" selected="selected">Kamergotchi Online 2.13</option>
+     <option value="KGL213">Kamergotchi Online Legacyversie 2.13</option>
+    </select>
+    <br>
+    <br>
+   </div>
+   <br>
+   <input type="button" id="opslaan" onclick="opslaanfunc()" value="Opslaan" style="display:inline">
+   <input type="button" id="verwijderen" onclick="verwijderfunc()" value="Verwijderen" style="display:inline">
+   <input type="button" id="resetten" onclick="laadfunc()" value="Wijzigingen verwerpen" style="display:inline">
+  </div>
+ </form>
+</center>
+</div>
+<div id="balk4" bgcolor="#000000" style="width:100%;height:1px;margin:0;padding:0;background-color:#000000;font-size:0;line-height:1px;overflow:hidden"></div>
+<div id="achtergrond2" bgcolor="#FFFFFF" style="width:100%;margin:0;padding:0;background-color:#FFFFFF"><br><br></div>
+<script type="text/javascript" language="JavaScript1.3">
+ <!--
+ document.getElementById("achtergrond1").style.backgroundColor="#5AB5D8"
+ document.getElementById("achtergrond2").style.backgroundColor="#5AB5D8"
+ document.body.style.backgroundColor="#5AB5D8"
+ //-->
+</script>
+</body>
+</html>

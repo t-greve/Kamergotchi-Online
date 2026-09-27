@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="nl-NL" style="width:100%;height:100%;margin:0;padding:0;border:0 none">
+
+ <!--Kamergotchi is oorspronkelijk bedacht door Arjen Lubach van het VPRO-programma Zondag met Lubach.-->
+ <!--https://www.vpro.nl/zondag-met-lubach.html-->
+ <!--Webpagina en programma door Thomas Greve, met delen van het internet-->
+
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+ <meta http-equiv="MSThemeCompatible" content="Yes">
+ <meta http-equiv="Content-Script-Type" content="text/javascript">
+ <meta http-equiv="content-style-type" content="text/css">
+ <meta name="title" content="Kamergotchi Online">
+ <meta name="description" content="Kamergotchi op het internet">
+ <meta name="Subject" content="Kamergotchi">
+ <meta name="keywords" content="Kamergotchi Online, Kamergotchi, Zondag met Lubach, game">
+ <meta name="copyright" content="Kamergotchi is oorspronkelijk bedacht door Arjen Lubach van het VPRO-programma Zondag met Lubach: https://www.vpro.nl/zondag-met-lubach.html">
+ <meta name="page-type" content="Game">
+ <meta name="robots" content="index, nofollow">
+ <meta name="Generator" content="Notepad">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="HandheldFriendly" content="true">
+
+ <title>Kamergotchi Online</title>
+
+ <!--Standaard favicon -->
+ <link rel="shortcut icon" type="image/x-icon" sizes="16x16 24x24 32x32 48x48 64x64" href="../favicon.ico">
+ <link rel="icon" type="image/x-icon" sizes="16x16 24x24 32x32 48x48 64x64" href="../favicon.ico">
+
+ <script type="text/javascript" language="JavaScript">
+ <!--
+  //Zorgt ervoor dat er geen foutmedingen worden weergegeven. Sommige oude browsers worden anders overspoeld met foutmeldingen.
+  window.onerror = silenterror
+  function silenterror() {
+   return true
+ }
+ //-->
+ </script>
+</head>
+
+<body bgcolor="#FFFFFF" style="background-color:#FFFFFF">
+<div id="test" style="display:none">&nbsp;</div>
+
+ <script type="text/javascript" language="JavaScript">
+  var doorverwijzen = 0
+ </script>
+
+ <script type="text/javascript" language="JavaScript1.3">
+ if (doorverwijzen == 0) {
+  if (typeof document.getElementById("test").innerHTML == "undefined") {
+   doorverwijzen = 1
+   window.location.href="Kamergotchi_Online_Legacy/Kamergotchi_Online_Legacy.html"
+  }
+  else if (/MSIE 4./i.test(navigator.userAgent) || /Konqueror\/1./i.test(navigator.userAgent) || /Konqueror\/2./i.test(navigator.userAgent)) {
+   doorverwijzen = 1
+   window.location.href="Kamergotchi_Online_Legacy/Kamergotchi_Online_Legacy.html"
+  }
+  //Internet Explorer Mobile op Windows Mobile 6.0 werkt niet, 6.1 werkt wel.
+  else if (/IEMobile 6./i.test(navigator.userAgent) && /Windows CE/i.test(navigator.userAgent) && !/IEMobile 8./i.test(navigator.userAgent)) {
+   doorverwijzen = 1
+   window.location.href="Kamergotchi_Online_Legacy/Kamergotchi_Online_Legacy.html"
+  }
+  //Wine Internet Explorer kan onvoorspelbaar zijn
+  else if (/Mozilla\/4.0./i.test(navigator.userAgent) && /MSIE 8.0./i.test(navigator.userAgent) && /Trident\/5.0./i.test(navigator.userAgent)) {
+   doorverwijzen = 1
+   window.location.href="Kamergotchi_Online_Legacy/Kamergotchi_Online_Legacy.html"
+  }
+  // De standaardversie is in de Nintendo DS-browser is heel onhandig op de grote weergavemodus en de standaard kolommodus zet CSS uit.
+  else if (/MSIE 6.0; Nitro/i.test(navigator.userAgent) && /Opera 8./i.test(navigator.userAgent)) {
+   doorverwijzen = 1
+   window.location.href="Kamergotchi_Online_Legacy/Kamergotchi_Online_Legacy.html"
+  }
+  //Sommige browsers geven het spel wel weer, maar het werkt vervolgens niet. Hieronder worden versies van Mozilla voor 0.6 en andere browsers die een aantal dingen niet ondersteunen doorgestuurd naar de legacy-versie.
+  //Browsers met "like Gecko" zoals Internet Explorer gaan niet langs de lange if en Netscape 6.0 heeft M18 als Mozilla-versie in de User Agent String, maar werkt wel. Mozlla M18 crasht bij het laden van het spel.
+  else if (/Gecko/i.test(navigator.userAgent) && !/like Gecko/i.test(navigator.userAgent) && !/Netscape6/i.test(navigator.userAgent)) {
+   if (/; M18\)/i.test(navigator.userAgent) ||  /; M17\)/i.test(navigator.userAgent) ||  /; M16\)/i.test(navigator.userAgent) ||  /; M15\)/i.test(navigator.userAgent) ||  /; M14\)/i.test(navigator.userAgent) ||  /; M13\)/i.test(navigator.userAgent) ||  /; M12\)/i.test(navigator.userAgent) || /; M11\)/i.test(navigator.userAgent) || /; M10\)/i.test(navigator.userAgent) || /; M9\)/i.test(navigator.userAgent) || /; M8\)/i.test(navigator.userAgent) || /; M7\)/i.test(navigator.userAgent) || /; M6\)/i.test(navigator.userAgent) || /; M5\)/i.test(navigator.userAgent) || /; M4\)/i.test(navigator.userAgent) || /; M13\)/i.test(navigator.userAgent) || /; M3\)/i.test(navigator.userAgent) || /; M2\)/i.test(navigator.userAgent) || /; M1\)/i.test(navigator.userAgent)) {
+    doorverwijzen = 1
+    window.location.href="Kamergotchi_Online_Legacy/Kamergotchi_Online_Legacy.html"
+   }
+   else {
+    doorverwijzen = 1
+    window.location.href="Kamergotchi_Online/Kamergotchi_Online.html" + location.search
+   }
+  }
+  else {
+   doorverwijzen = 1
+   window.location.href="Kamergotchi_Online/Kamergotchi_Online.html" + location.search
+  }
+ }
+ </script>
+
+ <script type="text/javascript" language="JavaScript">
+  //Alle niet-doorverwezen browsers worden naar de legacyversie doorverstuurd.
+  if (doorverwijzen == 0) {
+   doorverwijzen = 1
+   window.location.href="Kamergotchi_Online_Legacy/Kamergotchi_Online_Legacy.html"
+  }
+ </script>
+</body>
+</html>

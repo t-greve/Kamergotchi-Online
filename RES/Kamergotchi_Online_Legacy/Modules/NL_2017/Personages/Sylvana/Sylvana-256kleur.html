@@ -1,0 +1,79 @@
+<html lang="nl-NL">
+
+ <!--Kamergotchi is oorspronkelijk bedacht door Arjen Lubach van het VPRO-programma Zondag met Lubach.-->
+ <!--https://www.vpro.nl/zondag-met-lubach.html-->
+ <!--Webpagina en programma door Thomas Greve, met delen van het internet en het boek "Het complete handboek HTML voor Internet" van Mark Brown, John Jung en Tom Savola uit 1996. ISBN: 90-395-0499-7.-->
+
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+ <meta http-equiv="Content-Script-Type" content="text/javascript">
+ <meta http-equiv="Content-Style-Type" content="text/css">
+ <link rel="shortcut icon" type="image/x-icon" sizes="16x16 24x24 32x32 48x48 64x64" href="../../../../../../favicon.ico">
+ <link rel="icon" type="image/x-icon" sizes="16x16 24x24 32x32 48x48 64x64" href="../../../../../../favicon.ico">
+ <title>Kamergotchi Online</title>
+</head>
+<body bgcolor="#3399CC" text="#000000" link="#000000" alink="#000000" vlink="#000000" topmargin=0 bottommargin=0 leftmargin=0 rightmargin=0 marginheight=0 marginwidth=0>
+<form name="spelform" onsubmit="window.top.deletefunc('frame'); return false">
+ <center>
+ <br>
+ <table border=0>
+  <tr>
+   <td align="center" valign="middle" colspan=1 rowspan=2>
+    <center>
+     <img src="Sylvana-256kleur.gif" width=146 height=242>
+    </center>
+   </td>
+   <td align="center" valign="middle" colspan=1>
+    <center>
+     <input type="button" value="Geef Sylvana eten" name="hongerknop" onclick="window.top.naarbeneden('Sylvana', 'honger', 'frame')"><br>
+     <input type="button" value="Geef Sylvana aandacht" name="aandachtknop" onclick="window.top.naarbeneden('Sylvana', 'aandacht', 'frame')"><br>
+     <input type="button" value="Leer Sylvana iets" name="kennisknop" onclick="window.top.naarbeneden('Sylvana', 'kennis', 'frame')"><br>
+    </center>
+   </td>
+  </tr>
+  <tr>
+   <td align="center" valign="middle" colspan=1>
+    <input type="text" value="" name="honger" size=28><br>
+    <input type="text" value="" name="aandacht" size=28><br>
+    <input type="text" value="" name="kennis" size=28><br>
+    <input type="text" value="" name="geluk" size=28><br>
+    <input type="text" value="" name="geleefd" size=28><br>
+   </td>
+  </tr>
+  <tr>
+   <td align="center" valign="middle" colspan=2>
+    <textarea name="chat" cols=60 rows=2 wrap="virtual" style="resize: none"></textarea><br>
+   </td>
+  </tr>
+  <tr>
+   <td colspan=2>
+   </td>
+  </tr>
+  <tr>
+   <td colspan=1>
+    <center>
+     <input type="button" value="Spel laden" name="laadknop" onclick="window.top.naarbeneden('Sylvana', 'opstarten', 'frame')"><br>
+     <input type="button" value="Versie" name="versie" onclick="window.top.naarbeneden('Sylvana', 'versie', 'frame')">
+    </center>
+   </td>
+   <td colspan=1>
+    <center>
+     <input type="button" value="Nieuw spel" name="resetknop" onclick="window.top.resetfunc('Sylvana', 'frame')"><br>
+     <input type="submit" value="Spelgegevens&nbsp;verwijderen" name="verwijderen">
+    </center>
+   </td>
+  </tr>
+  <tr>
+   <td colspan="2">
+    <center>
+     <br>
+     <br>
+     <input type="button" value="Terug naar het hoofdmenu" name="menuknop" onclick="window.top.instellingenfunc('navigeren',1, 'frame', 'hoofdmenu')">
+    </center>
+   </td>
+  </tr>
+</table>
+</center>
+</form>
+</body>
+</html>

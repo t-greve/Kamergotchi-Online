@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="nl-NL" style="width:100%;margin:0;padding:0;border:0 none">
+
+
+ <!--Kamergotchi is oorspronkelijk bedacht door Arjen Lubach van het VPRO-programma Zondag met Lubach.-->
+ <!--https://www.vpro.nl/zondag-met-lubach.html-->
+ <!--Webpagina en programma door Thomas Greve, met delen van het internet-->
+
+
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+ <meta http-equiv="MSThemeCompatible" content="Yes">
+ <meta http-equiv="Content-Script-Type" content="text/javascript">
+ <meta http-equiv="Content-Style-Type" content="text/css">
+ <meta name="title" content="Browsertest">
+ <meta name="description" content="Een test voor welke functies een specifieke webbrowser ondersteunt.">
+ <meta name="Subject" content="Kamergotchi">
+ <meta name="keywords" content="Kamergotchi Online, Kamergotchi, Zondag met Lubach, game">
+ <meta name="copyright" content="Kamergotchi is oorspronkelijk bedacht door Arjen Lubach van het VPRO-programma Zondag met Lubach: https://www.vpro.nl/zondag-met-lubach.html">
+ <meta name="page-type" content="Game">
+ <meta name="robots" content="index, nofollow">
+ <meta name="Generator" content="Notepad">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="HandheldFriendly" content="true">
+
+ <title>Browsertest</title>
+
+ <!--Standaard favicon -->
+ <link rel="shortcut icon" type="image/x-icon" sizes="16x16 24x24 32x32 48x48 64x64" href="../../favicon.ico">
+ <link rel="icon" type="image/x-icon" sizes="16x16 24x24 32x32 48x48 64x64" href="../../favicon.ico">
+
+ <!--Icoontjes voor het startscherm van iPhone OS/iOS/iPadOS-->
+ <meta name="apple-mobile-web-app-capable" content="yes">
+ <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon-180x180.png">
+ <link rel="apple-touch-icon" sizes="167x167" href="../../apple-touch-icon-167x167.png">  
+ <link rel="apple-touch-icon" sizes="152x152" href="../../apple-touch-icon-152x152.png">
+ <link rel="apple-touch-icon" sizes="120x120" href="../../apple-touch-icon-120x120.png">
+ <link rel="apple-touch-icon" sizes="114x114" href="../../apple-touch-icon-114x114.png">
+ <link rel="apple-touch-icon" sizes="76x76" href="../../apple-touch-icon-76x76.png">
+ <link rel="apple-touch-icon" sizes="72x72" href="../../apple-touch-icon-72x72.png">
+ <link rel="apple-touch-icon" sizes="60x60" href="../../apple-touch-icon-60x60.png">
+ <link rel="apple-touch-icon" sizes="57x57" href="../../apple-touch-icon-57x57.png">
+
+ <!--Icoon voor een vastgezet tablad op Safari voor Mac-->
+ <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#DA3332">
+
+ <!--PNG-favicons-->
+ <link rel="icon" type="image/png" sizes="192x192" href="../../android-chrome-192x192.png">
+ <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+ <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+ <meta name="mobile-web-app-capable" content="yes">
+ <link rel="manifest" href="../../site.webmanifest">
+ <meta name="theme-color" content="#5AB5D8" media="(prefers-color-scheme: light)">
+ <meta name="theme-color" content="#2D5A6B" media="(prefers-color-scheme: dark)">
+
+ <!--Icoontjes voor tegeltjes in Windows en Windows Phone-->
+ <meta name="msapplication-TileColor" content="#5AB5D8">
+ <meta name="msapplication-TileImage" content="../../mstile-144x144.png">
+ <meta name="msapplication-config" content="../../browserconfig.xml">
+
+ <!--Internet Explorer 5 en 6 vergeten de favicon nadat de cache is geleegd totdat de pagina opnieuw aan de favorieten wordt toegevoegd of wordt geladen-->
+ <!--[if lte IE 6]>
+  <script type="text/javascript" language="JavaScript">
+   (new Image).src="../../favicon.ico"
+  </script>
+ <![endif]-->
+
+ <script type="text/javascript" language="JavaScript">
+ <!--
+  //Zorgt ervoor dat er geen foutmedingen worden weergegeven. Sommige oude browsers worden anders overspoeld met foutmeldingen.
+  window.onerror = silenterror
+  function silenterror() {
+   return true
+ }
+ //-->
+ </script> 
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" link="#000000" alink="#000000" vlink="#000000" topmargin=0 bottommargin=0 leftmargin=0 rightmargin=0 marginheight=0 marginwidth=0 style="width:100%;margin:0;padding:0;border:0 none;background-color:#FFFFFF;margin-left:auto;margin-right:auto;font-size:14px;font-family:sans-serif">
+<div id="balk">
+ <div id="balk1" bgcolor="#FFFFFF" style="width:100%;text-align:center;margin:0;padding:0px;border:0 none;background-color:#FFFFFF">
+  <center>
+   <h2 style="margin-top:0px;margin-bottom:0px;word-wrap:break-word;white-space:normal">Kamergotchi Online</h2>
+   <div id="links" style="margin:0;padding:4px;border:0 none">
+    <center>
+     <a href="../Kamergotchi_Online/Kamergotchi_Online.html" id="link1" style="word-wrap:break-word;color:#000000;background-color:#FFFFFF">Spel (standaardversie)</a> &nbsp; 
+     <a href="../Kamergotchi_Online_Legacy/Kamergotchi_Online_Legacy.html" id="link2" style="word-wrap:break-word;color:#000000;background-color:#FFFFFF">Spel (legacyversie)</a> &nbsp; 
+     <a href="../Downloads/Downloads.html" id="link3" style="word-wrap:break-word;color:#000000;background-color:#FFFFFF">Downloads</a> &nbsp; 
+     <a href="../Screenshots/Screenshots.html" id="link4" style="word-wrap:break-word;color:#000000;background-color:#FFFFFF">Screenshots</a> &nbsp; 
+     <a href="../Geschiedenis/Geschiedenis.html" id="link5" style="word-wrap:break-word;color:#000000;background-color:#FFFFFF">Geschiedenis</a> &nbsp; 
+     <a href="../Browsertest/Browsertest.html" id="link6" style="word-wrap:break-word;color:#000000;background-color:#FFFFFF">Browsertest</a>
+    </center>
+   </div>
+  </center>
+ </div>
+ <div id="balk2" bgcolor="#000000" style="width:100%;height:1px;margin:0;padding:0;border:0;background-color:#000000;font-size:0;line-height:1px;overflow:hidden"></div>
+</div>
+<div id="achtergrond1" bgcolor="#FFFFFF" style="width:100%;margin:0;padding:0;background-color:#FFFFFF"><br><br></div>
+<div id="balk3" bgcolor="#000000" style="width:100%;height:1px;margin:0;padding:0;background-color:#000000;font-size:0;line-height:1px;overflow:hidden"></div>
+<div bgcolor="#FFFFFF" style="margin:0;padding:10px;border:0 none;text-align:left;background-color:#FFFFFF;word-wrap:break-word;white-space:normal">
+<div style="text-align:center"><center>
+ <center>
+  <div id="test">
+   <center>
+    <img id="Kamergotchis" src="Afbeeldingen/Browsertest.gif">
+   </center>
+  </div>
+  <br><br>
+  <div id="output1">
+   <center>
+    <form name="testform" onsubmit="wissel1func();return false">
+     <input type="text" name="BegroetingTim" value="Tim: Hoi, ik ben Tim van het CERN Ik doe samen met Nicola de browsertest." size=70><br>
+     <input type="text" name="BegroetingNicola" value="Nicola: Hoi, ik ben Nicola van het CERN. Ik doe samen met Tim de browsertest." size=70><br>
+     <input type="text" name="JStest" value="Tim: Deze browser ondersteunt geen Javascript." size=70><br>
+     <input type="text" name="JS13test" value="Nicola: Deze browser ondersteunt geen Javascript 1.3." size=70><br>
+     <input type="text" name="JSCtest" value="Tim: Deze browser voert Javascript die in comments is verborgen niet uit." size=70><br>
+     <input type="text" name="EXTtest" value="Nicola: Deze browser voert Javascript in een extern bestand niet uit." size=70><br>
+     <input type="text" name="UAtest" value="Tim: De user agent string van je browser kan niet worden bepaald." size=70><br>
+     <input type="text" name="IDtest" value="Nicola: Deze browser ondersteunt document.getElementById en/of de eigenschap innerHTML niet." size=70><br>
+     <input type="text" name="VWVHtest" value="Tim: Deze browser ondersteunt de CSS-eenheden VW en VH en/of het CSS-attribuut object-fit niet." size=70><br>
+     <input type="text" name="MHtest" value="Nicola: Deze browser ondersteunt het CSS-attribuut max-height niet." size=70><br>
+     <input type="text" name="Cookie1test" value="Tim: Op deze browser werken cookies met een vaste verloopdatum niet, of het is na 31 december 2037." size=70><br>
+     <input type="text" name="Cookie2test" value="Nicola: Op deze browser werken cookies die over een jaar verlopen niet." size=70><br>
+     <input type="text" name="LStest" value="Tim: Deze browser ondersteunt geen HTML5 LocalStorage." size=70><br>
+     <input type="text" name="Audiotest" value="Nicola: Deze browser ondersteunt geen HTML5-audio." size=70><br>
+     <input type="text" name="GTtest" value="Tim: Deze browser ondersteunt geen getTime." size=70><br>
+     <input type="text" name="Ltest" value="Nicola: De eigenschap navigator.language kan niet worden bepaald." size=70><br>
+     <input type="text" name="BLtest" value="Tim: De eigenschap navigator.browserlanguage kan niet worden bepaald." size=70><br>
+     <input type="text" name="CDtest" value="Nicola: De eigenschap screen.colorDepth kan niet worden bepaald." size=70><br>
+     <input type="text" name="PDtest" value="Tim: De eigenschap screen.pixelDepth kan niet worden bepaald." size=70><br>
+     <input type="text" name="CWtest" value="Nicola: De eigenschap body.clientWidth kan niet worden bepaald." size=70><br>
+    </form>
+   </center>
+  </div>
+  <div id="output2">
+   <center>
+    <br>
+    <br><br>Een foto van Tim en Nicola uit 1991 als GIF:<br><img id="GIF" src="Afbeeldingen/TimNicola.gif"><br>
+    <br><br>Het logo van kamergotchi Online als transparante PNG:<br><img id="PNG" width="143px" height="202px" src="Afbeeldingen/Logo-licht.png"><br>
+    <br><br>Het logo van kamergotchi Online als SVG:<br><img id="SVG" width="143px" height="202px" src="Afbeeldingen/Logo-licht.svg"><br>
+    <br><br>Een iFrame:<br>
+    <iframe id="iframe" src="Frames/Btest_Frame.html" width="200px" height="50px">
+      Als je dit leest, ondersteunt je browser geen iFrames.
+    </iframe>
+    <br>
+   </center>
+  </div>
+ </center>
+<script type="text/javascript" language="JavaScript">
+document.testform.JStest.value="Tim: Deze browser ondersteunt Javascript."
+</script>
+
+<script type="text/javascript" language="JavaScript1.3">
+document.testform.JS13test.value="Nicola: Deze browser ondersteunt Javascript 1.3."
+</script>
+
+<script type="text/javascript" language="JavaScript">
+ <!--
+document.testform.JSCtest.value="Tim: Deze browser voert Javascript die in comments is verborgen uit."
+//-->
+</script>
+
+<script type="text/javascript" language="JavaScript">
+if (navigator.userAgent) {
+ document.testform.UAtest.value='Tim: De User Agent String van je browser is: "' + navigator.userAgent + '".'
+}
+</script>
+
+<script type="text/javascript" language="JavaScript1.1">
+if (vwvhtest()) {
+document.testform.VWVHtest.value="Tim: Deze browser ondersteunt de CSS-eenheden VW en VH en het CSS-attribuut object-fit."
+}
+
+function vwvhtest() {
+ try {
+  var test = document.createElement("div")
+  test.id = "vhvwtestdiv"
+  test.style.cssText = "max-height:50vw;max-width:50vw;height:calc(10px + 10px);object-fit:contain"
+  var test2 = document.createElement("img")
+  test2.id = "vhvwtestimg"
+  test2.style.cssText = "object-fit:contain"
+ }
+ catch (error) {
+  return false
+ }
+ if (test.style.maxHeight == "50vw" && test.style.maxWidth == "50vw" && test2.style.objectFit == "contain") {
+  if (test.style.height == "calc(20px)" || window.getComputedStyle(test).height == "20px") {
+   return true
+  }
+  else {
+   return false
+  }
+ }
+ else {
+  return false
+ }
+}
+</script>
+
+<script type="text/javascript" language="JavaScript1.1">
+if (maxheighttest()) {
+document.testform.MHtest.value="Nicola: Deze browser ondersteunt het CSS-attribuut MaxHeight."
+}
+
+function maxheighttest() {
+ try {
+  var test = document.createElement("div")
+  test.id = "heighttestdiv"
+  test.style.cssText = "max-height:100px"
+ }
+ catch (error) {
+  return false
+ }
+ if (test.style.maxHeight == "100px") {
+  return true
+ }
+ else {
+  return false
+ }
+}
+</script>
+
+<script type="text/javascript" language="JavaScript">
+document.cookie = "test=cookietest1;expires=Fri, 01 Jan 2038 00:00:00 GMT;path=/"
+var search = "test" + "=" 
+if (document.cookie.length > 0) {
+ var offset = document.cookie.indexOf(search) 
+ if (offset != -1) {
+  offset += search.length 
+  var end = document.cookie.indexOf(";", offset)  
+  if (end == -1) end = document.cookie.length 
+  var resultaat= unescape(document.cookie.substring(offset, end))
+ }
+}
+document.cookie = "test=Leeg;expires=Thu, 1 Jan 1970 00:00:00 GMT;path=/" 
+if (resultaat == "cookietest1") {
+ document.testform.Cookie1test.value="Tim: Op deze browser werken cookies met een vaste verloopdatum wel."
+}
+</script>
+
+<script type="text/javascript" language="JavaScript1.1">
+var datum = new Date()
+var expires = "expires="+ datum.toUTCString(datum.setTime(datum.getTime() + (365*24*60*60*1000)))
+document.cookie = "test=cookietest2;" + expires + ";path=/;samesite=lax"
+
+var search = "test" + "=" 
+if (document.cookie.length > 0) {
+ var offset = document.cookie.indexOf(search) 
+ if (offset != -1) {
+  offset += search.length 
+  var end = document.cookie.indexOf(";", offset)  
+  if (end == -1) end = document.cookie.length 
+  var resultaat= unescape(document.cookie.substring(offset, end))
+ }
+}
+document.cookie = "test=Leeg;expires=Thu, 1 Jan 1970 00:00:00 GMT;path=/" 
+if (resultaat == "cookietest2") {
+ document.testform.Cookie2test.value="Nicola: Op deze browser werken cookies die over een jaar verlopen wel."
+}
+</script>
+
+<script type="text/javascript" language="JavaScript1.1">
+var test = "test"
+try {
+ localStorage.setItem(test, test)
+ localStorage.removeItem(test)
+ document.testform.LStest.value="Tim: Deze browser ondersteunt HTML5 LocalStorage."
+}
+catch(error) {
+ document.testform.LStest.value="Tim: Deze browser ondersteunt geen HTML5 LocalStorage."
+}
+</script>
+
+<script type="text/javascript" language="JavaScript1.1">
+try {
+ var element = document.createElement('audio')
+ if (element == "[object HTMLAudioElement]") {
+  document.testform.Audiotest.value="Nicola: Deze browser ondersteunt HTML5-audio."
+ }
+ else {
+  document.testform.Audiotest.value="Nicola: Deze browser ondersteunt geen HTML5-audio."
+ }
+}
+catch (error) {
+ document.testform.Audiotest.value="Nicola: Deze browser ondersteunt geen HTML5-audio."
+}
+</script>
+
+<script type="text/javascript" language="JavaScript">
+var tijd = new Date(2000, 0, 1, 0, 0, 0, 0)
+var tijd = tijd.getTime()
+if (tijd > 1) {
+ document.testform.GTtest.value="Tim: Deze browser ondersteunt getTime."
+}
+</script>
+
+<script type="text/javascript" language="JavaScript">
+if (navigator.language) {
+ document.testform.Ltest.value='Nicola: De eigenschap navigator.language van je browser is: "' + navigator.language + '".'
+}
+</script>
+
+<script type="text/javascript" language="JavaScript">
+if (navigator.browserLanguage) {
+ document.testform.BLtest.value='Tim: De eigenschap navigator.browserLanguage van je browser is: "' + navigator.browserLanguage + '".'
+}
+</script>
+
+<script type="text/javascript" language="JavaScript1.1">
+if (window.screen.colorDepth) {
+ document.testform.CDtest.value='Nicola: De eigenschap screen.colorDepth is: "' + screen.colorDepth + '".'
+}
+</script>
+
+<script type="text/javascript" language="JavaScript1.1">
+if (window.screen.pixelDepth) {
+ document.testform.PDtest.value='Tim: De eigenschap screen.pixelDepth is: "' + screen.pixelDepth + '".'
+}
+</script>
+
+<script type="text/javascript" language="JavaScript1.1">
+if (document.body.clientWidth) {
+ document.testform.CWtest.value='Nicola: De eigenschap body.clientWidth is: "' + document.body.clientWidth + '".'
+}
+</script>
+
+<script type="text/javascript" language="JavaScript" src="Scripts/JSTest.js"></script>
+
+<script type="text/javascript" language="JavaScript1.1">
+EXTTest()
+</script>
+
+<script type="text/javascript" language="JavaScript1.1">
+if (typeof document.getElementById("test").innerHTML != "undefined") {
+ document.testform.IDtest.value="Nicola: Deze browser ondersteunt document.getElementById en de eigenschap innerHTML."
+ document.getElementById("Kamergotchis").style.maxWidth="90%"
+ document.getElementById("Kamergotchis").style.border="0 none"
+ document.getElementById("Kamergotchis").style.padding="0"
+ document.getElementById("Kamergotchis").style.margin="0"
+ document.getElementById("GIF").style.width="376px"
+ document.getElementById("GIF").style.maxWidth="90%"
+ document.getElementById("GIF").style.maxHeight=""
+ document.getElementById("GIF").style.border="0 none"
+ document.getElementById("GIF").style.padding="0"
+ document.getElementById("GIF").style.margin="0"
+ document.getElementById("PNG").style.width="143px"
+ document.getElementById("PNG").style.maxWidth="90%"
+ document.getElementById("PNG").style.maxHeight=""
+ document.getElementById("PNG").style.border="0 none"
+ document.getElementById("SVG").style.padding="0"
+ document.getElementById("SVG").style.margin="0"
+ document.getElementById("SVG").style.width="90%"
+ document.getElementById("SVG").style.maxWidth="90%"
+ document.getElementById("SVG").style.maxHeight="40vh"
+ document.getElementById("SVG").style.border="0 none"
+ document.getElementById("iframe").style.width="90%"
+ document.testform.BegroetingTim.style.width="90%"
+ document.testform.BegroetingNicola.style.width="90%"
+ document.testform.JStest.style.width="90%"
+ document.testform.JS13test.style.width="90%"
+ document.testform.JSCtest.style.width="90%"
+ document.testform.EXTtest.style.width="90%"
+ document.testform.UAtest.style.width="90%"
+ document.testform.IDtest.style.width="90%"
+ document.testform.VWVHtest.style.width="90%"
+ document.testform.MHtest.style.width="90%"
+ document.testform.Cookie1test.style.width="90%"
+ document.testform.Cookie2test.style.width="90%"
+ document.testform.LStest.style.width="90%"
+ document.testform.Audiotest.style.width="90%"
+ document.testform.GTtest.style.width="90%"
+ document.testform.Ltest.style.width="90%"
+ document.testform.BLtest.style.width="90%"
+ document.testform.CDtest.style.width="90%"
+ document.testform.PDtest.style.width="90%"
+ document.testform.CWtest.style.width="90%"
+}
+  </script>
+ </center></div>
+</div>
+<div id="balk4" bgcolor="#000000" style="width:100%;height:1px;margin:0;padding:0;background-color:#000000;font-size:0;line-height:1px;overflow:hidden"></div>
+<div id="achtergrond2" bgcolor="#FFFFFF" style="width:100%;margin:0;padding:0;background-color:#FFFFFF"><br><br></div>
+<script type="text/javascript" language="JavaScript1.3">
+ <!--
+ document.getElementById("achtergrond1").style.backgroundColor="#5AB5D8"
+ document.getElementById("achtergrond2").style.backgroundColor="#5AB5D8"
+ document.body.style.backgroundColor="#5AB5D8"
+ //-->
+</script>
+</body>
+</html>
