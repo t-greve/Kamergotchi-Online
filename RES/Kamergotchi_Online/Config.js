@@ -54,7 +54,7 @@ balkzichtbaar = "aan"
 KGEdit = "uit"
 
 //Het versienummer van Kamergotchi Online
-versie = "2.13"
+versie = "2.13, patch 1"
 
 //Het aantal vastgezette keuzes voor de drie behoeften (minimaal 1)
 hongerkeuzes = 1
